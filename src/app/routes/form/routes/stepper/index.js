@@ -3,7 +3,7 @@ import TextMobileStepper from 'app/routes/components/routes/stepper/text/TextMob
 import DotsMobileStepper from 'app/routes/components/routes/stepper/dot/DotsMobileStepper';
 import ProgressMobileStepper from 'app/routes/components/routes/stepper/progress/ProgressMobileStepper';
 import HorizontalLinearStepper from 'app/routes/components/routes/stepper/linear/HorizontalLinearStepper';
-import HorizontalLabelPositionBelowStepper from 'app/routes/components/routes/stepper/linear/HorizontalLabelPositionBelowStepper';
+import FormSignUp from 'app/routes/components/routes/stepper/linear/FormSignUp';
 import HorizontalNonLinearStepper from 'app/routes/components/routes/stepper/nonLinear/HorizontalNonLinearStepper';
 import HorizontalNonLinearAlternativeLabelStepper from 'app/routes/components/routes/stepper/nonLinear/HorizontalNonLinearAlternativeLabelStepper';
 import VerticalLinearStepper from 'app/routes/components/routes/stepper/vertical/VerticalLinearStepper';
@@ -28,7 +28,7 @@ const Stepper = ({match}) => {
                  heading={<IntlMessages
                    id="component.stepper.horizontalLinearAlternativeLabel"/>}
                  headerOutside>
-          <HorizontalLabelPositionBelowStepper/>
+          <FormSignUp/>
         </CardBox>
       </div>
 

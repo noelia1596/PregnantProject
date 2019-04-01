@@ -146,9 +146,9 @@ class App extends Component {
       applyTheme = this.getColorTheme(themeColor, applyTheme);
     }
     if (location.pathname === '/') {
-      if (authUser === null) {
+      if /*(authUser === null) {
         return ( <Redirect to={'/signin'}/> );
-      } else if (initURL === '' || initURL === '/' || initURL === '/signin') {
+      } else if*/ (initURL === '' || initURL === '/' || initURL === '/signin') {
         return ( <Redirect to={'/app/dashboard/crypto'}/> );
       } else {
         return ( <Redirect to={initURL}/> );

@@ -10,19 +10,15 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {
   hideMessage,
   showAuthLoader,
-  userFacebookSignIn,
-  userGithubSignIn,
-  userGoogleSignIn,
   userSignIn,
-  userTwitterSignIn
 } from 'actions/Auth';
 
 class SignIn extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: 'demo@example.com',
-      password: 'demo#123'
+      email: 'noelia@noelia.com',
+      password: 'noelia'
     }
   }
 
@@ -49,8 +45,8 @@ class SignIn extends React.Component {
         <div className="app-login-main-content">
 
           <div className="app-logo-content d-flex align-items-center justify-content-center">
-            <Link className="logo-lg" to="/" title="Jambo">
-              <img src={require("assets/images/logo.png")} alt="jambo" title="jambo"/>
+            <Link className="logo-lg" to="/">
+              <img src={require("assets/images/logo.png")} alt="logo" height="240rem"/>
             </Link>
           </div>
 
@@ -92,54 +88,6 @@ class SignIn extends React.Component {
                       <IntlMessages id="signIn.signUp"/>
                     </Link>
                   </div>
-
-                  <div className="app-social-block my-1 my-sm-3">
-                    <IntlMessages
-                      id="signIn.connectWith"/>
-                    <ul className="social-link">
-                      <li>
-                        <IconButton className="icon"
-                                    onClick={() => {
-                                      this.props.showAuthLoader();
-                                      this.props.userFacebookSignIn();
-                                    }}>
-                          <i className="zmdi zmdi-facebook"/>
-                        </IconButton>
-                      </li>
-
-                      <li>
-                        <IconButton className="icon"
-                                    onClick={() => {
-                                      this.props.showAuthLoader();
-                                      this.props.userTwitterSignIn();
-                                    }}>
-                          <i className="zmdi zmdi-twitter"/>
-                        </IconButton>
-                      </li>
-
-                      <li>
-                        <IconButton className="icon"
-                                    onClick={() => {
-                                      this.props.showAuthLoader();
-                                      this.props.userGoogleSignIn();
-
-                                    }}>
-                          <i className="zmdi zmdi-google-plus"/>
-                        </IconButton>
-                      </li>
-
-                      <li>
-                        <IconButton className="icon"
-                                    onClick={() => {
-                                      this.props.showAuthLoader();
-                                      this.props.userGithubSignIn();
-                                    }}>
-                          <i className="zmdi zmdi-github"/>
-                        </IconButton>
-                      </li>
-                    </ul>
-                  </div>
-
                 </fieldset>
               </form>
             </div>
@@ -168,8 +116,4 @@ export default connect(mapStateToProps, {
   userSignIn,
   hideMessage,
   showAuthLoader,
-  userFacebookSignIn,
-  userGoogleSignIn,
-  userGithubSignIn,
-  userTwitterSignIn
 })(SignIn);

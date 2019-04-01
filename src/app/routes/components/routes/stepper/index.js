@@ -3,7 +3,7 @@ import TextMobileStepper from './text/TextMobileStepper';
 import DotsMobileStepper from './dot/DotsMobileStepper';
 import ProgressMobileStepper from './progress/ProgressMobileStepper';
 import HorizontalLinearStepper from './linear/HorizontalLinearStepper';
-import HorizontalLabelPositionBelowStepper from './linear/HorizontalLabelPositionBelowStepper';
+import FormSignUp from '../FormSignUp/FormSignUp';
 import HorizontalNonLinearStepper from './nonLinear/HorizontalNonLinearStepper';
 import HorizontalNonLinearAlternativeLabelStepper from './nonLinear/HorizontalNonLinearAlternativeLabelStepper';
 import VerticalLinearStepper from './vertical/VerticalLinearStepper';
@@ -28,7 +28,7 @@ const Stepper = ({match}) => {
                  heading={<IntlMessages
                    id="component.stepper.horizontalLinearAlternativeLabel"/>}
                  headerOutside>
-          <HorizontalLabelPositionBelowStepper/>
+          <FormSignUp/>
         </CardBox>
       </div>
 

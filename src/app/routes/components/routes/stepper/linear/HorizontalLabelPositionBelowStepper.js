@@ -182,7 +182,7 @@ function getConfirmation() {
   </div>
 }
 
-class HorizontalLabelPositionBelowStepper extends React.Component {
+class FormSignUp extends React.Component {
   state = {
     activeStep: 0,
   };
@@ -253,4 +253,4 @@ class HorizontalLabelPositionBelowStepper extends React.Component {
   }
 }
 
-export default HorizontalLabelPositionBelowStepper;
+export default FormSignUp;
