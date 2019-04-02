@@ -163,6 +163,16 @@ class App extends Component {
     }
 
     const currentAppLocale = AppLocale[locale.locale];
+    let userToken = location.userToken;
+    console.log('userToken',location);
+    let token;
+    if(!userToken){
+      console.log('no hay token', location)
+      token='';
+    }else{
+      console.log('hay token')
+      token=userToken;
+    }
     return (
       <MuiThemeProvider theme={applyTheme}>
         <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -172,7 +182,7 @@ class App extends Component {
             <RTL>
               <div className="app-main">
                 <Switch>
-                  <RestrictedRoute path={`${match.url}app`} authUser={authUser}
+                  <RestrictedRoute path={`${match.url}app`} authUser={token}
                                    component={MainApp}/>
                   <Route path='/signin' component={SignIn}/>
                   <Route path='/signup' component={SignUp}/>

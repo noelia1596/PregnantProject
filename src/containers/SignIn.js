@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux';
 import TextField from '@material-ui/core/TextField';
@@ -20,7 +20,7 @@ class SignIn extends React.Component {
       email: 'noelia@noelia.com',
       password: 'noelia'
     }
-  }
+  }z
 
   componentDidUpdate() {
     if (this.props.showMessage) {
@@ -80,6 +80,158 @@ class SignIn extends React.Component {
                     <Button onClick={() => {
                       this.props.showAuthLoader();
                       this.props.userSignIn({email, password});
+                    }} variant="contained" color="primary">
+                      <IntlMessages id="appModule.signIn"/>
+                    </Button>
+
+                    <Link to="/signup">
+                      <IntlMessages id="signIn.signUp"/>
+                    </Link>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+
+        </div>
+        {
+          loader &&
+          <div className="loader-view">
+            <CircularProgress/>
+          </div>
+        }
+        {showMessage && NotificationManager.error(alertMessage)}
+        <NotificationContainer/>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = ({auth}) => {
+  const {loader, alertMessage, showMessage, authUser} = auth;
+  return {loader, alertMessage, showMessage, authUser}
+};
+
+export default connect(mapStateToProps, {
+  userSignIn,
+  hideMessage,
+  showAuthLoader,
+})(SignIn);
+*/
+import React from 'react';
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import IntlMessages from 'util/IntlMessages';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {
+  hideMessage,
+  showAuthLoader,  
+  userSignIn,
+} from 'actions/Auth';
+import signUp from './SignUp';
+import request from 'request';
+import {Redirect} from 'react-router-dom';
+
+
+
+class SignIn extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      email: 'demo@example.com',
+      password: 'demo#123'
+    }
+  }
+
+  signInDB(username, password){
+    const self = this;
+    const url = "http://localhost:3000/api-login";
+    request.post(url,{form:{username:username, password:password}},
+    function optionalCallback(err, httpResponse, body) {
+      if (err) {
+          return console.error('upload failed:', err);
+      }
+      //console.log('Upload successful!  Server responded with:',httpResponse);
+      let result=  JSON.parse(httpResponse.body);
+      
+      self.setState({
+        userToken:result.token
+      });
+  
+    } ); 
+  }
+
+  componentDidUpdate() {
+    if (this.props.showMessage) {
+      setTimeout(() => {
+        this.props.hideMessage();
+      }, 100);
+    }
+    if (this.props.authUser !== null) {
+      this.props.history.push('/');
+    }
+  }
+
+  render() {
+    if(this.state.userToken){
+      console.log('token',this.state.userToken) 
+      return <Redirect to={{pathname:'/app/sample-page', userToken:this.state.userToken}}/>
+
+    }
+    const {
+      email,
+      password
+    } = this.state;
+    const {showMessage, loader, alertMessage} = this.props;
+    return (
+      <div
+        className="app-login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
+        <div className="app-login-main-content">
+
+          <div className="app-logo-content d-flex align-items-center justify-content-center">
+            <Link className="logo-lg" to="/">
+              <img src={require("assets/images/logo.png")} alt="logo" height="240rem"/>
+            </Link>
+          </div>
+
+          <div className="app-login-content">
+            <div className="app-login-header mb-4">
+              <h1><IntlMessages id="appModule.email"/></h1>
+            </div>
+
+            <div className="app-login-form">
+              <form>
+                <fieldset>
+                  <TextField
+                    label={<IntlMessages id="appModule.email"/>}
+                    fullWidth
+                    onChange={(event) => this.setState({email: event.target.value})}
+                    defaultValue={email}
+                    margin="normal"
+                    className="mt-1 my-sm-3"
+                  />
+                  <TextField
+                    type="password"
+                    label={<IntlMessages id="appModule.password"/>}
+                    fullWidth
+                    onChange={(event) => this.setState({password: event.target.value})}
+                    defaultValue={password}
+                    margin="normal"
+                    className="mt-1 my-sm-3"
+                  />
+
+                  <div className="mb-3 d-flex align-items-center justify-content-between">
+                    <Button onClick={() => {
+                      //<signUp/>
+                      console.log('entro');
+                      //this.props.showAuthLoader();
+                      //this.props.userSignIn({email, password});
+                      //this.props.payloa
+                      this.signInDB(email, password);
                     }} variant="contained" color="primary">
                       <IntlMessages id="appModule.signIn"/>
                     </Button>

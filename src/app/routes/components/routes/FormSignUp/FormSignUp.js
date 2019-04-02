@@ -246,9 +246,11 @@ class FormSignUp extends React.Component {
         let usr = JSON.parse(httpResponse.body);
         //console.log('usr',usr);
         //self.props.userSignUp(usr.username+'@'+'preg'+'.com', usr.password);
+        console.log('usr',usr.username);
+        
         self.setState({
-          'authUser': httpResponse.body
-        })
+            userToken:usr.username
+        });
       }); 
       
       console.log('acabo el submit');
@@ -275,8 +277,9 @@ class FormSignUp extends React.Component {
     if (this.state.heAcabado){
       return <div> Holaa</div>
     } 
-    if (this.state.authUser != null) {
-        return ( <Redirect to={{pathname:'/', user:this.state.authUser}}/> );
+    if (this.state.userToken != null) {
+        console.log('Mandamos token ',this.state.userToken)
+        return  <Redirect to={{pathname:'/app/sample-page', userToken:this.state.userToken}}/> ;
     }
     return (
       <div className="w-100">
