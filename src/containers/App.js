@@ -177,7 +177,6 @@ class App extends Component {
     if(userFromProps){
       console.log('hay token')
       userLoged=userFromProps;
-      //authUser=userFromProps;
       localStorage.setItem('token1', userLoged);
 
     }else if (userInLocalStorage){
