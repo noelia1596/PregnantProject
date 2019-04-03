@@ -171,14 +171,15 @@ class App extends Component {
     let userFromProps = location.userLogged;
     //console.log('userLogged',userFromProps);
 
-    let userInLocalStorage = localStorage.getItem(USER_LOGGED_LOCAL_STORAGE);
-    //console.log('ls',ls);
+    let userInLocalStorage = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
+    console.log('userInLocalStorage',userInLocalStorage);
     
     /*  Este if hace que cuando nos metemos con el login o registro, guarda el token de la persona en el ls*/
     if(userFromProps){
       //console.log('hay token')
       userLogged=userFromProps;//guardamos en userLogged, el usuario que nos llega por propiedades
-      localStorage.setItem(USER_LOGGED_LOCAL_STORAGE, userLogged);
+      let parseUser = JSON.stringify(userLogged);
+      localStorage.setItem(USER_LOGGED_LOCAL_STORAGE, parseUser);
 
     }else if (userInLocalStorage){
       /*cuando queremos pasar de una pag a otra, coge el user que hay guardado en el locaStorage,

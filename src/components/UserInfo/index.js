@@ -26,6 +26,7 @@ class UserInfo extends React.Component {
   };
 
   render() {
+    let userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
     if(this.state.loGout){
       return(
         <Redirect
@@ -44,7 +45,7 @@ class UserInfo extends React.Component {
           className="user-avatar "
         />
         <div className="user-detail">
-          <h4 className="user-name" onClick={this.handleClick}>Robert Johnson <i
+          <h4 className="user-name" onClick={this.handleClick}>{userLogged.Nombre} {userLogged.Apellidos} <i
             className="zmdi zmdi-caret-down zmdi-hc-fw align-middle"/>
           </h4>
         </div>
