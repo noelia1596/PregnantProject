@@ -41,7 +41,8 @@ import SignUp from './SignUp';
 import {setInitUrl} from '../actions/Auth';
 import RTL from 'util/RTL';
 import asyncComponent from 'util/asyncComponent';
-let userLoged;
+const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
+let userLogged;
 /**
  * se usa para validar el usuario que ha entrado
  * @param {*} param0 
@@ -50,7 +51,7 @@ const RestrictedRoute = ({component: Component, authUser, ...rest}) =>
   <Route
     {...rest}
     render={props =>
-      authUser||userLoged //si tiene el authUser o el token, entonces sigue esta logic, y abajo **
+      authUser||userLogged //si tiene el authUser o el token, entonces sigue esta logic, y abajo **
         ? <Component {...props} />
         : <Redirect
           to={{
@@ -167,28 +168,28 @@ class App extends Component {
     }
 
     const currentAppLocale = AppLocale[locale.locale];
-    let userFromProps = location.userToken;
-    console.log('userToken',location);
+    let userFromProps = location.userLogged;
+    //console.log('userLogged',userFromProps);
 
-    let userInLocalStorage = localStorage.getItem('token1');
+    let userInLocalStorage = localStorage.getItem(USER_LOGGED_LOCAL_STORAGE);
     //console.log('ls',ls);
     
     /*  Este if hace que cuando nos metemos con el login o registro, guarda el token de la persona en el ls*/
     if(userFromProps){
-      console.log('hay token')
-      userLoged=userFromProps;
-      localStorage.setItem('token1', userLoged);
+      //console.log('hay token')
+      userLogged=userFromProps;//guardamos en userLogged, el usuario que nos llega por propiedades
+      localStorage.setItem(USER_LOGGED_LOCAL_STORAGE, userLogged);
 
     }else if (userInLocalStorage){
       /*cuando queremos pasar de una pag a otra, coge el user que hay guardado en el locaStorage,
       */
-      console.log('tenemos userInLocalStorage', userInLocalStorage);
-      userLoged = userInLocalStorage;
+      //console.log('tenemos userInLocalStorage', userInLocalStorage);
+      userLogged = userInLocalStorage;
     } else{
-      console.log('no hay token', location)
-      userLoged='';
+      //console.log('no hay token', location)
+      userLogged='';
     }
-    console.log('3',location);
+
     return (
       <MuiThemeProvider theme={applyTheme}>
         <MuiPickersUtilsProvider utils={MomentUtils}>

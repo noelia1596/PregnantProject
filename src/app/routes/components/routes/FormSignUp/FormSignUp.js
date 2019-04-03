@@ -249,7 +249,7 @@ class FormSignUp extends React.Component {
         console.log('usr',usr.username);
         
         self.setState({
-            userToken:usr.username
+          userLogged:usr
         });
       }); 
       
@@ -277,9 +277,9 @@ class FormSignUp extends React.Component {
     if (this.state.heAcabado){
       return <div> Holaa</div>
     } 
-    if (this.state.userToken != null) {
-        console.log('Mandamos token ',this.state.userToken)
-        return  <Redirect to={{pathname:'/app/sample-page', userToken:this.state.userToken}}/> ;
+    if (this.state.userLogged != null) {
+        console.log('Mandamos token ',this.state.userLogged)
+        return  <Redirect to={{pathname:'/app/sample-page', userLogged:this.state.userLogged}}/> ;
     }
     return (
       <div className="w-100">

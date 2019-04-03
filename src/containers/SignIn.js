@@ -159,7 +159,7 @@ class SignIn extends React.Component {
       let result=  JSON.parse(httpResponse.body);
       
       self.setState({
-        userToken:result.token
+        userLogged:result.customer
       });
   
     } ); 
@@ -177,9 +177,9 @@ class SignIn extends React.Component {
   }
 
   render() {
-    if(this.state.userToken){
-      console.log('token',this.state.userToken) 
-      return <Redirect to={{pathname:'/app/sample-page', userToken:this.state.userToken}}/>
+    if(this.state.userLogged){
+      console.log('token',this.state.userLogged) 
+      return <Redirect to={{pathname:'/app/sample-page', userLogged:this.state.userLogged}}/>
 
     }
     const {
@@ -227,7 +227,7 @@ class SignIn extends React.Component {
                   <div className="mb-3 d-flex align-items-center justify-content-between">
                     <Button onClick={() => {
                       //<signUp/>
-                      console.log('entro');
+                      //console.log('entro');
                       //this.props.showAuthLoader();
                       //this.props.userSignIn({email, password});
                       //this.props.payloa
