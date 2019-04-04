@@ -17,18 +17,22 @@ import {
 import {connect} from 'react-redux';
 import ReactDOM from 'react-dom';
 import {Route} from 'react-router-dom';
+import Table from './tabla';
+
+const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
+const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
+
 
 class FormSignUp extends React.Component {
   constructor(){
+
     super();
     this.state = {
       activeStep: 0,
-      heAcabado: false,
-      datos: null
-
+      usuario: userLogged.usuario
     };
     this.handleChange = this.handleChange.bind(this)
-  
+    this.handleGetAntojos();
   }
 
   getSteps() {
@@ -43,7 +47,7 @@ class FormSignUp extends React.Component {
           <div className="form-group">
             <TextField
               onChange={this.handleChange}
-              name='NameofCravings'
+              name='NombreAntojo'
               id="NameofCravings"
               label="Name of Cravings"
               margin="normal"
@@ -62,7 +66,7 @@ class FormSignUp extends React.Component {
           <div className="form-group">
             <TextField
               onChange={this.handleChange}
-              name='TypeofCraving'
+              name='TipoDeAntojo'
               id="TypeofCraving"
               label="Type of Cravings"
               margin="normal"
@@ -82,7 +86,7 @@ class FormSignUp extends React.Component {
         <span>Fecha </span>
           <DatePickers
             onBlur={this.handleChange}
-            name='DateofCraving'
+            name='FechaAntojo'
           />
         </div>
       </div> 
@@ -97,7 +101,7 @@ class FormSignUp extends React.Component {
         <div className="form-group">
           <TextField
             onChange={this.handleChange}
-            name='TimesofCraving'
+            name='VecesAntojo'
             id="TimesofCraving"
             label="Times of Craving"
             margin="normal"
@@ -116,11 +120,12 @@ class FormSignUp extends React.Component {
         <div className="form-group">
           <TextField
             onChange={this.handleChange}
-            name='WhoGavetheWhim'
+            name='aQuienDio'
             id="WhoGavetheWhim"
             label="Who Gave the Whim"
             margin="normal"
             fullWidth
+    
           />
         </div>
       </div> 
@@ -156,6 +161,105 @@ class FormSignUp extends React.Component {
         return 'Uknown stepIndex';
     }
   }
+
+
+    
+  handleSubmit = () => {
+    const url = "http://localhost:3000/apiInsertarAntojo";
+    const self = this;
+    //const body = this.getSteps()
+    console.log(self.state);
+    request.post(url,{form:self.state},
+      function optionalCallback(err, httpResponse, body) {
+      if (err) {
+        return console.error('upload failed:', err);
+      }
+      console.log('Upload successful!  Server responded with:',httpResponse);
+    });    
+    console.log('acabo el submit');   
+  };
+
+
+  handleGetAntojos = () => {
+    const url = "http://localhost:3000/api-verAntojos/";
+    fetch(url, {
+      method : 'GET',
+      headers : {username: userLogged.usuario},
+    }
+    )
+    .then(response => response.json())
+    .then((repos) => {
+        console.log(repos);
+        console.log(repos.length);
+        this.setState({
+          antojos: repos
+        });
+      });
+  }
+
+/*
+  handleGetAntojos = () => {
+    const url = "http://localhost:3000/api-verAntojos";
+    const self = this;
+    request.get(url,{form:userLogged.usuario},
+      function optionalCallback(err, httpResponse) {
+      if (err) {
+        return console.error('upload failed:', err);
+      }
+      console.log('Upload successful!  Server responded with:',httpResponse);
+      self.setState({
+        antojos : httpResponse
+      }) 
+    });    
+  
+  }
+*/
+
+
+/*
+  handleGetAntojos = () => {
+    const url = "http://localhost:3000/api-verAntojos/";
+    const self = this;
+    /*request.get(url,{form:userLogged.usuario},
+      function optionalCallback(err, httpResponse) {
+      if (err) {
+        return console.error('upload failed:', err);
+      }
+      console.log('Upload successful!  Server responded with:',httpResponse);
+      self.setState({
+        antojos : httpResponse
+      }) 
+    });   */ 
+
+    /*request(url,{form:{username:userLogged.usuario}},
+      function optionalCallback(err, httpResponse, body) {
+      if (err) {
+        return console.error('upload failed:', err);
+      }
+      console.log('Upload successful!  Server responded with:',httpResponse);
+    });  
+
+    var propertiesObject = { username:userLogged.usuario};
+
+    var options = {
+      method: 'GET',
+      url: url,
+      headers: propertiesObject,
+      body: propertiesObject
+    };
+    request(options, function(err, response, body) {
+      if(err) { console.log('request',err); return; }
+      
+      console.log("Get response: " + response);
+      
+      self.setState({
+        antojos : response
+      }) 
+    });
+  }
+*/
+
+
 
   handleNext = () => {
     const {activeStep} = this.state;
@@ -232,6 +336,7 @@ class FormSignUp extends React.Component {
             </div>
           )}
         </div>
+        <Table antojos={this.state.antojos}/>
       </div>
     );
   }
