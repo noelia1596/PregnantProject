@@ -93,7 +93,16 @@ class SidenavContent extends Component {
             <IntlMessages id="sidebar.main"/>
           </li>
 
-         
+         {/* MIO */}
+         <li>
+            <NavLink className="prepend-icon"
+            to="/app/funcionalidadesAntojos">
+              <i className="zmdi zmdi-pizza"/>
+              <span className="nav-text"><IntlMessages
+              id="sidebar.components.antojos"/></span>
+            </NavLink>
+          </li>
+
 
           <li className="ui_tooltip menu">
             <Button className="void">

@@ -26,6 +26,8 @@ import asyncComponent from '../util/asyncComponent';
 import TopNav from 'components/TopNav';
 
 
+import Antojos from './routes/antojos';
+
 class App extends React.Component {
 
   render() {
@@ -65,8 +67,8 @@ class App extends React.Component {
                 <Route path={`${match.url}/map`} component={Map}/>
                 <Route path={`${match.url}/calendar`} component={Calendar}/>
                 <Route path={`${match.url}/time-line`} component={TimeLine}/>
-               
-
+             
+                <Route path={`${match.url}/funcionalidadesAntojos`} component={Antojos}/>
                 
                 
                 <Route path={`${match.url}/app-module`} component={AppModule}/>
