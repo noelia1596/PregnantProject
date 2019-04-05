@@ -103,7 +103,7 @@ class SidenavContent extends Component {
             </NavLink>
           </li>
 
-
+{ /* 
           <li className="ui_tooltip menu">
             <Button className="void">
               <i className="zmdi zmdi-folder zmdi-hc-fw"/>
@@ -236,11 +236,7 @@ class SidenavContent extends Component {
                   <span className="nav-text"><IntlMessages id="sidebar.timeLine.leftAligned"/></span>
                 </NavLink>
               </li>
-              {/*<li>
-                            <NavLink className="prepend-icon" to="/app/time-line/zigzag">
-                                <span className="nav-text"><IntlMessages id="sidebar.timeLine.zigzag"/></span>
-                            </NavLink>
-                        </li>*/}
+              
             </ul>
           </li>
 
@@ -520,7 +516,7 @@ class SidenavContent extends Component {
               </li>
             </ul>
           </li>
-
+*/ }
         </ul>
       </CustomScrollbars>
     );

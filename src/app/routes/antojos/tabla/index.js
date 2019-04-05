@@ -18,20 +18,20 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
 let counter = 0;
-var guardarAntojos = [];
-
+var antojos = [];
 function createData(id, NombreAntojo, TipoDeAntojo, FechaAntojo, VecesAntojo, aQuienDio ) {
   counter += 1;
   return {id: counter, id, NombreAntojo, TipoDeAntojo, FechaAntojo, VecesAntojo, aQuienDio};
 }
 
+
 const columnData = [
     //{id: 'id', align: false, disablePadding: true, label: 'Id'},
-    {id: 'NombreAntojo', align: false, disablePadding: true, label: 'Nombre Antojo'},
+    {id: 'NombreDelAntojo', align: false, disablePadding: true, label: 'Nombre Antojo'},
     {id: 'TipoDeAntojo', align: true, disablePadding: false, label: 'Tipo De Antojo'},
-    {id: 'FechaAntojo', align: true, disablePadding: false, label: 'Fecha Antojo'},
-    {id: 'VecesAntojo', align: true, disablePadding: false, label: 'Veces Dadas'},
-    {id: 'aQuienDio', align: true, disablePadding: false, label: 'A quien dio'},
+    {id: 'FechaDelAntojo', align: true, disablePadding: false, label: 'Fecha Antojo'},
+    {id: 'VecesDadasDelAntojo', align: true, disablePadding: false, label: 'Veces Dadas'},
+    {id: 'AQuienLeDio', align: true, disablePadding: false, label: 'A quien dio'},
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -48,9 +48,10 @@ class EnhancedTableHead extends React.Component {
     this.props.onRequestSort(event, property);
   };
 
+  
   render() {
     const {onSelectAllClick, order, orderBy, numSelected, rowCount , antojos} = this.props;
-    
+    //const { antojos } = this.props; 
     return (
       <TableHead>
         <TableRow>
@@ -132,22 +133,24 @@ EnhancedTableToolbar.propTypes = {
 class EnhancedTable extends React.Component {
   handleRequestSort = (event, property) => {
     const orderBy = property;
+    //const { onClickItem } = this.props;
     let order = 'desc';
 
     if (this.state.orderBy === property && this.state.order === 'desc') {
       order = 'asc';
     }
 
-    const data =
+    const antojosOrder =
       order === 'desc'
-        ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-        : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
-
-    this.setState({data, order, orderBy});
+        ? antojos.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
+        : antojos.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+        antojos=antojosOrder;
+    this.setState({antojosOrder, order, orderBy});
   };
   handleSelectAllClick = (event, checked) => {
+    //const { antojos } = this.props;
     if (checked) {
-      this.setState({selected: this.state.data.map(n => n.id)});
+      this.setState({selected: antojos.map(n => n.id)});
       return;
     }
     this.setState({selected: []});
@@ -192,27 +195,34 @@ class EnhancedTable extends React.Component {
       order: 'asc',
       orderBy: 'id',
       selected: [],
-      data: guardarAntojos,
       page: 0,
       rowsPerPage: 5,
+      //data: this.props.antojos,
     };
   }
 
   render() {
-    const {data, order, orderBy, selected, rowsPerPage, page} = this.state;
-    if (this.props.antojos && guardarAntojos.length <=0){
-        guardarAntojos = [];
-            this.props.antojos.forEach(element => {
-                guardarAntojos.push( createData(element.id, element.NombreDelAntojo, element.TipoDeAntojo, element.FechaDelAntojo, element.VecesDadasDelAntojo, element.AQuienLeDio));
-                
-            }) 
-          //.sort((a, b) => (a.id < b.id ? -1 : 1))
-          console.log('guardarAntojos cargado', guardarAntojos);
-        this.setState({
-            data: guardarAntojos,
-        })
+    const { order, orderBy, selected, rowsPerPage, page} = this.state;
+    const { list } = this.props;
+    
+    if (!list || list.length === 0){
+        console.log('No tenemos antojos',list)
+        return <div>no hay datos</div>
     }else{
-        console.log('No tenemos antojos',this.props.antojos)
+      console.log(list, "list!!!");
+      antojos = list
+      
+      /*
+      .map((e) => {
+        createData(
+          e.id, 
+          e.NombreDelAntojo, 
+          e.TipoDeAntojo,
+          e.FechaDelAntojo,
+          e.VecesDadasDelAntojo, 
+          e.AQuienLeDio)
+      });
+      */
     }
     return (
       <div>
@@ -226,10 +236,10 @@ class EnhancedTable extends React.Component {
                 orderBy={orderBy}
                 onSelectAllClick={this.handleSelectAllClick}
                 onRequestSort={this.handleRequestSort}
-                rowCount={data.length}
+                rowCount={antojos.length}
               />
               <TableBody>
-                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
+                {antojos.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
                   const isSelected = this.isSelected(n.id);
                   return (
                     <TableRow
@@ -245,11 +255,11 @@ class EnhancedTable extends React.Component {
                       <TableCell padding="checkbox">
                         <Checkbox color="primary" checked={isSelected}/>
                       </TableCell>
-                      <TableCell padding="none">{n.NombreAntojo}</TableCell>
+                      <TableCell padding="none">{n.NombreDelAntojo}</TableCell>
                       <TableCell align="none">{n.TipoDeAntojo}</TableCell>
-                      <TableCell align="none">{n.FechaAntojo}</TableCell>
-                      <TableCell align="none">{n.VecesAntojo}</TableCell>
-                      <TableCell align="none">{n.aQuienDio}</TableCell>
+                      <TableCell align="none">{n.FechaDelAntojo}</TableCell>
+                      <TableCell align="none">{n.VecesDadasDelAntojo}</TableCell>
+                      <TableCell align="none">{n.AQuienLeDio}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -257,7 +267,7 @@ class EnhancedTable extends React.Component {
               <TableFooter>
                 <TableRow>
                   <TablePagination
-                    count={data.length}
+                    count={antojos.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onChangePage={this.handleChangePage}
@@ -274,3 +284,11 @@ class EnhancedTable extends React.Component {
 }
 
 export default EnhancedTable;
+
+
+
+
+
+
+
+

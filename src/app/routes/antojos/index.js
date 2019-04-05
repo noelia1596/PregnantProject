@@ -29,7 +29,9 @@ class FormSignUp extends React.Component {
     super();
     this.state = {
       activeStep: 0,
-      usuario: userLogged.usuario
+      usuario: userLogged.usuario,
+      todos :[],
+      value : ""
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleGetAntojos();
@@ -174,6 +176,7 @@ class FormSignUp extends React.Component {
       if (err) {
         return console.error('upload failed:', err);
       }
+      self.handleGetAntojos();
       console.log('Upload successful!  Server responded with:',httpResponse);
     });    
     console.log('acabo el submit');   
@@ -182,6 +185,7 @@ class FormSignUp extends React.Component {
 
   handleGetAntojos = () => {
     const url = "http://localhost:3000/api-verAntojos/";
+    const {antojos} = this.state
     fetch(url, {
       method : 'GET',
       headers : {username: userLogged.usuario},
@@ -191,73 +195,33 @@ class FormSignUp extends React.Component {
     .then((repos) => {
         console.log(repos);
         console.log(repos.length);
+        /*
         this.setState({
           antojos: repos
+           //antojos: [repos, ...antojos],
         });
+
+        */
+
+
+        var obSubmitEditing = this.onAddTodo
+        //const {repos} =this.state;
+        if (!repos) return;
+        obSubmitEditing(repos);
+        this.setState({repos : ""});
       });
+    
+  };
+
+  onAddTodo = (text) => {
+    const {todos} = this.state
+
+    this.setState({
+      todos: text,
+    })
   }
 
-/*
-  handleGetAntojos = () => {
-    const url = "http://localhost:3000/api-verAntojos";
-    const self = this;
-    request.get(url,{form:userLogged.usuario},
-      function optionalCallback(err, httpResponse) {
-      if (err) {
-        return console.error('upload failed:', err);
-      }
-      console.log('Upload successful!  Server responded with:',httpResponse);
-      self.setState({
-        antojos : httpResponse
-      }) 
-    });    
-  
-  }
-*/
 
-
-/*
-  handleGetAntojos = () => {
-    const url = "http://localhost:3000/api-verAntojos/";
-    const self = this;
-    /*request.get(url,{form:userLogged.usuario},
-      function optionalCallback(err, httpResponse) {
-      if (err) {
-        return console.error('upload failed:', err);
-      }
-      console.log('Upload successful!  Server responded with:',httpResponse);
-      self.setState({
-        antojos : httpResponse
-      }) 
-    });   */ 
-
-    /*request(url,{form:{username:userLogged.usuario}},
-      function optionalCallback(err, httpResponse, body) {
-      if (err) {
-        return console.error('upload failed:', err);
-      }
-      console.log('Upload successful!  Server responded with:',httpResponse);
-    });  
-
-    var propertiesObject = { username:userLogged.usuario};
-
-    var options = {
-      method: 'GET',
-      url: url,
-      headers: propertiesObject,
-      body: propertiesObject
-    };
-    request(options, function(err, response, body) {
-      if(err) { console.log('request',err); return; }
-      
-      console.log("Get response: " + response);
-      
-      self.setState({
-        antojos : response
-      }) 
-    });
-  }
-*/
 
 
 
@@ -298,7 +262,9 @@ class FormSignUp extends React.Component {
   render() {
     const steps = this.getSteps();
     const {activeStep} = this.state;
-   
+    const {todos} = this.state;
+    const {value} = this.state;
+    //const {antojos} = this.state
     return (
       <div className="w-100">
         <Stepper activeStep={activeStep} orientation="vertical">
@@ -336,7 +302,13 @@ class FormSignUp extends React.Component {
             </div>
           )}
         </div>
-        <Table antojos={this.state.antojos}/>
+        <Table 
+        list = {todos}
+        onClickItem = {this.handleGetAntojos}
+        />
+
+
+        { /*<Table antojos={this.state.antojos}/>*/ }
       </div>
     );
   }
@@ -346,3 +318,4 @@ class FormSignUp extends React.Component {
 
 
 export default FormSignUp;
+
