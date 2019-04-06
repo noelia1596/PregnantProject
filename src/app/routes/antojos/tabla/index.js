@@ -93,8 +93,7 @@ class EnhancedTableHead extends React.Component {
 
 
 let EnhancedTableToolbar = props => {
-  const {numSelected} = props;
-
+  const {numSelected, selected, deleteCravings} = props;
   return (
     <Toolbar
       className="table-header">
@@ -109,8 +108,9 @@ let EnhancedTableToolbar = props => {
       <div className="actions">
         {numSelected > 0 ? (
           <Tooltip title="Delete">
-            <IconButton aria-label="Delete">
-              <DeleteIcon/>
+            <IconButton aria-label="Delete" 
+             onClick = {event => deleteCravings(selected)}>
+              <DeleteIcon />
             </IconButton>
           </Tooltip>
         ) : (
@@ -133,7 +133,6 @@ EnhancedTableToolbar.propTypes = {
 class EnhancedTable extends React.Component {
   handleRequestSort = (event, property) => {
     const orderBy = property;
-    //const { onClickItem } = this.props;
     let order = 'desc';
 
     if (this.state.orderBy === property && this.state.order === 'desc') {
@@ -148,7 +147,6 @@ class EnhancedTable extends React.Component {
     this.setState({antojosOrder, order, orderBy});
   };
   handleSelectAllClick = (event, checked) => {
-    //const { antojos } = this.props;
     if (checked) {
       this.setState({selected: antojos.map(n => n.id)});
       return;
@@ -197,13 +195,12 @@ class EnhancedTable extends React.Component {
       selected: [],
       page: 0,
       rowsPerPage: 5,
-      //data: this.props.antojos,
     };
   }
 
   render() {
     const { order, orderBy, selected, rowsPerPage, page} = this.state;
-    const { list } = this.props;
+    const { list, deleteCraving } = this.props;
     
     if (!list || list.length === 0){
         console.log('No tenemos antojos',list)
@@ -211,22 +208,14 @@ class EnhancedTable extends React.Component {
     }else{
       console.log(list, "list!!!");
       antojos = list
-      
-      /*
-      .map((e) => {
-        createData(
-          e.id, 
-          e.NombreDelAntojo, 
-          e.TipoDeAntojo,
-          e.FechaDelAntojo,
-          e.VecesDadasDelAntojo, 
-          e.AQuienLeDio)
-      });
-      */
     }
     return (
       <div>
-        <EnhancedTableToolbar numSelected={selected.length}/>
+        <EnhancedTableToolbar 
+        numSelected={selected.length} 
+        selected ={selected}
+        deleteCravings = {deleteCraving}
+        />
         <div className="flex-auto">
           <div className="table-responsive-material">
             <Table>

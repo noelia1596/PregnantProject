@@ -177,9 +177,10 @@ class FormSignUp extends React.Component {
         return console.error('upload failed:', err);
       }
       self.handleGetAntojos();
-      console.log('Upload successful!  Server responded with:',httpResponse);
+      self.handleReset();
     });    
-    console.log('acabo el submit');   
+    console.log('acabo el submit'); 
+    
   };
 
 
@@ -195,15 +196,6 @@ class FormSignUp extends React.Component {
     .then((repos) => {
         console.log(repos);
         console.log(repos.length);
-        /*
-        this.setState({
-          antojos: repos
-           //antojos: [repos, ...antojos],
-        });
-
-        */
-
-
         var obSubmitEditing = this.onAddTodo
         //const {repos} =this.state;
         if (!repos) return;
@@ -221,8 +213,21 @@ class FormSignUp extends React.Component {
     })
   }
 
-
-
+  
+  handleDeleteCraving = (arraySelected) => {
+    console.log(arraySelected, 'arraySelected');
+    const url = "http://localhost:3000/apiBorrarAntojo";
+    const self = this;
+    const arraySelectedString = JSON.stringify(arraySelected);
+    request.post(url,{form:{arraySelect: arraySelectedString}},
+      function optionalCallback(err, httpResponse, body) {
+      if (err) {
+        return console.error('handleDeleteCraving:err', err);
+      }
+      self.handleGetAntojos();
+      console.log('DeleteCraving',httpResponse);
+    });    
+  };
 
 
   handleNext = () => {
@@ -305,6 +310,7 @@ class FormSignUp extends React.Component {
         <Table 
         list = {todos}
         onClickItem = {this.handleGetAntojos}
+        deleteCraving = {this.handleDeleteCraving}
         />
 
 
