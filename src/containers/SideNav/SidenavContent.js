@@ -103,7 +103,16 @@ class SidenavContent extends Component {
             </NavLink>
           </li>
 
-{ /* 
+          <li>
+            <NavLink className="prepend-icon"
+            to="/app/imagenes">
+              <i className="zmdi zmdi-upload"/>
+              <span className="nav-text"><IntlMessages
+              id="sidebar.components.imagenes"/></span>
+            </NavLink>
+          </li>
+
+
           <li className="ui_tooltip menu">
             <Button className="void">
               <i className="zmdi zmdi-folder zmdi-hc-fw"/>
@@ -516,7 +525,7 @@ class SidenavContent extends Component {
               </li>
             </ul>
           </li>
-*/ }
+
         </ul>
       </CustomScrollbars>
     );

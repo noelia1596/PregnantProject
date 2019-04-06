@@ -27,6 +27,7 @@ import TopNav from 'components/TopNav';
 
 
 import Antojos from './routes/antojos';
+import Imagenes from './routes/imagenes/funcionalidadImagenes';
 
 class App extends React.Component {
 
@@ -69,8 +70,9 @@ class App extends React.Component {
                 <Route path={`${match.url}/time-line`} component={TimeLine}/>
              
                 <Route path={`${match.url}/funcionalidadesAntojos`} component={Antojos}/>
+                <Route path={`${match.url}/imagenes`} component={Imagenes}/>
                 
-                
+
                 <Route path={`${match.url}/app-module`} component={AppModule}/>
                 <Route path={`${match.url}/chat`}
                        component={asyncComponent(() => import('./routes/chatPanel/basic/index'))}/>

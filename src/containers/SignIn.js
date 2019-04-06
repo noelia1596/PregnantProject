@@ -106,11 +106,6 @@ class SignIn extends React.Component {
 
                   <div className="mb-3 d-flex align-items-center justify-content-between">
                     <Button onClick={() => {
-                      //<signUp/>
-                      //console.log('entro');
-                      //this.props.showAuthLoader();
-                      //this.props.userSignIn({email, password});
-                      //this.props.payloa
                       this.signInDB(email, password);
                     }} variant="contained" color="primary">
                       <IntlMessages id="appModule.signIn"/>

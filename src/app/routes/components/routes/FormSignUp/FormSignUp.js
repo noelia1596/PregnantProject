@@ -246,7 +246,7 @@ class FormSignUp extends React.Component {
         let usr = JSON.parse(httpResponse.body);
         //console.log('usr',usr);
         //self.props.userSignUp(usr.username+'@'+'preg'+'.com', usr.password);
-        console.log('usr',usr.username);
+        console.log('usr',usr);
         
         self.setState({
           userLogged:usr
