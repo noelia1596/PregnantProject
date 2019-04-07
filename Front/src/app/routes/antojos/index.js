@@ -201,8 +201,7 @@ class FormSignUp extends React.Component {
         if (!repos) return;
         obSubmitEditing(repos);
         this.setState({repos : ""});
-      });
-    
+      }); 
   };
 
   onAddTodo = (text) => {

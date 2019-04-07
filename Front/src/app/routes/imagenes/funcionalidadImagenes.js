@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/';
+const BACK_URL = 'http://localhost:5000/';
+const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
+const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
+
 
 class App extends Component {
     constructor(props) {
@@ -11,6 +15,7 @@ class App extends Component {
         	imageUrls: [],
         	message: ''
         }
+        this.imagenesImpresas();
     }
 
     selectFiles = (event) => {
@@ -24,28 +29,52 @@ class App extends Component {
     }
 
     uploadImages = () => {
-    
     	const uploaders = this.state.images.map(image => {
-		    const data = new FormData();
-		    data.append("image", image, image.name);
-		    
+        const data = new FormData();
+        data.append("image", image, image.name);
+        data.append('usuario',userLogged.usuario)
+		    console.log(image, 'image');
 	    	// Make an AJAX upload request using Axios
-	    	return axios.post(BASE_URL + 'upload', data)
+	    	return axios.post(BASE_URL + 'uploadPictures', data)
 	    	.then(response => {
           console.log('nos responde', response)
         this.setState({imageUrls: [response.data.imageUrl, ...this.state.imageUrls]});
         console.log('state',this.state.imageUrls)
+        //this.imagenesImpresas();
 			})
 		});
-
-	 	// Once all the files are uploaded 
 		axios.all(uploaders).then(() => {
       console.log('done');
 		}).catch(err => alert(err.message));
-
     }
 
+
+ 
+
+
+    imagenesImpresas = () => {
+      const url = "http://localhost:3000/imprimirImagenes/";
+      fetch(url, {
+        method : 'GET',
+        headers : {usuario: userLogged.usuario},
+      })
+      .then(response => response.json())
+      .then((repos) => {
+          console.log('respuesta',repos);
+          this.setState({imageUrls:[]})
+          repos.map((e)=>{this.setState({imageUrls: [e.id, ...this.state.imageUrls]});})
+          
+          console.log(repos.length);
+        }); 
+    }
+
+    /*    const data = new FormData();
+      data.append('usuario',userLogged.usuario)
+		axios.get(BASE_URL + 'imprimirImagenes', data).then((result) => {
+      console.log('done', result);
+		}).catch(err => alert(err.message)); */
     render() {
+      
         return (
         	<div>
 	        	<br/>
@@ -65,7 +94,7 @@ class App extends Component {
 		        	{ 
 			          	this.state.imageUrls.map((url, i) => (
 				          		<div className="col-lg-2" key={i}>
-				          			<img src={'http://localhost:5000/' + url} className="img-rounded img-responsive" alt="not available"/><br/>
+				          			<img src={BACK_URL +'images/uploads/'+ url} className="img-rounded img-responsive" alt="not available"/><br/>
 				          		</div>
 				          	))
 			        }
