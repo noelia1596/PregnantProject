@@ -48,3 +48,4 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
+/Back/public/images/uploads
