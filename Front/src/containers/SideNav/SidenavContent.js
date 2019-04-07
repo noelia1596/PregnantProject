@@ -112,6 +112,15 @@ class SidenavContent extends Component {
             </NavLink>
           </li>
 
+          <li>
+            <NavLink className="prepend-icon"
+            to="/app/ejercicios">
+              <i className="zmdi zmdi-run"/>
+              <span className="nav-text"><IntlMessages
+              id="sidebar.components.ejercicios"/></span>
+            </NavLink>
+          </li>
+
 
           <li className="ui_tooltip menu">
             <Button className="void">

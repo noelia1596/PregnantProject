@@ -1,131 +1,78 @@
-import React, { Component } from 'react'
-import Spinner from './Spinner'
-import Notifications, { notify } from 'react-notify-toast'
-import Images from './Images'
-import Buttons from './Button'
-import './imagenes.css'
+import React, { Component } from 'react';
+import axios from 'axios';
 
+const BASE_URL = 'http://localhost:3000/';
 
-const API_URL = '';
-const toastColor = { 
-  background: '#505050', 
-  text: '#fff' 
-}
-
-export default class App extends Component {
-  
-  state = {
-    loading: true,
-    uploading: false,
-    images: []
-  }
-
-  componentDidMount() {
-    fetch(`${API_URL}/wake-up`)
-      .then(res => {
-        if (res.ok) {
-          return this.setState({ loading: false })  
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        	images: [],
+        	imageUrls: [],
+        	message: ''
         }
-        const msg = 'Something is went wrong with Heroku' 
-        this.toast(msg, 'custom', 2000, toastColor)
-      })
-  }
-
-  toast = notify.createShowQueue()
-
-  onChange = e => {
-    const errs = [] 
-    const files = Array.from(e.target.files)
-    console.log('onChange, nene malo jum juuummm',e);
-    if (files.length > 3) {
-      const msg = 'Only 3 images can be uploaded at a time'
-      return this.toast(msg, 'custom', 2000, toastColor)  
     }
 
-    const formData = new FormData()
-    const types = ['image/png', 'image/jpeg', 'image/gif']
-
-    files.forEach((file, i) => {
-
-      if (types.every(type => file.type !== type)) {
-        errs.push(`'${file.type}' is not a supported format`)
-      }
-
-      if (file.size > 150000) {
-        errs.push(`'${file.name}' is too large, please pick a smaller file`)
-      }
-
-      formData.append(i, file)
-    })
-
-    if (errs.length) {
-      return errs.forEach(err => this.toast(err, 'custom', 2000, toastColor))
+    selectFiles = (event) => {
+    	let images = [];
+    	for (var i = 0; i < event.target.files.length; i++) {
+            images[i] = event.target.files.item(i);
+        }
+        images = images.filter(image => image.name.match(/\.(jpg|jpeg|png|gif)$/))
+        let message = `${images.length} valid image(s) selected`
+        this.setState({ images, message })
     }
 
-    this.setState({ uploading: true })
-
-    fetch(`${API_URL}/image-upload`, {
-      method: 'POST',
-      body: formData
-    })
-    .then(res => {
-      if (!res.ok) {
-        throw res
-      }
-      return res.json()
-    })
-    .then(images => {
-      this.setState({
-        uploading: false, 
-        images
-      })
-    })
-    .catch(err => {
-      err.json().then(e => {
-        this.toast(e.message, 'custom', 2000, toastColor)
-        this.setState({ uploading: false })
-      })
-    })
-  }
-
-  filter = id => {
-    return this.state.images.filter(image => image.public_id !== id)
-  }
-
-  removeImage = id => {
-    this.setState({ images: this.filter(id) })
-  }
-
-  onError = id => {
-    this.toast('Oops, something went wrong', 'custom', 2000, toastColor)
-    this.setState({ images: this.filter(id) })
-  }
-  
-  render() {
-    const { loading, uploading, images } = this.state
+    uploadImages = () => {
     
-    const content = () => {
-      switch(true) {
-        case uploading:
-          return <Spinner />
-        case images.length > 0:
-          return <Images 
-                  images={images} 
-                  removeImage={this.removeImage} 
-                  onError={this.onError}
-                 />
-        default:
-          return <Buttons onChange={this.onChange} />
-      }
+    	const uploaders = this.state.images.map(image => {
+		    const data = new FormData();
+		    data.append("image", image, image.name);
+		    
+	    	// Make an AJAX upload request using Axios
+	    	return axios.post(BASE_URL + 'upload', data)
+	    	.then(response => {
+          console.log('nos responde', response)
+        this.setState({imageUrls: [response.data.imageUrl, ...this.state.imageUrls]});
+        console.log('state',this.state.imageUrls)
+			})
+		});
+
+	 	// Once all the files are uploaded 
+		axios.all(uploaders).then(() => {
+      console.log('done');
+		}).catch(err => alert(err.message));
+
     }
 
-    return (
-      <div className='container'>
-        <Notifications />
-        <div className='buttons'>
-          {content()}
-        </div>
-      </div>
-    )
-  }
+    render() {
+        return (
+        	<div>
+	        	<br/>
+	        	<div className="col-sm-12">
+        			<h1>Image Uploader</h1><hr/>
+	        		<div className="col-sm-4">
+		        		<input className="form-control " type="file" onChange={this.selectFiles} multiple/>
+		        	</div>
+		        	{ this.state.message? <p className="text-info">{this.state.message}</p>: ''}
+		        	<br/><br/><br/>
+		        	<div className="col-sm-4">
+		            	<button className="btn btn-primary" value="Submit" onClick={this.uploadImages}>Submit</button>
+		        	</div>
+	            </div>
+	            <br/><br/><br/>
+	            <div className="row col-lg-12">
+		        	{ 
+			          	this.state.imageUrls.map((url, i) => (
+				          		<div className="col-lg-2" key={i}>
+				          			<img src={'http://localhost:5000/' + url} className="img-rounded img-responsive" alt="not available"/><br/>
+				          		</div>
+				          	))
+			        }
+		        </div>
+		    </div>
+        );
+    }
 }
+
+export default App; 			

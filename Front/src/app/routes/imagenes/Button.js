@@ -10,7 +10,7 @@ export default props =>
       <label htmlFor='single'>
         <FontAwesomeIcon icon={faImage} color='#3B5998' size='10x' />
       </label>
-      <input type='file' id='single' onChange={props.onChange} /> 
+      <input type='file' id='single' onChange={(e) => props.onChange(e)} /> 
     </div>
 
     <div className='button'>

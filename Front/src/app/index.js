@@ -28,6 +28,7 @@ import TopNav from 'components/TopNav';
 
 import Antojos from './routes/antojos';
 import Imagenes from './routes/imagenes/funcionalidadImagenes';
+import Ejercicios from './routes/ejercicios';
 
 class App extends React.Component {
 
@@ -71,6 +72,8 @@ class App extends React.Component {
              
                 <Route path={`${match.url}/funcionalidadesAntojos`} component={Antojos}/>
                 <Route path={`${match.url}/imagenes`} component={Imagenes}/>
+                <Route path={`${match.url}/ejercicios`} component={Ejercicios}/>
+
                 
 
                 <Route path={`${match.url}/app-module`} component={AppModule}/>
