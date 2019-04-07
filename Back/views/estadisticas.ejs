@@ -1,0 +1,65 @@
+<html>
+<head>
+
+</head>
+<%- include('./includes/head.ejs') %>
+<body>
+    <!--<div class="container"action="/verEstadisticas" method="POST"> -->
+<div c>
+       
+    
+</div>      
+
+<style>
+.col-center{
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.col-center {
+    background-color: green;
+}
+body{
+  background-color: rgb(193, 206, 176)
+}
+</style>
+
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-7 col-center">
+          <h1>Has entrado en la aplicación : </br><%- result %> Veces</h1> 
+      </div>
+    </div>
+  </div>
+
+<!--
+ <% if (result.length > 0) { %>
+            <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+           <% for (let iteracion of result) { %>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><%= iteracion.name %></td>
+                      </tr>
+                    
+               
+           <% } %>
+        </tbody>
+    </table>
+   <% } else { %>
+       <h1 class="text-center">No Existen visitas!</h1>
+   <% } %>  
+-->        
+        
+</body>
+</html>

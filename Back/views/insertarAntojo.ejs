@@ -1,0 +1,60 @@
+<html>
+<head>
+
+</head>
+<%- include('./includes/head.ejs') %>
+<body> 
+    <div class="container-fluid" id="divAntojos">
+        <form action="/insertarAntojo/<%=token %>" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Nombre Del Antojo</label>
+                    <input type="text" class="form-control" name="NombreAntojo" placeholder="Di exactamente cual fue el antojo" required>
+                </div>
+                <div>
+                    <input type="hidden" value="<%=token %>" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Tipo De Antojo</label>
+                    <input type="text" class="form-control" name="TipoDeAntojo" placeholder="¿Que tipo de antojo fue? alimenticio, animal..."required>
+                </div> 
+                <div class="form-group col-md-6">
+                    <label>Fecha Del Antojo</label>
+                    <input type="date" class="form-control" name="FechaAntojo" placeholder="Fecha"required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Veces repetidas del antojo</label>
+                    <input type="text" class="form-control" name="VecesAntojo" placeholder="Veces que se repitio ese antojo"required>
+                </div>
+            </div> 
+            <div class="form-row" >
+                <div class='form-group col-md-6'id="antojoss" required>
+                    <label>¿A quien le dio el antojo?</label>
+                   
+                        <input class="" type="radio"  name="antojos" id="antojoPadre" value="Papa" checked>
+                        <label class="form-check-label">
+                        Papa
+                        </label>
+                
+                        <input class="form-check-input" type="radio" name="antojos" id="antojoMadre" value="Papa">
+                        <label class="form-check-label">
+                        Mama
+                        </label>
+                        
+                        <input class="form-check-input" type="radio" name="antojos" id="antojoAmbos" value="Ambos">
+                        <label class="form-check-label">
+                        Mama y Papa
+                        </label>
+                    
+                </div>                       
+            </div>   
+            <div class="form-row">
+                <button type="submit" id="guardar" class="btn btn-primary btnSeccion">Guardar</button>
+                <button type="submit" id="borrarAntojo" class="btn btn-primary btnSeccion">Borrar Antojo</button>
+            </div>
+            </form>
+</body>

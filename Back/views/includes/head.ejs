@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+             <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+            <title>Pregnant</title>
+
+   
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+                      
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li><a href="/verAlimentos/<%=token%>" id="alimentacion">Alimentacion</a></li>
+                  <li><a href="/verEstadisticas/<%=token%>" id="estadisticas">Estadisticas</a></li>
+                  <li><a href="#" id="cambiosCuerpo">Cambios en tu cuerpo</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="antojos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Antojos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/verAntojos/<%=token%>" id="verAntojo">Ver Antojos</a>
+                    </br>
+                      <a class="dropdown-item" href="/insertarAntojo/<%=token%>" id="insertarAntojo">Insertar Antojos</a>
+                    </div>
+                  </li>
+                  <li><a href="/comunicarEmbarazo/<%=token%>" id="comunicar">Comunicar embarazo en el trabajo</a></li>
+                  <li><a href="/verMedicamentos/<%=token%>" id="medicamentos">¿Medicamentos?</a></li>
+                  <li><a href="#" id="evolucion">Evolucionamiento del bebe</a></li>
+                                
+                </ul>
+              </div>
+            </div>
+          </nav> 
+        </head> 
+        <body>
+
+            <div class="btn-toolbar" role="toolbar">
+                <button type="button" class="btn btn-default btn-s"><a href="/irPrincipal">Ir a principal</a>
+                  <span class="glyphicon glyphicon-star"></span>
+                </button>
+            </div>
+          

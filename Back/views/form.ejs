@@ -1,0 +1,235 @@
+<html>
+<body>
+    <style>
+    body{
+    background-image:url(../images/pintura.jpeg);
+	 background-repeat:no-repeat;
+	 background-size:cover;
+	 width:100%;
+	 height:100vh;
+	 overflow:auto;
+	 
+}
+/*-----for border----*/
+.container{
+	font-family:Roboto,sans-serif;
+	  background-image:url(https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg) ;
+     border-style: 1px solid grey;
+     margin: 0 auto;
+     text-align: center;
+     opacity: 0.8;
+     margin-top: 67px;
+   box-shadow: 2px 5px 5px 0px #eee;
+     max-width: 500px;
+     padding-top: 10px;
+    
+     margin-top: 166px;
+}
+/*--- for label of first and last name---*/
+.password{
+	 margin-left: 1px;
+     font-family: sans-serif;
+     font-size: 14px;
+     color: white;
+     margin-top: 10px;
+}
+.firstname{
+	 margin-left: 1px;
+     font-family: sans-serif;
+     font-size: 14px;
+     color: white;
+     margin-top: 5px;
+}
+
+/*---for heading-----*/
+.heading{
+	 text-decoration:bold;
+	 text-align : center;
+	 font-size:30px;
+	 color:rgb(97, 196, 97);
+	 padding-top:10px;
+}
+
+#password{
+ margin-top: 6px;
+}
+/*------------For submit button---------*/
+.btn.btn-warning:hover {
+    box-shadow: 2px 1px 2px 3px #99ccff;
+	background:rgb(97, 196, 97);
+	color:#fff;
+	transition: background-color 1.15s ease-in-out,border-color 1.15s ease-in-out,box-shadow 1.15s ease-in-out;
+	
+}
+    </style>
+    <div class="container">
+        <form action="/registrarse" method="POST">
+            <header class="heading"> REGISTRARSE</header><hr></hr>
+            <div class="row ">
+                    <!--- For Name-->
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                      <label class="firstname">Usuario:</label> </div>
+                                <div class="col-xs-8">
+                                    <input type="text" name="usuario" id="fname" placeholder="Escriba un usuario" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="password">Password:</label></div>
+                               <div class ="col-xs-8">	 
+                                    <input type="text" name="password" id="password" placeholder="Escriba una contraseña" class="form-control last" required>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="password">Nombre:</label></div>
+                                <div class ="col-xs-8">	 
+                                    <input type="text" name="Nombre" id="password" placeholder="Escriba un nombre" class="form-control last" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="password">Apellidos:</label></div>
+                                <div class ="col-xs-8">	 
+                                    <input type="text" name="Apellidos" id="password" placeholder="Escriba apellidos" class="form-control last" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="password">Fecha Nacimiento (mama):</label></div>
+                                <div class ="col-xs-8">	 
+                                    <input type="date" name="FechaNacimientoMama" id="password" class="form-control last" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="password">Fecha Embarazo:</label></div>
+                                <div class ="col-xs-8">	 
+                                    <input type="date" name="FechaEmbarazo" id="password" class="form-control last" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="password">Nombre de Padre:</label></div>
+                                <div class ="col-xs-8">	 
+                                    <input type="text" name="NombrePadre" id="password" class="form-control last" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="password">Apellidos de Padre:</label></div>
+                                <div class ="col-xs-8">	 
+                                    <input type="text" name="ApellidosPadre" id="password" class="form-control last" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="password">Fecha Nacimiento(Papa):</label></div>
+                                <div class ="col-xs-8">	 
+                                    <input type="date" name="FechaNacimientoPadre" id="password" class="form-control last" required>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-sm-12">
+                            </br>
+                                <div class="btn btn-warning"><button type="submit" class="btn btn-primary btnSeccion">Registrar</button></div>
+                        </br>
+                            </div>
+            </div>       
+        </form>
+    </div>
+    <!--
+ <div class="container-fluid" id="divRegistrar">
+                        
+                            <form action="/registrarse" method="POST">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Usuario</label>
+                                        <input type="text" class="form-control" id="inputUsuario" placeholder="Usuario" name="usuario" required >
+                                    </div>
+                                </br>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword">Password</label>
+                                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
+                                    </div>
+                                </br>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputNombre">Nombre</label>
+                                        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" name="Nombre" required>
+                                    </div>
+                                </br>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputApellidos">Apellidos</label>
+                                        <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos" name="Apellidos" required>
+                                    </div>
+                                </br>
+                                </div>
+                                <div class="form-row">
+                                    <div class='form-group col-md-6'>
+                                        <label for="inputFechaNacimiento">Fecha Nacimiento(Mama)</label>
+                                        <input type='date' class="form-control" id="inputFechaNacimiento" name="FechaNacimientoMama"required/> 
+                                    </div>
+                                </br>
+                                    <div class='form-group col-md-6'>
+                                        <label for="inputFechaEmbarazo">Fecha Embarazo</label>
+                                        <input type='date' class="form-control" id="inputFechaEmbarazo" name="FechaEmbarazo"required/> 
+                                    </div>
+                                </br>
+                                </div>  
+                                
+                                <div class="form-row" id="infoPadre">
+                                    <div class="form-group col-md-6">
+                                        <label>Nombre Papa</label>
+                                        <input type="text" class="form-control" id="inputNombree" placeholder="Nombre" name="NombrePadre"required>
+                                    </br>
+                                </br>
+                                        <label for="inputApellidos">Apellidos</label>
+                                        <input type="text" class="form-control" id="inputApellidosp" placeholder="Apellidos" name="ApellidosPadre"required>
+                                    </br>
+                                </br>
+                                        <label>Fecha Nacimiento(Papa)</label>
+                                        <input type="date" class="form-control" id="inputFechaNacimientop" name="FechaNacimientoPadre"required>           
+                                    </div>
+                                </br>
+                                </div>
+                                
+                                    
+                                <div class="form-row">
+                                      <button type="submit" class="btn btn-primary btnSeccion">Registrar</button>
+                                </div>
+                            </form>   
+                           
+                        </div>
+    -->
+                       
+            
+        </body>
+</html>

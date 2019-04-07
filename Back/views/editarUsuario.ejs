@@ -1,0 +1,63 @@
+<html>
+<head>
+
+</head>
+<%- include('./includes/head.ejs') %>
+<body>
+  
+    <form action="/editarUsuario/<%=token %>" method="POST">
+        <div>
+            <input type="hidden" value="<%=token %>" />
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputNombre">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" name="Nombre">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputApellidos">Apellidos</label>
+                <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos" name="Apellidos">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class='form-group col-md-6'>
+                <label for="inputFechaNacimiento">Fecha Nacimiento(Mama)</label>
+                <input type='date' class="form-control" id="inputFechaNacimiento" name="FechaNacimientoMama"/> 
+            </div>
+            <div class='form-group col-md-6'>
+                <label for="inputFechaEmbarazo">Fecha Embarazo</label>
+                <input type='date' class="form-control" id="inputFechaEmbarazo" name="FechaEmbarazo"/> 
+            </div>
+        </div>  
+        <div class="form-row" id="infoPadre">
+            <div class="form-group col-md-6">
+                <label>Nombre Papa</label>
+                <input type="text" class="form-control" id="inputNombree" placeholder="Nombre" name="NombrePadre">
+            
+            
+                <label for="inputApellidos">Apellidos</label>
+                <input type="text" class="form-control" id="inputApellidosp" placeholder="Apellidos" name="ApellidosPadre">
+            
+                <label>Fecha Nacimiento(Papa)</label>
+                <input type="date" class="form-control" id="inputFechaNacimientop" name="FechaNacimientoPadre">           
+            </div>
+        </div>
+        
+            
+        <div class="form-row">
+              <button type="submit" class="btn btn-primary btnSeccion">Actualizar Usuario</button>
+        </div>
+    </form>
+    </div>
+    </br>
+  </div>
+       
+</body>
+</html>

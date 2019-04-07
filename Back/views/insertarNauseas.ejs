@@ -1,0 +1,39 @@
+<html>
+<head>
+
+</head>
+<%- include('./includes/head.ejs') %>
+<body> 
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <h1>Nauseas</h1>
+                    <label>Fecha</label>
+                    <input type="date" class="form-control" name="FechaNa">
+                </div>
+                <div>
+                    <input type="hidden" value="<%=token %>" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Veces</label>
+                    <input type="text" class="form-control" name="Veces" placeholder="Veces que le dieron las nauseas...">
+                </div> 
+                <h1>Peso</h1>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Peso</label>
+                        <input type="text" class="form-control" name="Peso" placeholder="Peso actual...">
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Fecha</label>
+                    <input type="date" class="form-control" name="FechaPeso">
+                </div>
+            </div> 
+            <div class="form-row">
+                <button type="submit" id="guardarNP" class="btn btn-primary btnSeccion">Guardar</button>
+            </div>
+            </form>
+</body>

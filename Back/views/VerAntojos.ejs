@@ -1,0 +1,40 @@
+<html>
+<head>
+
+</head>
+<%- include('./includes/head.ejs') %>
+<body>
+        
+          
+           <% if (antojos.length > 0) { %>
+                    <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Antojo</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Repeticiones</th>
+                                <th scope="col">A Quien dio</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                   <% for (let antojo of antojos) { %>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td><%= antojo.NombreDelAntojo %></td>
+                                <td><%= antojo.TipoDeAntojo %></td>
+                                <td><%= antojo.FechaDelAntojo %></td>
+                                <td><%= antojo.VecesDadasDelAntojo %></td>
+                                <td><%= antojo.AQuienLeDio %></td>
+                              </tr>
+                            
+                       
+                   <% } %>
+                </tbody>
+            </table>
+           <% } else { %>
+               <h1 class="text-center">No Existen antojos!</h1>
+           <% } %>     
+</body>
+</html>

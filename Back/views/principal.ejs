@@ -1,0 +1,96 @@
+<html>
+<head>
+   
+</head>
+<%- include('./includes/head.ejs') %>
+<body>
+  
+<style>
+  /*
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 100%;
+    margin: auto;
+}
+*/
+
+body{
+  background-color: rgb(196, 204, 197);
+}
+.item {
+      display: block;
+      width: 100%;
+      height: 500px;
+}
+.item img {
+      height: 500%;
+      width: 100%;
+}
+</style>
+  
+<div class="container">
+
+  
+    <!--
+      <div class="card-body">
+      <h4>Bienvenido . {auth()->user()}</h4>
+    </div>
+    -->
+  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+    </ol>
+  
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="../images/1.jpg" alt="6 semanas"  class="img-responsive">
+      </div>
+      <div class="item">
+        <img src="../images/2.jpg" alt="8 semanas" class="img-responsive">
+      </div>
+      <div class="item">
+        <img src="../images/3.jpg" alt="9 semanas" class="img-responsive">
+      </div>
+      <div class="item">
+        <img src="../images/4.jpg" alt="18 semanas" class="img-responsive">
+      </div>
+      <div class="item">
+        <img src="../images/5.jpg" alt="20 semanas" class="img-responsive">
+      </div>
+    </div>
+    
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
+  </br>
+  <div class="form-row">
+      <div class="btn-toolbar" role="toolbar">
+          <button type="button" class="btn btn-default btn-s"><a href="/editarUsuario/<%=token%>">Actualizar Usuario</a>
+            <span class="glyphicon glyphicon-star"></span>
+          </button>
+      </div>  
+       
+    </br>
+
+      <div class="btn-toolbar" role="toolbar">
+          <button type="button" class="btn btn-default btn-s"><a href="/borrarUsuario/<%=token%>">Borrar Usuario</a>
+            <span class="glyphicon glyphicon-star"></span>
+          </button>
+      </div>  
+</div>
+    
+
+       
+</body>
+</html>
