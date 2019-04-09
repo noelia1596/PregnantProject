@@ -43,6 +43,7 @@
     "package.json": "^2.0.1",
     "path": "^0.12.7",
     "prop-types": "^15.6.2",
+    "radium": "^0.25.1",
     "react": "^16.6.3",
     "react-autosuggest": "^9.4.2",
     "react-big-calendar": "^0.20.2",

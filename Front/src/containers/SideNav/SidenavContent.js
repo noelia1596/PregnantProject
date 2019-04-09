@@ -121,6 +121,15 @@ class SidenavContent extends Component {
             </NavLink>
           </li>
 
+          <li>
+            <NavLink className="prepend-icon"
+            to="/app/evolucionamiento">
+              <i className="zmdi zmdi-graphic-eq"/>
+              <span className="nav-text"><IntlMessages
+              id="sidebar.components.evolucionamiento"/></span>
+            </NavLink>
+          </li>
+
 
           <li className="ui_tooltip menu">
             <Button className="void">
@@ -534,11 +543,13 @@ class SidenavContent extends Component {
               </li>
             </ul>
           </li>
-
+ 
         </ul>
       </CustomScrollbars>
     );
+    
   }
+  
 }
 
 export default withRouter(SidenavContent);

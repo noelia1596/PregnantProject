@@ -2,11 +2,12 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages, faImage } from '@fortawesome/free-solid-svg-icons'
 import './imagenes.css';
+import styles from './styles.module.css';
 
 export default props => 
   <div className='buttons fadein'>
     
-    <div className='button'>
+    <div className={styles.upload_btn_wrapper} >
       <label htmlFor='single'>
         <FontAwesomeIcon icon={faImage} color='#3B5998' size='10x' />
       </label>
