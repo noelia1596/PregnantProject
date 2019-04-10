@@ -1,4 +1,5 @@
 {
+  "sidebar.components.Evolucionbebe": "Evolution of the baby",
   "sidebar.components.evolucionamiento": "Evolution",
   "sidebar.components.ejercicios": "Exercise",
   "sidebar.components.imagenes": "Images",
@@ -54,7 +55,6 @@
   "sidebar.tables.basicTable": "Basic Table",
   "sidebar.tables.dataTable": "Data Table",
   "sidebar.timeLine": "Time Line",
-  "sidebar.timeLine.default": "Default",
   "sidebar.timeLine.defaultwithIcons": "Default with Icons",
   "sidebar.timeLine.leftAligned": "Left Aligned",
   "sidebar.timeLine.zigzag": "Zigzag",
@@ -355,7 +355,6 @@
   "dashboard.authorsWith": "Authors With 500+ avg. view",
   "dashboard.popularArticles": "Popular Articles",
   "dashboard.comments": "Comments",
-  "component.alert.default": "Default Alerts",
   "component.alert.highlighted": "Highlighted Alerts",
   "component.alert.dismissible": "Dismissible Alerts",
   "component.alert.withIcons": "Alerts With Icons",
@@ -398,7 +397,6 @@
   "component.buttonGroup.defaultStyle": "Default buttons group style",
   "component.buttonGroup.highlightedStyle": "Highlighted button group style",
   "component.buttonGroup.flatStyle": "Flat button group style",
-  "component.buttonGroup.default": "Default Button Group",
   "component.buttonGroup.flat": "Flat Button Group",
   "component.buttonGroup.highlighted": "Highlighted Button Group",
   "component.buttonGroup.icon": "Icon Button Group",
@@ -416,7 +414,7 @@
   "component.carousel.productTxt": "A Horizontal Grid View Carousel",
   "component.carousel.testimonial": "Testimonial Carousel",
   "component.carousel.testimonialTxt": "One item carousel at a time",
-  "component.chips.default": "Default Chip",
+
   "component.chips.outline": "Outline Chip",
   "component.chips.chipWithText": "Chip With Text Avatar",
   "component.chips.clickable": "Clickable Chip",
@@ -428,7 +426,7 @@
   "component.chips.withInput": "Chips Implementation With Input Box",
   "component.dividers.list": "List Dividers",
   "component.dividers.inset": "Inset Dividers",
-  "component.dividers.default": "Default",
+
   "component.drawer.persistent": "Persistent Drawer",
   "component.drawer.permanent": "Permanent Drawer",
   "component.drawer.mini": "Mini Drawer",

@@ -74,7 +74,7 @@ class App extends React.Component {
                 <Route path={`${match.url}/funcionalidadesAntojos`} component={Antojos}/>
                 <Route path={`${match.url}/imagenes`} component={Imagenes}/>
                 <Route path={`${match.url}/ejercicios`} component={Ejercicios}/>
-                <Route path={`${match.url}/evolucionamiento`} component={Evolucionamiento}/>
+                <Route path={`${match.url}/evolucionamiento`} background-color='red' component={Evolucionamiento}/>
 
                 
 

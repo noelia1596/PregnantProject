@@ -1,0 +1,11 @@
+.app-wrapper{
+    background-image: url('https://www.fiestafacil.com/content/images/thumbs/0018446_globos-baby-shower-ciguena-rosa-8_600.jpeg'); 
+}
+
+.timeline-title{
+    color: rgb(39, 49, 187);
+}
+
+.timeline-item{
+    text-align:left
+}

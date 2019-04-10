@@ -72,6 +72,7 @@
     "react-notify-toast": "^0.5.0",
     "react-number-format": "^4.0.4",
     "react-placeholder": "^3.0.1",
+    "react-player": "^1.10.0",
     "react-redux": "^6.0.0",
     "react-request": "^3.1.2",
     "react-router": "^4.3.1",

@@ -1,7 +1,8 @@
 import React from 'react';
+import './css.css';
 
 const DefaultTimeLineItem = ({styleName, timeLine}) => {
-  const {time, image, title, description} = timeLine;
+  const {image, title, description, longitud, peso, carac1, carac2, carac3, carac4} = timeLine;
   return (
     <div className={`timeline-item ${styleName}`}>
       <div className="timeline-badge timeline-img">
@@ -14,15 +15,26 @@ const DefaultTimeLineItem = ({styleName, timeLine}) => {
             <img className="size-60 rounded-circle" src={image} alt="Pentagon" title="Pentagon"/>
           </div>
           <div className="timeline-heading">
-            <h5>{time}</h5>
             <h3 className="timeline-title">{title}</h3>
           </div>
         </div>
         <div className="timeline-body">
-          <p>{description} </p>
+          <p>{description} <br/> {longitud} <br/> {peso} <br/> {carac1} <br/> {carac2} <br/> {carac3} <br/> {carac4} </p>
         </div>
       </div>
     </div>
   )
 };
 export default DefaultTimeLineItem;
+
+
+{ /*  <div className="timeline-body">
+{description.map(
+ 
+  (e) => {
+    console.log(e, 'description')
+    return <p>{e} </p>
+  }
+)}
+
+</div> */}

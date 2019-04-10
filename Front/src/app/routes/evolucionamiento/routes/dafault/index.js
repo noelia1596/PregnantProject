@@ -15,8 +15,8 @@ const fechaEmbarazo = moment(userLogged.FechaEmbarazo);
 
 const Default = ({ match }) => {
   return (
-    <div>
-      <ContainerHeader title={<IntlMessages id="sidebar.timeLine.default" />} match={match} />
+    <div background='red'>
+      <ContainerHeader title={<IntlMessages id="sidebar.components.Evolucionbebe" />} match={match} />
 
       <div className="timeline-section timeline-center clearfix animated slideInUpTiny animation-duration-3">
         {timeLineData.map(

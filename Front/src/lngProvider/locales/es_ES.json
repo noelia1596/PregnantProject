@@ -1,6 +1,7 @@
 
 
 {
+  "sidebar.components.Evolucionbebe": "Evolución del bebé",
   "sidebar.components.evolucionamiento": "Evolucionamiento",
   "sidebar.components.ejercicios": "Ejercicios",
   "sidebar.components.imagenes": "Imagenes",
@@ -46,7 +47,6 @@
   "sidebar.tables.basicTable": "Tabla básica",
   "sidebar.tables.dataTable": "Tabla de datos",
   "sidebar.timeLine": "Time Line",
-  "sidebar.timeLine.default": "Defecto",
   "sidebar.timeLine.defaultwithIcons": "Predeterminado con iconos",
   "sidebar.timeLine.leftAligned": "Alineado a la izquierda",
   "sidebar.timeLine.zigzag": "Zigzag",
@@ -348,7 +348,6 @@
   "dashboard.authorsWith": "Autores con más de 500 prom. ver",
   "dashboard.popularArticles": "articulos populares",
   "dashboard.comments": "Comentarios",
-  "component.alert.default": "Alertas predeterminadas",
   "component.alert.highlighted": "Alertas destacadas",
   "component.alert.dismissible": "Alertas imposibles",
   "component.alert.withIcons": "Alertas con iconos",
@@ -391,7 +390,6 @@
   "component.buttonGroup.defaultStyle": "Estilo de grupo de botones predeterminados",
   "component.buttonGroup.highlightedStyle": "Estilo resaltado del grupo de botones",
   "component.buttonGroup.flatStyle": "Estilo de grupo de botón plano",
-  "component.buttonGroup.default": "Grupo de botones predeterminados",
   "component.buttonGroup.flat": "Grupo de botones planos",
   "component.buttonGroup.highlighted": "Grupo de botones resaltados",
   "component.buttonGroup.icon": "Grupo de botones de icono",
@@ -409,7 +407,6 @@
   "component.carousel.productTxt": "Un carrusel de vista de cuadrícula horizontal",
   "component.carousel.testimonial": "Carrusel testimonial",
   "component.carousel.testimonialTxt": "Un carrusel de elementos a la vez",
-  "component.chips.default": "Chip predeterminado",
   "component.chips.outline": "Chip de esquema",
   "component.chips.chipWithText": "Chip con texto Avatar",
   "component.chips.clickable": "Chip Clickable",
@@ -421,7 +418,6 @@
   "component.chips.withInput": "Implementación de chips con cuadro de entrada",
   "component.dividers.list": "List Dividers",
   "component.dividers.inset": "Divisores de inserción",
-  "component.dividers.default": "Defecto",
   "component.drawer.persistent": "Cajón persistente",
   "component.drawer.permanent": "Cajón permanente",
   "component.drawer.mini": "Mini cajón",
