@@ -25,7 +25,7 @@ const items = [
     mes: 2
   }, {
     id: 3,
-    src: 'https://www.youtube.com/embed/0fA5NvLdySQ',
+    src: 'https://www.youtube.com/embed/GiR3tc1tJuw',
     mes: 3
   }, {
     id: 4,
@@ -38,6 +38,10 @@ const items = [
   }, {
     id: 6,
     src: 'https://www.youtube.com/embed/o2AtNJFDuaU',
+    mes: 3
+  }, {
+    id: 7,
+    src: "https://www.youtube.com/embed/0fA5NvLdySQ", 
     mes: 3
   }
 ];
