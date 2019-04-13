@@ -16,6 +16,6 @@ module.exports = class Contraccion{
     }
 
     static ImprimirContracciones(usuario) {
-        return db.execute('SELECT * FROM pregnant.contracciones WHERE usuario = ?', [usuario]);
+        return db.execute('SELECT * FROM pregnant.contracciones WHERE usuario = ? order by final desc', [usuario]);
       }
 }

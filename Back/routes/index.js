@@ -73,6 +73,8 @@ router.get('/imprimirImagenes',indexController.getApiImprimirImagenes);
 
 router.post('/apiGuardarTiempos/',indexController.postapiGuardarTiempos);
 
+router.get('/api-verContracciones',indexController.ImprimirContracciones);
+
 router.get('/irPrincipal', indexController.irPrincipal);
 
 router.get('/verEstadisticas/:token/',Token.verifyParam, usuarioControl.findAll);

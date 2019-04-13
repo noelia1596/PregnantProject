@@ -16,12 +16,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import moment from 'moment';
 
 let counter = 0;
 var antojos = [];
 function createData(id, NombreAntojo, TipoDeAntojo, FechaAntojo, VecesAntojo, aQuienDio ) {
   counter += 1;
-  return {id: counter, id, NombreAntojo, TipoDeAntojo, FechaAntojo, VecesAntojo, aQuienDio};
+  return {id: counter, id, NombreAntojo, TipoDeAntojo, FechaAntojo: moment(FechaAntojo).format('YYYY-MM-DD'), VecesAntojo, aQuienDio};
 }
 
 
@@ -246,7 +247,7 @@ class EnhancedTable extends React.Component {
                       </TableCell>
                       <TableCell padding="none">{n.NombreDelAntojo}</TableCell>
                       <TableCell align="none">{n.TipoDeAntojo}</TableCell>
-                      <TableCell align="none">{n.FechaDelAntojo}</TableCell>
+                      <TableCell align="none">{moment(n.FechaDelAntojo).format('YYYY-MM-DD')}</TableCell>
                       <TableCell align="none">{n.VecesDadasDelAntojo}</TableCell>
                       <TableCell align="none">{n.AQuienLeDio}</TableCell>
                     </TableRow>

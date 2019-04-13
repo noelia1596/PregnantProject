@@ -231,7 +231,7 @@ const Contraccion = require('../models/contraccion');
     }
   };
 
-
+  
   exports.postapiGuardarTiempos = (req, res, next) => {
     const inicio = req.body.inicio;
     const final = req.body.final;
@@ -247,6 +247,26 @@ const Contraccion = require('../models/contraccion');
   };
 
 
+  exports.ImprimirContracciones = (req, res, next) => {
+    try {
+       if(req.headers.username){
+            userId = req.headers.username;//coge el usuario que se ha insertado
+            Contraccion.ImprimirContracciones(userId)
+            .then((rows) => {
+              let contracciones = rows[0];
+              res.send(
+                contracciones
+              )
+            })
+            .catch(err => console.log(err));
+        }else{
+            console.error('ERROR getApiVerContracciones no nos llega username ',req);
+        }
+    }
+    catch(error) {
+      console.error('ERROR getApiVerContracciones',error);
+    }
+  };
 
   exports.verMedicamentos = (req, res, next) => {
     userId = req.userId;

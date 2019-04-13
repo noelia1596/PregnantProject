@@ -8,6 +8,7 @@ import { extraerTiemposPartes } from './tiempos'
 
 import './css.css'
 import request from 'request';
+import Table from './tabla/index';
 
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
 const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
@@ -19,9 +20,10 @@ class App extends Component {
 		this.state = {
 			estaCorriendo: false,
 			inicio: 0,
-			corriente: 0
+			corriente: 0,
+			todos: [],
 		}
-
+		this.handleVerContracciones();
 		this.handleEmpezar = this.handleEmpezar.bind(this)
 		this.handleParar = this.handleParar.bind(this)
 	}
@@ -52,15 +54,38 @@ class App extends Component {
 		const url = "http://localhost:3000/apiGuardarTiempos";
 		const momentInicio = moment(this.state.inicio).format('YYYY-MM-DD HH:mm:ss');
 		const momentFinal = moment(this.state.corriente).format('YYYY-MM-DD HH:mm:ss');
+		const self = this;
 		request.post(url, { form: { usuario: userLogged.usuario, inicio: momentInicio, final: momentFinal } },
 			function optionalCallback(err, httpResponse, body) {
 				if (err) {
 					return console.error('upload failed:', err);
 				}
+				self.handleVerContracciones();
 			});
 		console.log('acabo el submit');
 		console.log(momentInicio, momentFinal);
 	}
+
+
+
+	handleVerContracciones = () => {
+    const url = "http://localhost:3000/api-verContracciones/";
+    fetch(url, {
+      method : 'GET',
+      headers : {username: userLogged.usuario},
+    }
+    )
+    .then(response => response.json())
+    .then((repos) => {
+        console.log(repos);
+        console.log(repos.length);
+        if (!repos) return;
+        this.setState({todos : repos });
+      }); 
+  };
+
+
+
 
 
 	handleParar() {
@@ -92,22 +117,27 @@ class App extends Component {
 				segundos,
 				milisegundos
 			} = extraerTiemposPartes(corriente - inicio)
-
+			const {todos} = this.state;
 		return (
-			<div className="crono">
+			<div>
+				<div className="crono">
+					<Pantalla
+						horas={horas}
+						minutos={minutos}
+						segundos={segundos}
+						milisegundos={milisegundos}
+					/>
+					<Botones
+						empezar={this.handleEmpezar}
+						parar={this.handleParar}
 
-				<Pantalla
-					horas={horas}
-					minutos={minutos}
-					segundos={segundos}
-					milisegundos={milisegundos}
-				/>
-				<Botones
-					empezar={this.handleEmpezar}
-					parar={this.handleParar}
-
+					/>
+				</div>
+				<Table
+					data = {todos}
 				/>
 			</div>
+			
 		)
 	}
 }
