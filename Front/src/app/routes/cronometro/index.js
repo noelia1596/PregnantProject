@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 
 import Pantalla from './pantalla'
 import Botones from './botones'
+import moment from 'moment'
 
 import { extraerTiemposPartes } from './tiempos'
 
 import './css.css'
+import request from 'request';
+
+const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
+const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 
 class App extends Component {
 	constructor(...props) {
@@ -18,11 +23,11 @@ class App extends Component {
 		}
 
 		this.handleEmpezar = this.handleEmpezar.bind(this)
-    this.handleParar = this.handleParar.bind(this)
+		this.handleParar = this.handleParar.bind(this)
 	}
 
 	handleEmpezar() {
-		if ( this.state.estaCorriendo ) {
+		if (this.state.estaCorriendo) {
 			// no hagas nada
 			return
 		} else {
@@ -33,25 +38,42 @@ class App extends Component {
 				corriente: Date.now()
 			})
 
-			this._interval = setInterval(() =>{
+			this._interval = setInterval(() => {
 				this.setState({
 					corriente: Date.now()
 				})
 			}, 100)
 		}
-    }
-    
-		handleParar() {
-		if ( this.state.estaCorriendo ) {
+	}
+
+
+	guardarContracion = () => {
+
+		const url = "http://localhost:3000/apiGuardarTiempos";
+		const momentInicio = moment(this.state.inicio).format('YYYY-MM-DD HH:mm:ss');
+		const momentFinal = moment(this.state.corriente).format('YYYY-MM-DD HH:mm:ss');
+		request.post(url, { form: { usuario: userLogged.usuario, inicio: momentInicio, final: momentFinal } },
+			function optionalCallback(err, httpResponse, body) {
+				if (err) {
+					return console.error('upload failed:', err);
+				}
+			});
+		console.log('acabo el submit');
+		console.log(momentInicio, momentFinal);
+	}
+
+
+	handleParar() {
+		if (this.state.estaCorriendo) {
 			//si esta funcionando el cronometro ponerlo a cero
 			clearInterval(this._interval)
-		
+
 			this.setState({
 				estaCorriendo: false
 
 			})
-
-			console.log( extraerTiemposPartes(this.state.corriente - this.state.inicio), 'clearIntervalllllllll');
+			this.guardarContracion();
+			console.log(extraerTiemposPartes(this.state.corriente - this.state.inicio), 'clearIntervalllllllll');
 		} else {
 			// poner a cero el cronometro(si le damos de nuevo al boton, ya me lo poner a cero)
 			this.setState({
@@ -69,21 +91,21 @@ class App extends Component {
 				minutos,
 				segundos,
 				milisegundos
-			} = extraerTiemposPartes( corriente - inicio )
+			} = extraerTiemposPartes(corriente - inicio)
 
-		return(
+		return (
 			<div className="crono">
-			
+
 				<Pantalla
-					horas = { horas }
-					minutos = { minutos }
-					segundos = { segundos }
-					milisegundos = { milisegundos }
+					horas={horas}
+					minutos={minutos}
+					segundos={segundos}
+					milisegundos={milisegundos}
 				/>
 				<Botones
-					empezar = { this.handleEmpezar }
-         	parar = { this.handleParar }
-                
+					empezar={this.handleEmpezar}
+					parar={this.handleParar}
+
 				/>
 			</div>
 		)

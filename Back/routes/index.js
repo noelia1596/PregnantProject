@@ -71,6 +71,8 @@ router.post('/uploadPictures', upload.single('image'),indexController.postApiSub
 
 router.get('/imprimirImagenes',indexController.getApiImprimirImagenes);
 
+router.post('/apiGuardarTiempos/',indexController.postapiGuardarTiempos);
+
 router.get('/irPrincipal', indexController.irPrincipal);
 
 router.get('/verEstadisticas/:token/',Token.verifyParam, usuarioControl.findAll);

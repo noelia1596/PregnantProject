@@ -4,6 +4,7 @@ const Antojo = require('../models/antojos');
 const recogerUsuario = require('./usuarioController');
 const Token = require('../auth/Token');
 const Imagenes = require('../models/imagenes');
+const Contraccion = require('../models/contraccion');
 
 
   exports.postModificarUsuario = (req, res, next) => {
@@ -124,7 +125,7 @@ const Imagenes = require('../models/imagenes');
       })
       .catch(err => console.log(err));
   };
-
+  
 
   exports.postapiBorrarAntojo = (req, res, next) => {
     const id = req.body.arraySelect;
@@ -229,6 +230,23 @@ const Imagenes = require('../models/imagenes');
       console.error('ERROR getApiVerAntojos',error);
     }
   };
+
+
+  exports.postapiGuardarTiempos = (req, res, next) => {
+    const inicio = req.body.inicio;
+    const final = req.body.final;
+    const usuario = req.body.usuario;
+    Contraccion
+      .subirContraccion(usuario, inicio, final)
+      .then((result) => {
+        res.send(
+          result
+        ); 
+      })
+      .catch(err => console.log(err));
+  };
+
+
 
   exports.verMedicamentos = (req, res, next) => {
     userId = req.userId;
