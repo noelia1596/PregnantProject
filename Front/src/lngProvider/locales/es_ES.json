@@ -1,6 +1,8 @@
 
 
 {
+  "sidebar.components.cronometro": "Cronómetro",
+  "sidebar.components.calendario": "Calendario",
   "sidebar.components.Evolucionbebe": "Evolución del bebé",
   "sidebar.components.evolucionamiento": "Evolucionamiento",
   "sidebar.components.ejercicios": "Ejercicios",

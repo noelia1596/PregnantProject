@@ -131,6 +131,26 @@ class SidenavContent extends Component {
           </li>
 
 
+          <li>
+            <NavLink className="prepend-icon"
+            to="/app/calendario">
+              <i className="zmdi zmdi-calendar-check"/>
+              <span className="nav-text"><IntlMessages
+              id="sidebar.components.calendario"/></span>
+            </NavLink>
+          </li>
+
+
+          <li>
+            <NavLink className="prepend-icon"
+            to="/app/cronometro">
+              <i className="zmdi zmdi-timer"/>
+              <span className="nav-text"><IntlMessages
+              id="sidebar.components.cronometro"/></span>
+            </NavLink>
+          </li>
+{/* 
+
           <li className="ui_tooltip menu">
             <Button className="void">
               <i className="zmdi zmdi-folder zmdi-hc-fw"/>
@@ -543,13 +563,15 @@ class SidenavContent extends Component {
               </li>
             </ul>
           </li>
- 
+ */}
         </ul>
       </CustomScrollbars>
+      
     );
     
   }
   
 }
+
 
 export default withRouter(SidenavContent);

@@ -30,6 +30,8 @@ import Antojos from './routes/antojos';
 import Imagenes from './routes/imagenes/funcionalidadImagenes';
 import Ejercicios from './routes/ejercicios';
 import Evolucionamiento from './routes/evolucionamiento';
+import Calendario from './routes/calendario';
+import Cronometro from './routes/cronometro';
 
 class App extends React.Component {
 
@@ -74,7 +76,9 @@ class App extends React.Component {
                 <Route path={`${match.url}/funcionalidadesAntojos`} component={Antojos}/>
                 <Route path={`${match.url}/imagenes`} component={Imagenes}/>
                 <Route path={`${match.url}/ejercicios`} component={Ejercicios}/>
-                <Route path={`${match.url}/evolucionamiento`} background-color='red' component={Evolucionamiento}/>
+                <Route path={`${match.url}/evolucionamiento`} component={Evolucionamiento}/>
+                <Route path={`${match.url}/calendario`} component={Calendario}/>
+                <Route path={`${match.url}/cronometro`} component={Cronometro}/>
 
                 
 
