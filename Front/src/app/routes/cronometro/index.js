@@ -119,7 +119,7 @@ class App extends Component {
 			} = extraerTiemposPartes(corriente - inicio)
 			const {todos} = this.state;
 		return (
-			<div>
+			<div className= 'estilo'>
 				<div className="crono">
 					<Pantalla
 						horas={horas}

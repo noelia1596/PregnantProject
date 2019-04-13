@@ -31,9 +31,9 @@ class BasicTable extends React.Component {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center">Inicio</TableCell>
-                            <TableCell align="center">Final</TableCell>
-                            <TableCell align="center">Tiempo Transcurrido</TableCell>
+                            <TableCell align="center" className='estiloLetras'><strong>INICIO</strong></TableCell>
+                            <TableCell align="center" className='estiloLetras'><strong>FINAL</strong></TableCell>
+                            <TableCell align="center" className='estiloLetras'><strong>TIEMPO TRANSCURRIDO</strong></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

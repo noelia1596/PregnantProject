@@ -2,8 +2,8 @@ import React from 'react'
 
 const Botones = props => (
 	<div className="actions">
-		<button onClick={ props.empezar }>INICIO CONTRACIÓN</button>
-		<button onClick={ props.parar }>TERMINA CONTRACIÓN</button>
+		<button onClick={ props.empezar }>CONTRACIÓN</button>
+		<button onClick={ props.parar }>FIN</button>
 	</div>
 )
 
