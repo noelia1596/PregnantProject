@@ -7,68 +7,40 @@ let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
 
 const localizer = BigCalendar.momentLocalizer(moment);
 
-console.log(localizer,'localizer');
+console.log(localizer, 'localizer');
 
 
-
-
-const Basic = (props) => {
-  return (
-    <div className="app-calendar animated slideInUpTiny animation-duration-3">
-      <BigCalendar
-        selectable
-        {...props}
-        localizer={localizer}
-        events={events}
-        views={allViews}
-        step={60}
-        defaultDate={new Date(2015, 3, 1)}
-        //onSelectEvent={event => alert(event.title)}
-        onSelectSlot={(slotInfo) => console.log(
-          `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-          `\nend: ${slotInfo.end.toLocaleString()}` +
-          `\naction: ${slotInfo.action}`
-        //events = {slotInfo,...events}
-        )}
-        />
-    </div>
-  )
-};
-
-export default Basic;
-{/*guardarEventos=(slotInfo)=>console.log(
-    
-    `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-    `\nend: ${slotInfo.end.toLocaleString()}` +
-    `\naction: ${slotInfo.action}`
-) */}
-
-
-
-    
-
-{ /*
-    class Calendario extends React.Component{
-        constructor(){
-            super();
-            this.state = {
-                events : []
-            };
-        }
-        render(){
-            return(
-                <div className='Calendario'>
-                    <BigCalendar
-                        events = {this.state.events}
-                    />
-                </div>
-            )
-        }
+var alertt;
+var inicio;
+var final;
+class Basic extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      recogidaEvents: events,
     }
-    export default Calendario;
-    captarDia = () => {
-        if (this.animating) return;
-        const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
-        this.setState({ activeIndex: nextIndex });
-      }
-    */ }
+  }
+  render() {
+    return (
+      <div className="app-calendar animated slideInUpTiny animation-duration-3">
+        <BigCalendar
+          selectable
+          {...this.props}
+          localizer={localizer}
+          events={this.state.recogidaEvents}
+          views={allViews}
+          step={60}
+          defaultDate={new Date(2015, 3, 1)}
+          onSelectSlot={(slotInfo) => {
+            alert(alertt = prompt('Introduza evento'),
+              inicio = slotInfo.end,
+              final = slotInfo.end,
+              this.setState({ recogidaEvents: [{ 'title': alertt, 'start': inicio, 'end': final }, ...this.state.recogidaEvents] })
+            )
+          }}
+        />
+      </div>
+    )
+  }
+}
+export default Basic;
