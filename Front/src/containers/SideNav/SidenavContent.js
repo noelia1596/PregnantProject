@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {NavLink, withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 import IntlMessages from 'util/IntlMessages';
@@ -8,7 +8,7 @@ import CustomScrollbars from 'util/CustomScrollbars';
 
 class SidenavContent extends Component {
   componentDidMount() {
-    const {history} = this.props;
+    const { history } = this.props;
     const that = this;
     const pathname = `${history.location.pathname}`;// get current path
 
@@ -39,7 +39,7 @@ class SidenavContent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const {history} = nextProps;
+    const { history } = nextProps;
     const pathname = `${history.location.pathname}`;// get current path
 
     const activeLi = document.querySelector('a[href="' + pathname + '"]');// select current a element
@@ -90,66 +90,76 @@ class SidenavContent extends Component {
         <ul className="nav-menu">
 
           <li className="nav-header">
-            <IntlMessages id="sidebar.main"/>
+            <IntlMessages id="sidebar.main" />
           </li>
 
-         {/* MIO */}
-         <li>
+          {/* MIO */}
+          <li>
             <NavLink className="prepend-icon"
-            to="/app/funcionalidadesAntojos">
-              <i className="zmdi zmdi-pizza"/>
+              to="/app/funcionalidadesAntojos">
+              <i className="zmdi zmdi-pizza" />
               <span className="nav-text"><IntlMessages
-              id="sidebar.components.antojos"/></span>
+                id="sidebar.components.antojos" /></span>
             </NavLink>
           </li>
 
           <li>
             <NavLink className="prepend-icon"
-            to="/app/imagenes">
-              <i className="zmdi zmdi-upload"/>
+              to="/app/imagenes">
+              <i className="zmdi zmdi-upload" />
               <span className="nav-text"><IntlMessages
-              id="sidebar.components.imagenes"/></span>
+                id="sidebar.components.imagenes" /></span>
             </NavLink>
           </li>
 
           <li>
             <NavLink className="prepend-icon"
-            to="/app/ejercicios">
-              <i className="zmdi zmdi-run"/>
+              to="/app/ejercicios">
+              <i className="zmdi zmdi-run" />
               <span className="nav-text"><IntlMessages
-              id="sidebar.components.ejercicios"/></span>
+                id="sidebar.components.ejercicios" /></span>
             </NavLink>
           </li>
 
           <li>
             <NavLink className="prepend-icon"
-            to="/app/evolucionamiento">
-              <i className="zmdi zmdi-graphic-eq"/>
+              to="/app/evolucionamiento">
+              <i className="zmdi zmdi-graphic-eq" />
               <span className="nav-text"><IntlMessages
-              id="sidebar.components.evolucionamiento"/></span>
-            </NavLink>
-          </li>
-
-
-          <li>
-            <NavLink className="prepend-icon"
-            to="/app/calendario">
-              <i className="zmdi zmdi-calendar-check"/>
-              <span className="nav-text"><IntlMessages
-              id="sidebar.components.calendario"/></span>
+                id="sidebar.components.evolucionamiento" /></span>
             </NavLink>
           </li>
 
 
           <li>
             <NavLink className="prepend-icon"
-            to="/app/cronometro">
-              <i className="zmdi zmdi-timer"/>
+              to="/app/calendario">
+              <i className="zmdi zmdi-calendar-check" />
               <span className="nav-text"><IntlMessages
-              id="sidebar.components.cronometro"/></span>
+                id="sidebar.components.calendario" /></span>
             </NavLink>
           </li>
-{/* 
+
+
+          <li>
+            <NavLink className="prepend-icon"
+              to="/app/cronometro">
+              <i className="zmdi zmdi-timer" />
+              <span className="nav-text"><IntlMessages
+                id="sidebar.components.cronometro" /></span>
+            </NavLink>
+          </li>
+
+
+          <li>
+            <NavLink className="prepend-icon"
+              to="/app/geolocalizacion">
+              <i className="zmdi zmdi-pin-drop" />
+              <span className="nav-text"><IntlMessages
+                id="sidebar.components.geolocalizacion" /></span>
+            </NavLink>
+          </li>
+    
 
           <li className="ui_tooltip menu">
             <Button className="void">
@@ -563,14 +573,14 @@ class SidenavContent extends Component {
               </li>
             </ul>
           </li>
- */}
+ 
         </ul>
       </CustomScrollbars>
-      
+
     );
-    
+
   }
-  
+
 }
 
 

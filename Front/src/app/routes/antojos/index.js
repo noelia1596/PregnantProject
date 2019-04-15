@@ -14,24 +14,26 @@ import {
   showAuthLoader,
   userSignUp,
 } from 'actions/Auth';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Table from './tabla';
+import CardBox from 'components/CardBox/index';
+
 
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
 const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 
 
 class FormSignUp extends React.Component {
-  constructor(){
+  constructor() {
 
     super();
     this.state = {
       activeStep: 0,
       usuario: userLogged.usuario,
-      todos :[],
-      value : ""
+      todos: [],
+      value: ""
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleGetAntojos();
@@ -40,8 +42,8 @@ class FormSignUp extends React.Component {
   getSteps() {
     return ['NameofCravings', 'TypeofCraving', 'DateofCraving', 'TimesofCraving', 'WhoGavetheWhim'];
   }
-  
-  
+
+
   NameofCravings() {
     return <div>
       <div className="row">
@@ -56,11 +58,11 @@ class FormSignUp extends React.Component {
               fullWidth
             />
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   }
-  
+
   TypeofCraving() {
     return <div>
       <div className="row">
@@ -75,66 +77,66 @@ class FormSignUp extends React.Component {
               fullWidth
             />
           </div>
-        </div> 
+        </div>
       </div>
-    </div>    
+    </div>
   }
 
   DateofCraving() {
     return <div>
-    <div className="row">
-      <div className="col-md-6">
-        <div className="form-group">
-        <span>Fecha </span>
-          <DatePickers
-            onBlur={this.handleChange}
-            name='FechaAntojo'
-          />
+      <div className="row">
+        <div className="col-md-6">
+          <div className="form-group">
+            <span>Fecha </span>
+            <DatePickers
+              onBlur={this.handleChange}
+              name='FechaAntojo'
+            />
+          </div>
         </div>
-      </div> 
+      </div>
     </div>
-  </div>   
   }
 
   TimesofCraving() {
     return <div>
-    <div className="row">
-      <div className="col-md-6">
-        <div className="form-group">
-          <TextField
-            onChange={this.handleChange}
-            name='VecesAntojo'
-            id="TimesofCraving"
-            label="Times of Craving"
-            margin="normal"
-            fullWidth
-          />
+      <div className="row">
+        <div className="col-md-6">
+          <div className="form-group">
+            <TextField
+              onChange={this.handleChange}
+              name='VecesAntojo'
+              id="TimesofCraving"
+              label="Times of Craving"
+              margin="normal"
+              fullWidth
+            />
+          </div>
         </div>
-      </div> 
+      </div>
     </div>
-  </div>  
   }
-  
+
   WhoGavetheWhim() {
     return <div>
-    <div className="row">
-      <div className="col-md-6">
-        <div className="form-group">
-          <TextField
-            onChange={this.handleChange}
-            name='aQuienDio'
-            id="WhoGavetheWhim"
-            label="Who Gave the Whim"
-            margin="normal"
-            fullWidth
-    
-          />
+      <div className="row">
+        <div className="col-md-6">
+          <div className="form-group">
+            <TextField
+              onChange={this.handleChange}
+              name='aQuienDio'
+              id="WhoGavetheWhim"
+              label="Who Gave the Whim"
+              margin="normal"
+              fullWidth
+
+            />
+          </div>
         </div>
-      </div> 
+      </div>
     </div>
-  </div>  
   }
-  
+
   getConfirmation() {
     return <div className="tab-pane" id="tab2-4">
       <h3 className="title text-primary">Terms and Conditions</h3>
@@ -143,7 +145,7 @@ class FormSignUp extends React.Component {
         and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
         into electronic typesetting, remaining essentially unchanged.</p>
       <div className="d-flex align-items-center">
-        <Checkbox color="primary"/> <span>I agree with the Terms and Conditions.</span>
+        <Checkbox color="primary" /> <span>I agree with the Terms and Conditions.</span>
       </div>
     </div>
   }
@@ -165,72 +167,72 @@ class FormSignUp extends React.Component {
   }
 
 
-    
+
   handleSubmit = () => {
     const url = "http://localhost:3000/apiInsertarAntojo";
     const self = this;
     //const body = this.getSteps()
     console.log(self.state);
-    request.post(url,{form:self.state},
+    request.post(url, { form: self.state },
       function optionalCallback(err, httpResponse, body) {
-      if (err) {
-        return console.error('upload failed:', err);
-      }
-      self.handleGetAntojos();
-      self.handleReset();
-    });    
-    console.log('acabo el submit'); 
-    
+        if (err) {
+          return console.error('upload failed:', err);
+        }
+        self.handleGetAntojos();
+        self.handleReset();
+      });
+    console.log('acabo el submit');
+
   };
 
 
   handleGetAntojos = () => {
     const url = "http://localhost:3000/api-verAntojos/";
-    const {antojos} = this.state
+    const { antojos } = this.state
     fetch(url, {
-      method : 'GET',
-      headers : {username: userLogged.usuario},
+      method: 'GET',
+      headers: { username: userLogged.usuario },
     }
     )
-    .then(response => response.json())
-    .then((repos) => {
+      .then(response => response.json())
+      .then((repos) => {
         console.log(repos);
         console.log(repos.length);
         var obSubmitEditing = this.onAddTodo
         //const {repos} =this.state;
         if (!repos) return;
         obSubmitEditing(repos);
-        this.setState({repos : ""});
-      }); 
+        this.setState({ repos: "" });
+      });
   };
 
   onAddTodo = (text) => {
-    const {todos} = this.state
+    const { todos } = this.state
 
     this.setState({
       todos: text,
     })
   }
 
-  
+
   handleDeleteCraving = (arraySelected) => {
     console.log(arraySelected, 'arraySelected');
     const url = "http://localhost:3000/apiBorrarAntojo";
     const self = this;
     const arraySelectedString = JSON.stringify(arraySelected);
-    request.post(url,{form:{arraySelect: arraySelectedString}},
+    request.post(url, { form: { arraySelect: arraySelectedString } },
       function optionalCallback(err, httpResponse, body) {
-      if (err) {
-        return console.error('handleDeleteCraving:err', err);
-      }
-      self.handleGetAntojos();
-      console.log('DeleteCraving',httpResponse);
-    });    
+        if (err) {
+          return console.error('handleDeleteCraving:err', err);
+        }
+        self.handleGetAntojos();
+        console.log('DeleteCraving', httpResponse);
+      });
   };
 
 
   handleNext = () => {
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
     const nextStep = activeStep + 1;
     if (nextStep === this.getSteps().length) {
       this.handleSubmit();
@@ -240,7 +242,7 @@ class FormSignUp extends React.Component {
     });
   };
 
-  handleChange (e) {
+  handleChange(e) {
     const n = e.target.name; //en n me guardas el contenido que tiene name
     const valor = e.target.value;
     this.setState({
@@ -248,10 +250,10 @@ class FormSignUp extends React.Component {
     })
   };
 
-  
-    
+
+
   handleBack = () => {
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
     this.setState({
       activeStep: activeStep - 1,
     });
@@ -265,22 +267,22 @@ class FormSignUp extends React.Component {
 
   render() {
     const steps = this.getSteps();
-    const {activeStep} = this.state;
-    const {todos} = this.state;
-    const {value} = this.state;
+    const { activeStep } = this.state;
+    const { todos } = this.state;
+    const { value } = this.state;
     //const {antojos} = this.state
     return (
-      <div className="w-100">
+      <div className="w-100 animated slideInUpTiny animation-duration-3" >
         <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((label, index) => {
             return (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
-              </Step>  
-                );
+              </Step>
+            );
           })}
         </Stepper>
-        <div>
+        <div >
           {this.state.activeStep === steps.length ? (
             <div>
               <Typography className="my-2">
@@ -289,31 +291,39 @@ class FormSignUp extends React.Component {
               <Button onClick={this.handleReset}>Reset</Button>
             </div>
           ) : (
-            <div>
-              {this.getStepContent(activeStep)}
               <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={this.handleBack}
-                  className="mr-2"
-                >
-                  Back
+                {this.getStepContent(activeStep)}
+                <div>
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={this.handleBack}
+                    className="mr-2"
+                  >
+                    Back
                 </Button>
-                <Button variant="contained" color="primary" onClick={this.handleNext}>
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
+                  <Button variant="contained" color="primary" onClick={this.handleNext}>
+                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                  </Button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
-        <Table 
-        list = {todos}
-        onClickItem = {this.handleGetAntojos}
-        deleteCraving = {this.handleDeleteCraving}
-        />
 
 
-        { /*<Table antojos={this.state.antojos}/>*/ }
+        <div className="row mb-md-3">
+          <CardBox styleName="col-12" cardStyle="p-0"
+            headerOutside >
+            <Table
+              list={todos}
+              onClickItem={this.handleGetAntojos}
+              deleteCraving={this.handleDeleteCraving}
+            />
+          </CardBox>
+        </div>
+
+
+
+        { /*<Table antojos={this.state.antojos}/>*/}
       </div>
     );
   }

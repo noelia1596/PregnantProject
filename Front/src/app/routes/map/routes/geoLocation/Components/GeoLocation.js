@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Circle, GoogleMap, InfoWindow, withGoogleMap} from "react-google-maps";
+import React, { Component } from "react";
+import { Circle, GoogleMap, InfoWindow, withGoogleMap } from "react-google-maps";
 import canUseDOM from "can-use-dom";
 import raf from "raf";
 
@@ -53,13 +53,13 @@ export default class GeolocationExample extends Component {
   };
 
   isUnmounted = false;
-
+  //AIzaSyCZQdWZWsNyaKL30EbvVherj04c9HcqFc8
   componentDidMount() {
     const tick = () => {
       if (this.isUnmounted) {
         return;
       }
-      this.setState({radius: Math.max(this.state.radius - 20, 0)});
+      this.setState({ radius: Math.max(this.state.radius - 20, 0) });
 
       if (this.state.radius > 200) {
         raf(tick);
@@ -100,9 +100,9 @@ export default class GeolocationExample extends Component {
     return (
       <GeolocationExampleGoogleMap
         containerElement={
-          <div className="embed-responsive embed-responsive-21by9"/>
+          <div className="embed-responsive embed-responsive-21by9" />
         }
-        mapElement={<div className="embed-responsive-item"/>}
+        mapElement={<div className="embed-responsive-item" />}
         center={this.state.center}
         content={this.state.content}
         radius={this.state.radius}

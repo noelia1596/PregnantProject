@@ -9,6 +9,8 @@ import { extraerTiemposPartes } from './tiempos'
 import './css.css'
 import request from 'request';
 import Table from './tabla/index';
+import CardBox from 'components/CardBox/index';
+import IntlMessages from 'util/IntlMessages';
 
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
 const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
@@ -69,20 +71,20 @@ class App extends Component {
 
 
 	handleVerContracciones = () => {
-    const url = "http://localhost:3000/api-verContracciones/";
-    fetch(url, {
-      method : 'GET',
-      headers : {username: userLogged.usuario},
-    }
-    )
-    .then(response => response.json())
-    .then((repos) => {
-        console.log(repos);
-        console.log(repos.length);
-        if (!repos) return;
-        this.setState({todos : repos });
-      }); 
-  };
+		const url = "http://localhost:3000/api-verContracciones/";
+		fetch(url, {
+			method: 'GET',
+			headers: { username: userLogged.usuario },
+		}
+		)
+			.then(response => response.json())
+			.then((repos) => {
+				console.log(repos);
+				console.log(repos.length);
+				if (!repos) return;
+				this.setState({ todos: repos });
+			});
+	};
 
 
 
@@ -117,9 +119,9 @@ class App extends Component {
 				segundos,
 				milisegundos
 			} = extraerTiemposPartes(corriente - inicio)
-			const {todos} = this.state;
+		const { todos } = this.state;
 		return (
-			<div className= 'estilo'>
+			<div className='estilo'>
 				<div className="crono">
 					<Pantalla
 						horas={horas}
@@ -133,11 +135,17 @@ class App extends Component {
 
 					/>
 				</div>
-				<Table
-					data = {todos}
-				/>
+				<div className="row mb-md-3">
+					<CardBox styleName="col-12" cardStyle="p-0" heading={<IntlMessages id="sidebar.components.contracciones" />}
+						headerOutside>
+						<Table
+							data={todos}
+						/>
+					</CardBox>
+				</div>
+
 			</div>
-			
+
 		)
 	}
 }

@@ -1,4 +1,7 @@
 {
+  "sidebar.components.contraccion": "Contraction",
+  "sidebar.components.contracciones": "Contractions",
+  "sidebar.components.geolocalizacion": "Geolocation",
   "sidebar.components.cronometro": "Chronometer",
   "sidebar.components.calendario": "Calendar",
   "sidebar.components.Evolucionbebe": "Evolution of the baby",
@@ -416,7 +419,6 @@
   "component.carousel.productTxt": "A Horizontal Grid View Carousel",
   "component.carousel.testimonial": "Testimonial Carousel",
   "component.carousel.testimonialTxt": "One item carousel at a time",
-
   "component.chips.outline": "Outline Chip",
   "component.chips.chipWithText": "Chip With Text Avatar",
   "component.chips.clickable": "Clickable Chip",
@@ -428,7 +430,6 @@
   "component.chips.withInput": "Chips Implementation With Input Box",
   "component.dividers.list": "List Dividers",
   "component.dividers.inset": "Inset Dividers",
-
   "component.drawer.persistent": "Persistent Drawer",
   "component.drawer.permanent": "Permanent Drawer",
   "component.drawer.mini": "Mini Drawer",

@@ -13,7 +13,7 @@ export const sendbirdConst = new SendBird({ 'appId': 'DE094FD1-0C99-4EC4-B2F5-AA
 
 
 export const MEDIA_BASE_PATH = 'https://s3.amazonaws.com/medifellow/';
-export const API_KEY = 'AIzaSyBY5bX_bO2rDLnF3NKDk6IKY6WYYWCHJ6M';
+export const API_KEY = 'AIzaSyDz3SiXRw-TIV4WxyKE3bMghjkhNbnQfNU';
 export const DEFAULT_PROFILE_PIC = 'user_profiles/default_user.png';
 export const REGEX_VALID_URL = new RegExp(
   "^" +

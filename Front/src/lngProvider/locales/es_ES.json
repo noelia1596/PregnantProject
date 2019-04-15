@@ -1,6 +1,7 @@
-
-
 {
+  "sidebar.components.contraccion": "Contracción",
+  "sidebar.components.contracciones": "Contracciones",
+  "sidebar.components.geolocalizacion": "Geolocalización",
   "sidebar.components.cronometro": "Cronómetro",
   "sidebar.components.calendario": "Calendario",
   "sidebar.components.Evolucionbebe": "Evolución del bebé",
