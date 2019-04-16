@@ -8,9 +8,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import IntlMessages from 'util/IntlMessages';
 
 let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
-
+//const m = moment.locale('es')
 const localizer = BigCalendar.momentLocalizer(moment);
 
 class Basic extends React.Component {
@@ -42,17 +43,18 @@ class Basic extends React.Component {
           }}
         />
         <Dialog open={this.state.open}>
-          <DialogTitle>Evento</DialogTitle>
+          <DialogTitle>{<IntlMessages id="sidebar.components.evento" />}</DialogTitle>
           <DialogContent>
             <TextField
+
               autoFocus
               margin="dense"
               id="name"
-              label="Escriba Evento"
+
               type="text"
               onChange={(evt) => { this.setState({ valorTexto: evt.target.value }) }}
               fullWidth
-            />
+            /> {<IntlMessages id="sidebar.components.escribaEvento" />}
           </DialogContent>
           <DialogActions>
             <Button
@@ -62,7 +64,7 @@ class Basic extends React.Component {
               }
               }
               color="primary">
-              Guardar
+              {<IntlMessages id="sidebar.components.guardarFecha" />}
             </Button>
           </DialogActions>
         </Dialog>

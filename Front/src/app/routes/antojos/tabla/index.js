@@ -20,19 +20,19 @@ import moment from 'moment';
 
 let counter = 0;
 var antojos = [];
-function createData(id, NombreAntojo, TipoDeAntojo, FechaAntojo, VecesAntojo, aQuienDio ) {
+function createData(id, NombreAntojo, TipoDeAntojo, FechaAntojo, VecesAntojo, aQuienDio) {
   counter += 1;
-  return {id: counter, id, NombreAntojo, TipoDeAntojo, FechaAntojo: moment(FechaAntojo).format('YYYY-MM-DD'), VecesAntojo, aQuienDio};
+  return { id: counter, id, NombreAntojo, TipoDeAntojo, FechaAntojo: moment(FechaAntojo).format('YYYY-MM-DD'), VecesAntojo, aQuienDio };
 }
 
 
 const columnData = [
-    //{id: 'id', align: false, disablePadding: true, label: 'Id'},
-    {id: 'NombreDelAntojo', align: false, disablePadding: true, label: 'Nombre Antojo'},
-    {id: 'TipoDeAntojo', align: true, disablePadding: false, label: 'Tipo De Antojo'},
-    {id: 'FechaDelAntojo', align: true, disablePadding: false, label: 'Fecha Antojo'},
-    {id: 'VecesDadasDelAntojo', align: true, disablePadding: false, label: 'Veces Dadas'},
-    {id: 'AQuienLeDio', align: true, disablePadding: false, label: 'A quien dio'},
+  //{id: 'id', align: false, disablePadding: true, label: 'Id'},
+  { id: 'NombreDelAntojo', align: false, disablePadding: true, label: 'Nombre Antojo' },
+  { id: 'TipoDeAntojo', align: true, disablePadding: false, label: 'Tipo De Antojo' },
+  { id: 'FechaDelAntojo', align: true, disablePadding: false, label: 'Fecha Antojo' },
+  { id: 'VecesDadasDelAntojo', align: true, disablePadding: false, label: 'Veces Dadas' },
+  { id: 'AQuienLeDio', align: true, disablePadding: false, label: 'A quien dio' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -49,18 +49,18 @@ class EnhancedTableHead extends React.Component {
     this.props.onRequestSort(event, property);
   };
 
-  
+
   render() {
-    const {onSelectAllClick, order, orderBy, numSelected, rowCount , antojos} = this.props;
+    const { onSelectAllClick, order, orderBy, numSelected, rowCount, antojos } = this.props;
     //const { antojos } = this.props; 
     return (
       <TableHead>
         <TableRow>
           <TableCell padding="checkbox">
             <Checkbox color="primary"
-                      indeterminate={numSelected > 0 && numSelected < rowCount}
-                      checked={numSelected === rowCount}
-                      onChange={onSelectAllClick}
+              indeterminate={numSelected > 0 && numSelected < rowCount}
+              checked={numSelected === rowCount}
+              onChange={onSelectAllClick}
             />
           </TableCell>
           {columnData.map(column => {
@@ -94,7 +94,7 @@ class EnhancedTableHead extends React.Component {
 
 
 let EnhancedTableToolbar = props => {
-  const {numSelected, selected, deleteCravings} = props;
+  const { numSelected, selected, deleteCravings } = props;
   return (
     <Toolbar
       className="table-header">
@@ -102,25 +102,25 @@ let EnhancedTableToolbar = props => {
         {numSelected > 0 ? (
           <Typography variant="subheading">{numSelected} selected</Typography>
         ) : (
-          <Typography variant="title">Nutrition</Typography>
-        )}
+            <Typography variant="title">Nutrition</Typography>
+          )}
       </div>
-      <div className="spacer"/>
+      <div className="spacer" />
       <div className="actions">
         {numSelected > 0 ? (
           <Tooltip title="Delete">
-            <IconButton aria-label="Delete" 
-             onClick = {event => deleteCravings(selected)}>
+            <IconButton aria-label="Delete"
+              onClick={event => deleteCravings(selected)}>
               <DeleteIcon />
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <FilterListIcon/>
-            </IconButton>
-          </Tooltip>
-        )}
+            <Tooltip title="Filter list">
+              <IconButton aria-label="Filter list">
+                <FilterListIcon />
+              </IconButton>
+            </Tooltip>
+          )}
       </div>
     </Toolbar>
   );
@@ -144,15 +144,15 @@ class EnhancedTable extends React.Component {
       order === 'desc'
         ? antojos.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
         : antojos.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
-        antojos=antojosOrder;
-    this.setState({antojosOrder, order, orderBy});
+    antojos = antojosOrder;
+    this.setState({ antojosOrder, order, orderBy });
   };
   handleSelectAllClick = (event, checked) => {
     if (checked) {
-      this.setState({selected: antojos.map(n => n.id)});
+      this.setState({ selected: antojos.map(n => n.id) });
       return;
     }
-    this.setState({selected: []});
+    this.setState({ selected: [] });
   };
   handleKeyDown = (event, id) => {
     if (keycode(event) === 'space') {
@@ -160,7 +160,7 @@ class EnhancedTable extends React.Component {
     }
   };
   handleClick = (event, id) => {
-    const {selected} = this.state;
+    const { selected } = this.state;
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
 
@@ -177,13 +177,13 @@ class EnhancedTable extends React.Component {
       );
     }
 
-    this.setState({selected: newSelected});
+    this.setState({ selected: newSelected });
   };
   handleChangePage = (event, page) => {
-    this.setState({page});
+    this.setState({ page });
   };
   handleChangeRowsPerPage = event => {
-    this.setState({rowsPerPage: event.target.value});
+    this.setState({ rowsPerPage: event.target.value });
   };
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
@@ -200,22 +200,22 @@ class EnhancedTable extends React.Component {
   }
 
   render() {
-    const { order, orderBy, selected, rowsPerPage, page} = this.state;
+    const { order, orderBy, selected, rowsPerPage, page } = this.state;
     const { list, deleteCraving } = this.props;
-    
-    if (!list || list.length === 0){
-        console.log('No tenemos antojos',list)
-        return <div>no hay datos</div>
-    }else{
+
+    if (!list || list.length === 0) {
+      console.log('No tenemos antojos', list)
+      return <div>no hay datos</div>
+    } else {
       console.log(list, "list!!!");
       antojos = list
     }
     return (
       <div>
-        <EnhancedTableToolbar 
-        numSelected={selected.length} 
-        selected ={selected}
-        deleteCravings = {deleteCraving}
+        <EnhancedTableToolbar
+          numSelected={selected.length}
+          selected={selected}
+          deleteCravings={deleteCraving}
         />
         <div className="flex-auto">
           <div className="table-responsive-material">
@@ -243,7 +243,7 @@ class EnhancedTable extends React.Component {
                       selected={isSelected}
                     >
                       <TableCell padding="checkbox">
-                        <Checkbox color="primary" checked={isSelected}/>
+                        <Checkbox color="primary" checked={isSelected} />
                       </TableCell>
                       <TableCell padding="none">{n.NombreDelAntojo}</TableCell>
                       <TableCell align="none">{n.TipoDeAntojo}</TableCell>

@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment';
-
+import IntlMessages from 'util/IntlMessages';
 
 let id = 0;
 function createData(inicio, final) {
@@ -31,9 +31,9 @@ class BasicTable extends React.Component {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center" className='estiloLetras'><strong>INICIO</strong></TableCell>
-                            <TableCell align="center" className='estiloLetras'><strong>FINAL</strong></TableCell>
-                            <TableCell align="center" className='estiloLetras'><strong>TIEMPO TRANSCURRIDO</strong></TableCell>
+                            <TableCell align="center" className='estiloLetras'><strong>{<IntlMessages id="sidebar.components.inicio" />}</strong></TableCell>
+                            <TableCell align="center" className='estiloLetras'><strong>{<IntlMessages id="sidebar.components.final" />}</strong></TableCell>
+                            <TableCell align="center" className='estiloLetras'><strong>{<IntlMessages id="sidebar.components.tiempoTranscurrido" />}</strong></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

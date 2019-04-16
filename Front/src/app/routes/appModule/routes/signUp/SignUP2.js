@@ -26,11 +26,7 @@ class SignUP2 extends React.Component {
       <div
         className="login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
         <div className="login-content text-center">
-          <div className="login-header">
-            <Link className="app-logo" to="/" title="Jambo">
-              <img src={require("assets/images/logo-color.png")} alt="jambo" title="jambo"/>
-            </Link>
-          </div>
+       
 
           <div className="mb-4">
             <h2><IntlMessages id="appModule.createAccount"/></h2>

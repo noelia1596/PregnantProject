@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-
 import Pantalla from './pantalla'
 import Botones from './botones'
 import moment from 'moment'
-
 import { extraerTiemposPartes } from './tiempos'
-
 import './css.css'
 import request from 'request';
 import Table from './tabla/index';
@@ -52,7 +49,6 @@ class App extends Component {
 
 
 	guardarContracion = () => {
-
 		const url = "http://localhost:3000/apiGuardarTiempos";
 		const momentInicio = moment(this.state.inicio).format('YYYY-MM-DD HH:mm:ss');
 		const momentFinal = moment(this.state.corriente).format('YYYY-MM-DD HH:mm:ss');
@@ -67,7 +63,6 @@ class App extends Component {
 		console.log('acabo el submit');
 		console.log(momentInicio, momentFinal);
 	}
-
 
 
 	handleVerContracciones = () => {
@@ -87,17 +82,12 @@ class App extends Component {
 	};
 
 
-
-
-
 	handleParar() {
 		if (this.state.estaCorriendo) {
 			//si esta funcionando el cronometro ponerlo a cero
 			clearInterval(this._interval)
-
 			this.setState({
 				estaCorriendo: false
-
 			})
 			this.guardarContracion();
 			console.log(extraerTiemposPartes(this.state.corriente - this.state.inicio), 'clearIntervalllllllll');

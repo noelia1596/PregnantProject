@@ -126,7 +126,7 @@ class SidenavContent extends Component {
               to="/app/evolucionamiento">
               <i className="zmdi zmdi-graphic-eq" />
               <span className="nav-text"><IntlMessages
-                id="sidebar.components.evolucionamiento" /></span>
+                id="sidebar.components.evolucion" /></span>
             </NavLink>
           </li>
 
@@ -159,7 +159,17 @@ class SidenavContent extends Component {
                 id="sidebar.components.geolocalizacion" /></span>
             </NavLink>
           </li>
-    
+
+          <li>
+            <NavLink className="prepend-icon"
+              to="/app/nombresBebes">
+              <i className="zmdi zmdi-face" />
+              <span className="nav-text"><IntlMessages
+                id="sidebar.components.nombresBebes" /></span>
+            </NavLink>
+          </li>
+
+          { /* 
 
           <li className="ui_tooltip menu">
             <Button className="void">
@@ -573,7 +583,7 @@ class SidenavContent extends Component {
               </li>
             </ul>
           </li>
- 
+ */}
         </ul>
       </CustomScrollbars>
 

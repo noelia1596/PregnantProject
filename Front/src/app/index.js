@@ -33,6 +33,7 @@ import Evolucionamiento from './routes/evolucionamiento';
 import Calendario from './routes/calendario';
 import Cronometro from './routes/cronometro';
 import Geolocalización from './routes/geolocalización';
+import NombresBebes from './routes/nombresBebes';
 
 class App extends React.Component {
 
@@ -81,6 +82,7 @@ class App extends React.Component {
                 <Route path={`${match.url}/calendario`} component={Calendario} />
                 <Route path={`${match.url}/cronometro`} component={Cronometro} />
                 <Route path={`${match.url}/geolocalizacion`} component={Geolocalización} />
+                <Route path={`${match.url}/nombresBebes`} component={NombresBebes} />
 
 
 

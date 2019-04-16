@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import IntlMessages from 'util/IntlMessages';
 
 const LockScreen2 = () => {
@@ -9,24 +9,19 @@ const LockScreen2 = () => {
     <div
       className="login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
       <div className="login-content text-center">
-        <div className="login-header">
-          <Link className="app-logo" to="/app/app-module/login-2" title="Jambo">
-            <img src={require("assets/images/logo-color.png")} alt="jambo" title="jambo"/>
-          </Link>
-        </div>
 
         <div className="login-avatar mb-4">
-          <img className="rounded-circle size-120" src="https://via.placeholder.com/150x150" alt="" title=""/>
+          <img className="rounded-circle size-120" src="https://via.placeholder.com/150x150" alt="" title="" />
         </div>
         <div className="mb-4">
           <h3>John Smith</h3>
-          <p><IntlMessages id="appModule.enterPasswordUnlock"/></p>
+          <p><IntlMessages id="appModule.enterPasswordUnlock" /></p>
         </div>
         <form method="get" action="/app/app-module/login-2">
           <TextField
             type="password"
             id="required"
-            label={<IntlMessages id="appModule.password"/>}
+            label={<IntlMessages id="appModule.password" />}
             fullWidth
             defaultValue=""
             margin="normal"
@@ -35,14 +30,14 @@ const LockScreen2 = () => {
 
           <div className="mb-2">
             <Button color="primary" variant="contained" component={Link} className="text-white"
-                    to="/app/app-module/login-2">
-              <IntlMessages id="appModule.unlock"/>
+              to="/app/app-module/login-2">
+              <IntlMessages id="appModule.unlock" />
             </Button>
           </div>
         </form>
         <div>
           <Link className="right-arrow" to="/app/app-module/login-2"><IntlMessages
-            id="appModule.signInDiffAccount"/></Link>
+            id="appModule.signInDiffAccount" /></Link>
         </div>
       </div>
     </div>
