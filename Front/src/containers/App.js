@@ -1,44 +1,17 @@
-import React, {Component} from 'react';
-import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import MomentUtils from '@date-io/moment';
-import {MuiPickersUtilsProvider} from 'material-ui-pickers';
-import {Redirect, Route, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {IntlProvider} from 'react-intl'
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { IntlProvider } from 'react-intl'
 import "assets/vendors/style"
 import indigoTheme from './themes/indigoTheme';
-import cyanTheme from './themes/cyanTheme';
-import orangeTheme from './themes/orangeTheme';
-import amberTheme from './themes/amberTheme';
-import pinkTheme from './themes/pinkTheme';
-import blueTheme from './themes/blueTheme';
-import purpleTheme from './themes/purpleTheme';
-import greenTheme from './themes/greenTheme';
-import darkTheme from './themes/darkTheme';
 import AppLocale from '../lngProvider';
-import {
-  AMBER,
-  BLUE,
-  CYAN,
-  DARK_AMBER,
-  DARK_BLUE,
-  DARK_CYAN,
-  DARK_DEEP_ORANGE,
-  DARK_DEEP_PURPLE,
-  DARK_GREEN,
-  DARK_INDIGO,
-  DARK_PINK,
-  DEEP_ORANGE,
-  DEEP_PURPLE,
-  GREEN,
-  INDIGO,
-  PINK
-} from 'constants/ThemeColors';
-
 import MainApp from 'app/index';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import {setInitUrl} from '../actions/Auth';
+import { setInitUrl } from '../actions/Auth';
 import RTL from 'util/RTL';
 import asyncComponent from 'util/asyncComponent';
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
@@ -47,16 +20,16 @@ let userLogged;
  * se usa para validar el usuario que ha entrado
  * @param {*} param0 
  */
-const RestrictedRoute = ({component: Component, authUser, ...rest}) =>
+const RestrictedRoute = ({ component: Component, authUser, ...rest }) =>
   <Route
     {...rest}
     render={props =>
-      authUser||userLogged //si tiene el authUser o el token, entonces sigue esta logic, y abajo **
+      authUser || userLogged //si tiene el authUser o el token, entonces sigue esta logic, y abajo **
         ? <Component {...props} />
         : <Redirect
           to={{
             pathname: '/signin',
-            state: {from: props.location}
+            state: { from: props.location }
           }}
         />}
   />;
@@ -70,93 +43,17 @@ class App extends Component {
     }
   }
 
-  getColorTheme(themeColor, applyTheme) {
-    switch (themeColor) {
-      case INDIGO: {
-        applyTheme = createMuiTheme(indigoTheme);
-        break;
-      }
-      case CYAN: {
-        applyTheme = createMuiTheme(cyanTheme);
-        break;
-      }
-      case AMBER: {
-        applyTheme = createMuiTheme(amberTheme);
-        break;
-      }
-      case DEEP_ORANGE: {
-        applyTheme = createMuiTheme(orangeTheme);
-        break;
-      }
-      case PINK: {
-        applyTheme = createMuiTheme(pinkTheme);
-        break;
-      }
-      case BLUE: {
-        applyTheme = createMuiTheme(blueTheme);
-        break;
-      }
-      case DEEP_PURPLE: {
-        applyTheme = createMuiTheme(purpleTheme);
-        break;
-      }
-      case GREEN: {
-        applyTheme = createMuiTheme(greenTheme);
-        break;
-      }
-      case DARK_INDIGO: {
-        applyTheme = createMuiTheme(indigoTheme);
-        break;
-      }
-      case DARK_CYAN: {
-        applyTheme = createMuiTheme(cyanTheme);
-        break;
-      }
-      case DARK_AMBER: {
-        applyTheme = createMuiTheme(amberTheme);
-        break;
-      }
-      case DARK_DEEP_ORANGE: {
-        applyTheme = createMuiTheme(orangeTheme);
-        break;
-      }
-      case DARK_PINK: {
-        applyTheme = createMuiTheme(pinkTheme);
-        break;
-      }
-      case DARK_BLUE: {
-        applyTheme = createMuiTheme(blueTheme);
-        break;
-      }
-      case DARK_DEEP_PURPLE: {
-        applyTheme = createMuiTheme(purpleTheme);
-        break;
-      }
-      case DARK_GREEN: {
-        applyTheme = createMuiTheme(greenTheme);
-        break;
-      }
-      default : createMuiTheme(indigoTheme);
-    }
-    return applyTheme;
-  }
-
   render() {
-    const {match, location, themeColor, isDarkTheme, locale, authUser, initURL, isDirectionRTL} = this.props;
+    const { match, location, locale, authUser, initURL, isDirectionRTL } = this.props;
     let applyTheme = createMuiTheme(indigoTheme);
-    if (isDarkTheme) {
-      document.body.classList.add('dark-theme');
-      applyTheme = createMuiTheme(darkTheme)
-    } else {
-      applyTheme = this.getColorTheme(themeColor, applyTheme);
-    }
+
     if (location.pathname === '/') {
       if /*(authUser === null) {
         return ( <Redirect to={'/signin'}/> );
       } else if*/ (initURL === '' || initURL === '/' || initURL === '/signin') {
-        return ( <Redirect to={'/app/dashboard/crypto'}/> );
+        return (<Redirect to={'/app/dashboard/crypto'} />);
       } else {
-        return ( <Redirect to={initURL}/> );
+        return (<Redirect to={initURL} />);
       }
     }
     if (isDirectionRTL) {
@@ -172,23 +69,23 @@ class App extends Component {
     //console.log('userLogged',userFromProps);
 
     let userInLocalStorage = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
-    console.log('userInLocalStorage',userInLocalStorage);
-    
+    console.log('userInLocalStorage', userInLocalStorage);
+
     /*  Este if hace que cuando nos metemos con el login o registro, guarda el token de la persona en el ls*/
-    if(userFromProps){
+    if (userFromProps) {
       //console.log('hay token')
-      userLogged=userFromProps;//guardamos en userLogged, el usuario que nos llega por propiedades
+      userLogged = userFromProps;//guardamos en userLogged, el usuario que nos llega por propiedades
       let parseUser = JSON.stringify(userLogged);
       localStorage.setItem(USER_LOGGED_LOCAL_STORAGE, parseUser);
 
-    }else if (userInLocalStorage){
+    } else if (userInLocalStorage) {
       /*cuando queremos pasar de una pag a otra, coge el user que hay guardado en el locaStorage,
       */
       //console.log('tenemos userInLocalStorage', userInLocalStorage);
       userLogged = userInLocalStorage;
-    } else{
+    } else {
       //console.log('no hay token', location)
-      userLogged='';
+      userLogged = '';
     }
 
     return (
@@ -200,12 +97,12 @@ class App extends Component {
             <RTL>
               <div className="app-main">
                 <Switch>
-                  <RestrictedRoute path={`${match.url}app`} authUser={authUser} 
-                                   component={MainApp}/>
-                  <Route path='/signin' component={SignIn}/>
-                  <Route path='/signup' component={SignUp}/>
+                  <RestrictedRoute path={`${match.url}app`} authUser={authUser}
+                    component={MainApp} />
+                  <Route path='/signin' component={SignIn} />
+                  <Route path='/signup' component={SignUp} />
                   <Route
-                    component={asyncComponent(() => import('app/routes/extraPages/routes/404'))}/>
+                    component={asyncComponent(() => import('app/routes/extraPages/routes/404'))} />
                 </Switch>
               </div>
             </RTL>
@@ -216,10 +113,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({settings, auth}) => {
-  const {themeColor, sideNavColor, darkTheme, locale, isDirectionRTL} = settings;
-  const {authUser, initURL} = auth;
-  return {themeColor, sideNavColor, isDarkTheme: darkTheme, locale, isDirectionRTL, authUser, initURL}
+const mapStateToProps = ({ settings, auth }) => {
+  const { themeColor, sideNavColor, darkTheme, locale, isDirectionRTL } = settings;
+  const { authUser, initURL } = auth;
+  return { themeColor, sideNavColor, isDarkTheme: darkTheme, locale, isDirectionRTL, authUser, initURL }
 };
 
-export default connect(mapStateToProps, {setInitUrl})(App);
+export default connect(mapStateToProps, { setInitUrl })(App);
