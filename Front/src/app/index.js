@@ -85,7 +85,6 @@ class App extends React.Component {
                 <Route path={`${match.url}/nombresBebes`} component={NombresBebes} />
 
 
-
                 <Route path={`${match.url}/app-module`} component={AppModule} />
                 <Route path={`${match.url}/chat`}
                   component={asyncComponent(() => import('./routes/chatPanel/basic/index'))} />

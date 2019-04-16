@@ -8,11 +8,8 @@ export const THEME_COLOR = 'theme_color';
 export const DARK_THEME = 'dark_theme';
 export const WINDOW_WIDTH = 'window-width';
 export const SWITCH_LANGUAGE = 'switch-language';
-export const CHANGE_DIRECTION = 'change-direction';
 
-export const CHANGE_NAVIGATION_STYLE = 'change-navigation-style';
 export const HORIZONTAL_NAVIGATION = 'horizontal_navigation';
-export const VERTICAL_NAVIGATION = 'vertical_navigation';
 
 export const HORIZONTAL_MENU_POSITION = 'horizontal_menu_position';
 export const ABOVE_THE_HEADER = 'above_the_header';

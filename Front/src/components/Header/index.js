@@ -86,25 +86,13 @@ class Header extends React.Component {
 
     return (
       <AppBar
-        className={`app-main-header ${(navigationStyle === HORIZONTAL_NAVIGATION && horizontalNavPosition === BELOW_THE_HEADER) ? 'app-main-header-top' : ''}`}>
+        className={`app-main-header ${(horizontalNavPosition === BELOW_THE_HEADER) ? 'app-main-header-top' : ''}`}>
         <Toolbar className="app-toolbar" disableGutters={false}>
-          {navigationStyle === HORIZONTAL_NAVIGATION ?
-            <div className="d-block d-md-none pointer mr-3" onClick={this.onToggleCollapsedNav}>
-              <span className="jr-menu-icon">
-                <span className="menu-icon" />
-              </span>
-            </div>
-            :
-            <IconButton className={`jr-menu-icon mr-3 ${drawerStyle}`} aria-label="Menu"
-              onClick={this.onToggleCollapsedNav}>
-              <span className="menu-icon" />
-            </IconButton>
-          }
 
-
-
-
-
+          <IconButton className={`jr-menu-icon mr-3 ${drawerStyle}`} aria-label="Menu"
+            onClick={this.onToggleCollapsedNav}>
+            <span className="menu-icon" />
+          </IconButton>
           <ul className="header-notifications list-inline ml-auto">
             <li className="list-inline-item">
 
@@ -169,31 +157,7 @@ class Header extends React.Component {
               </Dropdown>
             </li>
 
-            {navigationStyle === HORIZONTAL_NAVIGATION &&
-              <li className="list-inline-item user-nav">
-                <Dropdown
-                  className="quick-menu"
-                  isOpen={this.state.userInfo}
-                  toggle={this.onUserInfoSelect.bind(this)}>
 
-                  <DropdownToggle
-                    className="d-inline-block"
-                    tag="span"
-                    data-toggle="dropdown">
-                    <IconButton className="icon-btn size-30">
-                      <Avatar
-                        alt='...'
-                        src={'https://via.placeholder.com/150x150'}
-                        className="size-30"
-                      />
-                    </IconButton>
-                  </DropdownToggle>
-
-                  <DropdownMenu right>
-
-                  </DropdownMenu>
-                </Dropdown>
-              </li>}
           </ul>
 
           <div className="ellipse-shape"></div>
