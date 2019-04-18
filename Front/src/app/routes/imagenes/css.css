@@ -1,3 +1,10 @@
+.upload_btn_wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding: 2em;
+}
+
 .contenedor {
     height: 20rem;
     width: 25rem;
@@ -18,4 +25,8 @@
     border: 2px solid; 
   }
   
-  
+
+
+
+
+ 

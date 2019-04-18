@@ -82,20 +82,19 @@ class App extends Component {
           {this.state.message ? <p className="text-info">{this.state.message}</p> : ''}
           <br />
           <div className="col-sm-4">
-            <CloudUploadIcon value="Submit" onClick={this.uploadImages}/>
-           {/*<button className="btn btn-primary" value="Submit" onClick={this.uploadImages}>Submit</button>*/ } 
+            <CloudUploadIcon value="Submit" onClick={this.uploadImages} />
+            {/*<button className="btn btn-primary" value="Submit" onClick={this.uploadImages}>Submit</button>*/}
           </div>
         </div>
-        <br /><br /><br />
-
+        <br /><br />
 
 
         <div class="row">
           <div class="col-xs-12">
-            <div id="container" class="float-left">
+            <div className="container" class="float-left">
               {
                 this.state.imageUrls.map((url, i) => (
-                  <img class='contenedor'src={BACK_URL + 'images/uploads/' + url} />
+                  <img class='contenedor' src={BACK_URL + 'images/uploads/' + url} />
                 ))
               }
             </div>
