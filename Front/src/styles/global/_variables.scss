@@ -5,7 +5,7 @@
 //
 // Settings for the `<body>` element.
 
-$body-bg: #f4f4f7;
+$body-bg: #eff2f3;
 $body-color: #575757;
 
 // Fonts
@@ -55,13 +55,13 @@ $grid-gutter-width: 30px;
 //Mixin Values True and False
 $enable-shadows: true;
 
-$app-primary: #3f51b5 !default;
+$app-primary: #e1bee7 ;
 $primary: $app-primary;
-$secondary: #E91E63;
+$secondary: rgba(255, 235, 59, 0.3);
 
-$sidebar-bg: #252525 !default;
-$sidebar-text-color: #a1a1a1 !default;
-$sidebar-bg-darken: darken($sidebar-bg, 3%);
+$sidebar-bg: #ce8ada!default;
+$sidebar-text-color: black ;
+$sidebar-bg-darken: darken($sidebar-bg, 1%);
 $sidebar-hover-color: $white;
 $sidebar-bg-darken-highlight: $app-primary;
 

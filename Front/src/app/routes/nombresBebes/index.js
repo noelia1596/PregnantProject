@@ -1,9 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
 import Team from './team';
-import ContainerHeader from 'components/ContainerHeader';
-import IntlMessages from 'util/IntlMessages';
-
+import './css.css';
 
 const teams = [
     {
@@ -155,12 +153,8 @@ const AboutUs = ({ match }) => {
 
     return (
         <div className="animated slideInUpTiny animation-duration-3">
-            <ContainerHeader
-                match={match}
-                styleName="text-center"
-                title={<IntlMessages id="sidebar.extraPages.aboutUs" />} />
 
-
+            <h1 className='estiloLetras'>TOP 10 NOMBRES DE NIÑOS</h1>
             <Slider className="slick-slider-cr" {...options1}>
                 <div className="slick-slide-item">
                     <Team team={teams[0]} />
@@ -193,7 +187,7 @@ const AboutUs = ({ match }) => {
                     <Team team={teams[9]} />
                 </div>
             </Slider>
-
+            <h1 className='estiloLetras'>TOP 10 NOMBRES DE NIÑAS</h1>
             <Slider className="slick-slider-cr" {...options1}>
                 <div className="slick-slide-item">
                     <Team team={teamss[0]} />

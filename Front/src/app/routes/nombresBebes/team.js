@@ -1,6 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import IntlMessages from 'util/IntlMessages';
 
 const Team = ({ team }) => {
     const { imagen, nombre, origen, significado } = team;
