@@ -7,62 +7,67 @@ import IntlMessages from 'util/IntlMessages';
 
 const teams = [
     {
-        name: 'ALEJANDRO',
-        destination: 'Griego',
-        description: 'Protector de familia, amigos, pareja',
-        image: 'http://localhost:5000/images/fotosNombres/alejandro.jpg'
+        nombre: 'ALEJANDRO',
+        origen: 'Griego',
+        significado: 'Protector de familia, amigos, pareja',
+        imagen: 'http://localhost:5000/images/fotosNombres/alejandro.jpg'
     },
     {
-        name: 'DANIEL',
-        destination: 'Hebreo',
-        description: 'Amistad y cercanía',
-        image: 'http://localhost:5000/images/fotosNombres/daniel.jpg'
+        nombre: 'DANIEL',
+        origen: 'Hebreo',
+        significado: 'Amistad y cercanía',
+        imagen: 'http://localhost:5000/images/fotosNombres/daniel.jpg'
     },
     {
-        name: 'DAVID',
-        destination: 'Hebreo',
-        description: 'Persona de confianza',
-        image: 'http://localhost:5000/images/fotosNombres/david.jpg'
+        nombre: 'DAVID',
+        origen: 'Hebreo',
+        significado: 'Persona de confianza',
+        imagen: 'http://localhost:5000/images/fotosNombres/david.jpg'
     },
     {
-        name: 'PABLO',
-        destination: 'Latín',
-        description: 'Humilde y afable',
-        image: 'http://localhost:5000/images/fotosNombres/pablo.jpg'
+        nombre: 'PABLO',
+        origen: 'Latín',
+        significado: 'Humilde y afable',
+        imagen: 'http://localhost:5000/images/fotosNombres/pablo.jpg'
     },
     {
-        name: 'ADRIÁN',
-        destination: 'Latín',
-        description: 'Personalidad pacifica y templada',
-        image: 'http://localhost:5000/images/fotosNombres/adrian.jpg'
+        nombre: 'ADRIÁN',
+        origen: 'Latín',
+        significado: 'Personalidad pacifica y templada',
+        imagen: 'http://localhost:5000/images/fotosNombres/adrian.jpg'
     },
     {
-        name: 'JAVIER',
-        destination: 'Navarra',
-        description: 'Personalidad seria',
-        image: 'http://localhost:5000/images/fotosNombres/jorge.jpg'
+        nombre: 'JAVIER',
+        origen: 'Navarra',
+        significado: 'Personalidad seria',
+        imagen: 'http://localhost:5000/images/fotosNombres/jorge.jpg'
     },
     {
-        name: 'ÁLVARO',
-        destination: 'Alemania',
-        description: 'Sexto sentido para proteger',
-        image: 'http://localhost:5000/images/fotosNombres/alvaro.jpg'
+        nombre: 'ÁLVARO',
+        origen: 'Alemania',
+        significado: 'Sexto sentido para proteger',
+        imagen: 'http://localhost:5000/images/fotosNombres/alvaro.jpg'
     }, {
-        name: 'SERGIO',
-        destination: 'Latín',
-        description: 'Proteger lo suyo y estar siempre cerca de los suyos',
-        image: 'http://localhost:5000/images/fotosNombres/sergio.jpg'
+        nombre: 'SERGIO',
+        origen: 'Latín',
+        significado: 'Proteger lo suyo y estar siempre cerca de los suyos',
+        imagen: 'http://localhost:5000/images/fotosNombres/sergio.jpg'
     }, {
-        name: 'CARLOS',
-        destination: 'Griego',
-        description: 'Hombre libre o hombre sabio',
-        image: 'http://localhost:5000/images/fotosNombres/carlos.jpg'
+        nombre: 'CARLOS',
+        origen: 'Griego',
+        significado: 'Hombre libre o hombre sabio',
+        imagen: 'http://localhost:5000/images/fotosNombres/carlos.jpg'
     }, {
-        name: 'JORGE',
-        destination: 'Griego',
-        description: 'Personalidad trabajadora y humilde',
-        image: 'http://localhost:5000/images/fotosNombres/jorge.jpg'
-    }, {
+        nombre: 'JORGE',
+        origen: 'Griego',
+        significado: 'Personalidad trabajadora y humilde',
+        imagen: 'http://localhost:5000/images/fotosNombres/jorge.jpg'
+    }
+];
+
+
+const teamss = [
+    {
         nombre: 'LUCÍA',
         origen: 'Latín',
         significado: 'Actitud positiva',
@@ -118,8 +123,7 @@ const teams = [
         origen: 'Alemania',
         significado: 'Luchadora y independiente',
         imagen: 'http://localhost:5000/images/fotosNombres/emma.jpg'
-    }
-];
+    }]
 
 const AboutUs = ({ match }) => {
     const options1 = {
@@ -188,38 +192,41 @@ const AboutUs = ({ match }) => {
                 <div className="slick-slide-item">
                     <Team team={teams[9]} />
                 </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[10]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[11]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[12]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[13]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[14]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[15]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[16]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[17]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[18]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[19]} />
-                </div>
-
             </Slider>
+
+            <Slider className="slick-slider-cr" {...options1}>
+                <div className="slick-slide-item">
+                    <Team team={teamss[0]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[1]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[2]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[3]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[4]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[5]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[6]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[7]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[8]} />
+                </div>
+                <div className="slick-slide-item">
+                    <Team team={teamss[9]} />
+                </div>
+            </Slider>
+
 
         </div>
     );
