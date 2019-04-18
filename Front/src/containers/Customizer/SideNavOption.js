@@ -8,7 +8,7 @@ import {
 
 } from 'constants/ActionTypes'
 
-import { changeNavigationStyle, setDrawerType, setHorizontalMenuPosition } from 'actions/index';
+import { setDrawerType, setHorizontalMenuPosition } from 'actions/index';
 
 import { Button, ButtonGroup } from 'reactstrap';
 
@@ -55,7 +55,7 @@ const mapStateToProps = ({ settings }) => {
 };
 
 export default withRouter(connect(mapStateToProps, {
-  changeNavigationStyle,
+
   setDrawerType,
 })(Customizer));
 

@@ -1,0 +1,17 @@
+.col-md-4{
+    border: 1px solid;
+    margin: 2rem;
+   
+}
+
+
+.card{
+    background-color: rgb(176, 207, 216);
+    width: 6rem;
+    margin: 2rem;
+}
+
+.card-deck{
+    width: 40rem;
+    margin: 0rem;
+}

@@ -85,6 +85,51 @@ const clients = [
   }
 ];
 
+const teamss = [
+  {
+    name: 'Alex Dolgove',
+    destination: 'Co-Founder & CEO',
+    description: 'Nam imperdiet ornare enim ac tempor Suspendisse ac accumsan orci jomnic dr neva ketoli respecotra domeko... ',
+    image: 'https://via.placeholder.com/150x150'
+  },
+  {
+    name: 'Domnic Brown',
+    destination: 'HR Manager',
+    description: 'Nam imperdiet ornare enim ac tempor Suspendisse ac accumsan orci jomnic dr neva ketoli respecotra domeko... ',
+    image:'https://via.placeholder.com/150x150'
+  },
+  {
+    name: 'Stella Johnson',
+    destination: 'BDM',
+    description: 'Nam imperdiet ornare enim ac tempor Suspendisse ac accumsan orci jomnic dr neva ketoli respecotra domeko... ',
+    image: 'https://via.placeholder.com/150x150'
+  },
+  {
+    name: 'Domnic Harris',
+    destination: 'HR Manager',
+    description: 'Nam imperdiet ornare enim ac tempor Suspendisse ac accumsan orci jomnic dr neva ketoli respecotra domeko... ',
+    image: 'https://via.placeholder.com/150x150'
+  },
+  {
+    name: 'Garry Sobars',
+    destination: 'Co-Founder & CEO',
+    description: 'Nam imperdiet ornare enim ac tempor Suspendisse ac accumsan orci jomnic dr neva ketoli respecotra domeko... ',
+    image: 'https://via.placeholder.com/150x150'
+  },
+  {
+    name: 'John Smith',
+    destination: 'BDM',
+    description: 'Nam imperdiet ornare enim ac tempor Suspendisse ac accumsan orci jomnic dr neva ketoli respecotra domeko... ',
+    image:'https://via.placeholder.com/150x150'
+  },
+  {
+    name: 'kadir',
+    destination: 'BDM',
+    description: 'Nam imperdiet ornare enim ac tempor Suspendisse ac accumsan orci jomnic dr neva ketoli respecotra domeko... ',
+    image: 'https://via.placeholder.com/150x150'
+  }
+];
+
 
 const AboutUs = ({match}) => {
 
@@ -167,6 +212,32 @@ const AboutUs = ({match}) => {
     ]
   };
 
+  const options3 = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 950,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 560,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false
+        }
+      }
+    ]
+  };
 
   return (
     <div className="animated slideInUpTiny animation-duration-3">
@@ -238,7 +309,32 @@ const AboutUs = ({match}) => {
           <Client client={clients[2]}/>
         </div>
       </Slider>
+
+      <Slider className="slick-slider-cr" {...options3}>
+        <div className="slick-slide-item">
+          <Team team={teamss[0]}/>
+        </div>
+        <div className="slick-slide-item">
+          <Team team={teamss[1]}/>
+        </div>
+        <div className="slick-slide-item">
+          <Team team={teamss[2]}/>
+        </div>
+        <div className="slick-slide-item">
+          <Team team={teamss[3]}/>
+        </div>
+        <div className="slick-slide-item">
+          <Team team={teamss[4]}/>
+        </div>
+        <div className="slick-slide-item">
+          <Team team={teamss[5]}/>
+        </div>
+        <div className="slick-slide-item">
+          <Team team={teamss[6]}/>
+        </div>
+      </Slider>
     </div>
+    
   );
 };
 

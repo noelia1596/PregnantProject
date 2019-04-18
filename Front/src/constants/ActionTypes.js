@@ -11,6 +11,7 @@ export const SWITCH_LANGUAGE = 'switch-language';
 
 export const HORIZONTAL_NAVIGATION = 'horizontal_navigation';
 
+
 export const HORIZONTAL_MENU_POSITION = 'horizontal_menu_position';
 export const ABOVE_THE_HEADER = 'above_the_header';
 export const INSIDE_THE_HEADER = 'inside_the_header';

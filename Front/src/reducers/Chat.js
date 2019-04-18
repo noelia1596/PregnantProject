@@ -14,7 +14,7 @@ import {
   UPDATE_MESSAGE_VALUE,
   UPDATE_SEARCH_CHAT_USER
 } from 'constants/ActionTypes';
-import {USER_INFO_STATE} from '../constants/ActionTypes';
+import { USER_INFO_STATE } from '../constants/ActionTypes';
 
 
 const INIT_STATE = {
@@ -78,13 +78,13 @@ export default (state = INIT_STATE, action) => {
       }
     }
     case ON_TOGGLE_DRAWER: {
-      return {...state, drawerState: !state.drawerState}
+      return { ...state, drawerState: !state.drawerState }
     }
     case ON_HIDE_LOADER: {
-      return {...state, loader: false}
+      return { ...state, loader: false }
     }
     case USER_INFO_STATE: {
-      return {...state, userState: action.payload}
+      return { ...state, userState: action.payload }
     }
 
     case SUBMIT_COMMENT: {
@@ -102,7 +102,7 @@ export default (state = INIT_STATE, action) => {
         message: '',
         conversationList: state.conversationList.map(conversationData => {
           if (conversationData.id === state.conversation.id) {
-            return {...state.conversation, conversationData: updatedConversation};
+            return { ...state.conversation, conversationData: updatedConversation };
           } else {
             return conversationData;
           }
@@ -112,11 +112,11 @@ export default (state = INIT_STATE, action) => {
     }
 
     case UPDATE_MESSAGE_VALUE: {
-      return {...state, message: action.payload}
+      return { ...state, message: action.payload }
     }
 
     case UPDATE_SEARCH_CHAT_USER: {
-      return {...state, searchChatUser: action.payload}
+      return { ...state, searchChatUser: action.payload }
     }
 
     case FETCH_ALL_CHAT_USER_SUCCESS: {
