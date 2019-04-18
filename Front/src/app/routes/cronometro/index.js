@@ -126,7 +126,7 @@ class App extends Component {
 					/>
 				</div>
 				<div className="row mb-md-3">
-					<CardBox styleName="col-12" cardStyle="p-0" heading={<IntlMessages id="sidebar.components.contracciones" />}
+					<CardBox styleName="col-12" cardStyle="p-0"
 						headerOutside>
 						<Table
 							data={todos}
