@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Team = ({ team }) => {
-    const { imagen, nombre, origen, significado } = team;
+const Name = ({ name }) => {
+    const { imagen, nombre, origen, significado } = name;
 
     return (
         <div className="m-1">
@@ -19,4 +19,4 @@ const Team = ({ team }) => {
 };
 
 
-export default Team;
+export default Name;

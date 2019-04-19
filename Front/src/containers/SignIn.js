@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import IntlMessages from 'util/IntlMessages';
@@ -12,17 +11,16 @@ import {
   showAuthLoader,
   userSignIn,
 } from 'actions/Auth';
-import signUp from './SignUp';
 import request from 'request';
 import { Redirect } from 'react-router-dom';
-
+import './csss.css';
 
 
 class SignIn extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: 'demo@example.com',
+      email: 'example@example.com',
       password: 'demo#123'
     }
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 import Slider from "react-slick";
-import Team from './team';
+import Name from './Name';
 import './css.css';
 
-const teams = [
+const childrenNames = [
     {
         nombre: 'ALEJANDRO',
         origen: 'Griego',
@@ -64,7 +64,7 @@ const teams = [
 ];
 
 
-const teamss = [
+const girlsNames = [
     {
         nombre: 'LUCÍA',
         origen: 'Latín',
@@ -123,7 +123,7 @@ const teamss = [
         imagen: 'http://localhost:5000/images/fotosNombres/emma.jpg'
     }]
 
-const AboutUs = ({ match }) => {
+const SliderNames = ({ match }) => {
     const options1 = {
         dots: true,
         arrows: false,
@@ -156,75 +156,28 @@ const AboutUs = ({ match }) => {
 
             <h1 className='estiloLetras'>TOP 10 NOMBRES DE NIÑOS</h1>
             <Slider className="slick-slider-cr" {...options1}>
-                <div className="slick-slide-item">
-                    <Team team={teams[0]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[1]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[2]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[3]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[4]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[5]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[6]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[7]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[8]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teams[9]} />
-                </div>
+                {childrenNames.map((e) => {
+                    return (
+                        <div className="slick-slide-item">
+                            <Name name={e} />
+                        </div>
+                    )
+                })}
             </Slider>
+
             <h1 className='estiloLetras'>TOP 10 NOMBRES DE NIÑAS</h1>
             <Slider className="slick-slider-cr" {...options1}>
-                <div className="slick-slide-item">
-                    <Team team={teamss[0]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[1]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[2]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[3]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[4]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[5]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[6]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[7]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[8]} />
-                </div>
-                <div className="slick-slide-item">
-                    <Team team={teamss[9]} />
-                </div>
+                {girlsNames.map((e) => {
+                    return (
+                        <div className="slick-slide-item">
+                            <Name name={e} />
+                        </div>
+                    )
+                })}
             </Slider>
-
-
         </div>
     );
 };
 
-export default AboutUs;
+export default SliderNames;
 

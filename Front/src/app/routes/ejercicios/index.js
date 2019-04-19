@@ -41,7 +41,7 @@ const items = [
     mes: 3
   }, {
     id: 7,
-    src: "https://www.youtube.com/embed/0fA5NvLdySQ", 
+    src: "https://www.youtube.com/embed/0fA5NvLdySQ",
     mes: 3
   }
 ];
@@ -85,22 +85,10 @@ class videos extends React.Component {
   render() {
     const { activeIndex } = this.state;
     var slides;
-    if(monthDifference <4){
-      slides = items.filter( (ele)=>{return ele.mes ==1}).map((item) => {
+    if (monthDifference < 4) {
+      slides = items.filter((ele) => { return ele.mes == 1 }).map((item) => {
         return (
-          <CarouselItem className= 'estilos'
-            key={item.id}
-            onExiting={this.onExiting}
-            onExited={this.onExited}>
-            <iframe width="100%"  height="600rem" src={item.src} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
-            <CarouselCaption className="text-danger" />
-          </CarouselItem>
-        );
-      });
-    }else if (monthDifference >= 4 &&  monthDifference < 7){
-      slides = items.filter( (ele)=>{return ele.mes ==2}).map((item) => {
-        return (
-          <CarouselItem className= 'estilos'
+          <CarouselItem className='estilos'
             key={item.id}
             onExiting={this.onExiting}
             onExited={this.onExited}>
@@ -109,19 +97,31 @@ class videos extends React.Component {
           </CarouselItem>
         );
       });
-    }else if (monthDifference >= 7 && monthDifference <= 9){
-      slides = items.filter( (ele)=>{return ele.mes ==3}).map((item) => {
+    } else if (monthDifference >= 4 && monthDifference < 7) {
+      slides = items.filter((ele) => { return ele.mes == 2 }).map((item) => {
         return (
-          <CarouselItem className= 'estilos'
+          <CarouselItem className='estilos'
             key={item.id}
             onExiting={this.onExiting}
             onExited={this.onExited}>
-            <iframe width="100%"  height="600rem" src={item.src} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+            <iframe width="100%" height="600rem" src={item.src} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
             <CarouselCaption className="text-danger" />
           </CarouselItem>
         );
       });
-    }else{
+    } else if (monthDifference >= 7 && monthDifference <= 9) {
+      slides = items.filter((ele) => { return ele.mes == 3 }).map((item) => {
+        return (
+          <CarouselItem className='estilos'
+            key={item.id}
+            onExiting={this.onExiting}
+            onExited={this.onExited}>
+            <iframe width="100%" height="600rem" src={item.src} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+            <CarouselCaption className="text-danger" />
+          </CarouselItem>
+        );
+      });
+    } else {
       return <div></div>
     }
     return (
