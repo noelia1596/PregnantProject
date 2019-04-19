@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactPlayer from 'react-player'
 import './css.css';
 import moment from 'moment';
 import { Carousel, CarouselCaption, CarouselControl, CarouselIndicators, CarouselItem } from 'reactstrap';
@@ -9,11 +8,9 @@ const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 const FechaActual = moment();
 const fechaEmbarazo = moment(userLogged.FechaEmbarazo);
 const monthDifference = FechaActual.diff(fechaEmbarazo, 'months');
-console.log(monthDifference, 'monthDifference')
 
 
 const items = [
-
   {
     id: 1,
     src: 'https://www.youtube.com/embed/jsPderhu-0k',
@@ -141,59 +138,3 @@ class videos extends React.Component {
 }
 
 export default videos;
-
-
-/*
-class videos extends React.Component {
-
-  render() {
-    console.log(monthDifference <4,'1111111')
-    console.log(monthDifference == 4 || monthDifference <7,'22222222222')
-    console.log(monthDifference == 7 || monthDifference <9,'3333333333')
-
-    if( monthDifference < 4 ){
-      return(
-        <ReactPlayer
-        url='https://www.youtube.com/watch?v=jsPderhu-0k'
-        className='react-player'
-        playing = {false}
-        margin-left = '1rem'
-        margin-right = '1rem'
-        height='30rem'
-      />
-      )
-
-    } else if (monthDifference >= 4 &&  monthDifference < 7){
-      return(
-      <ReactPlayer
-      url='https://www.youtube.com/watch?v=B4OuYdOgH7c '
-      className='react-player'
-      playing = {false}
-      margin-left = '1rem'
-      margin-right = '1rem'
-      height='30rem'
-      />
-      )
-    }else if ( monthDifference >= 7 && monthDifference <= 9 ){
-      return(
-
-      <div>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0fA5NvLdySQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/j00jEuPkz3I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rXsas9nyoMI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/o2AtNJFDuaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
-      </div>
-
-      )
-    }else{
-      return(
-        <div></div>
-      )
-
-    }
-
-  }
-}
-export default videos;*/
