@@ -1,4 +1,8 @@
 {
+  "sidebar.components.razonAcidoFolico": "Las mujeres embarazadas deberían consumir al menos 0,4 miligramos de ácido fólico diariamente durante tres meses después de quedar embarazadas. Los estudios demuestran que esto reduce significativamente el riesgo de que un bebé tenga defectos del tubo neural.",
+  "sidebar.components.acidoFolico": "Razones por las cuales una embarazada debe tomar ácido fólico",
+  "sidebar.components.noticiasInteres": "NOTICIAS DE INTERÉS",
+  "sidebar.components.paginaPrincipal": "Pagina principal",
   "sidebar.components.nombresBebes": "Nombres de bebés",
   "sidebar.components.escribaEvento": "Escriba evento",
   "sidebar.components.evento": "Evento",

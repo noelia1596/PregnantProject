@@ -91,7 +91,7 @@ class App extends React.Component {
                 <Route path={`${match.url}/chat-redux`}
                   component={asyncComponent(() => import('./routes/chatPanel/redux/index'))} />
                 <Route path={`${match.url}/extra-pages`} component={ExtraPages} />
-                <Route component={asyncComponent(() => import('app/routes/extraPages/routes/404'))} />
+                <Route component={asyncComponent(() => import('app/routes/paginaPrincipal/index'))} />
               </Switch>
             </div>
             <Footer />
