@@ -49,17 +49,16 @@ const Blog = ({ match }) => {
                         <img className="card-img-top" src="http://localhost:5000/images/fotosBlog/padre.jpg" alt="post" />
 
                         <div className="card-body">
-                            <h3>Síndrome de «Couvade»: Cuando los padres desarrollan los síntomas del embarazo</h3>
+                            <h3><IntlMessages id="sidebar.components.embarazoPadre" /></h3>
                             <div className="meta-wrapper">
                                 <span className="meta-date"><i className="zmdi zmdi-calendar-note zmdi-hc-lg" />25 May, 2018</span>
                             </div>
                             <p className="card-text">
-                                Habitualmente aparecen en el primer trimestre, disminuyen en el segundo y reaparecen en el tercer trimestre del embarazo.
-                                 Puede incluir tanto síntomas <strong>físicos</strong> como <strong>psicológicos</strong>. <br /><br />Entre los <strong>físicos</strong> estarían las náuseas,
-            la sensación de hinchazón, los cambios en el apetito, los «antojos»,el aumento de peso,el dolor de cabeza,los calambres en las piernas,
-                                   los dolores de espalda y las molestias urinarias o genitales. <br />Entre los <strong>psicológicos</strong>se incluyen cambios en el patrón de sueño,
-síntomas de ansiedad, irritabilidad, disminución de la líbido e inquietud.
-              </p>
+                                <strong><IntlMessages id="sidebar.components.embarazoPadreFisicosn" /></strong>
+                                <IntlMessages id="sidebar.components.embarazoPadreFisicos" /> <br />
+                                <strong><IntlMessages id="sidebar.components.embarazoPadrePsicologicosn" /></strong>
+                                <IntlMessages id="sidebar.components.embarazoPadrePsicologicos" />
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -67,16 +66,18 @@ síntomas de ansiedad, irritabilidad, disminución de la líbido e inquietud.
                 <div className="col-md-4 col-sm-5 col-12 animation slideInRight">
                     <div className="sidebar">
                         <div className="card shadow border-0 p-4">
-                            <h3 className="text-uppercase letter-spacing-base mb-3" ><IntlMessages id="sidebar.components.noticiasInteres" /></h3>
+                            <h3 className="text-uppercase letter-spacing-base mb-3" ><IntlMessages id="sidebar.components.tipsEmbarazo" /></h3>
 
 
                             <ul className="categories-list list-unstyled">
-                                <li><span className="jr-link">Technology</span></li>
-                                <li><span className="jr-link">Branding</span></li>
-                                <li><span className="jr-link">Holly</span></li>
-                                <li className="active"><span className="jr-link">Stories</span></li>
-                                <li><span className="jr-link">Designing</span></li>
-                                <li><span className="jr-link">Programing</span></li>
+                                <li><span className="jr-link"><IntlMessages id="sidebar.components.clases" /></span></li>
+                                <li><span className="jr-link"><IntlMessages id="sidebar.components.comunicarnos" />
+                                </span></li>
+
+                                <li><span className="jr-link"><IntlMessages id="sidebar.components.descansoBebe" /></span></li>
+                                <li className="active"><span className="jr-link"><IntlMessages id="sidebar.components.cuidarPiel" /></span></li>
+                                <li><span className="jr-link"><IntlMessages id="sidebar.components.mimarMente" /></span></li>
+                                <li><span className="jr-link"><IntlMessages id="sidebar.components.ropaComoda" /></span></li>
                             </ul>
                         </div>
 
@@ -106,6 +107,9 @@ síntomas de ansiedad, irritabilidad, disminución de la líbido e inquietud.
             </div>
         </div>
     );
+
+
+
 };
 
 export default Blog;
