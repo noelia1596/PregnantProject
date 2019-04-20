@@ -17,6 +17,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import moment from 'moment';
+import IntlMessages from 'util/IntlMessages';
+
 
 let counter = 0;
 var antojos = [];
@@ -28,11 +30,11 @@ function createData(id, NombreAntojo, TipoDeAntojo, FechaAntojo, VecesAntojo, aQ
 
 const columnData = [
   //{id: 'id', align: false, disablePadding: true, label: 'Id'},
-  { id: 'NombreDelAntojo', align: false, disablePadding: true, label: 'Nombre Antojo' },
-  { id: 'TipoDeAntojo', align: true, disablePadding: false, label: 'Tipo De Antojo' },
-  { id: 'FechaDelAntojo', align: true, disablePadding: false, label: 'Fecha Antojo' },
-  { id: 'VecesDadasDelAntojo', align: true, disablePadding: false, label: 'Veces Dadas' },
-  { id: 'AQuienLeDio', align: true, disablePadding: false, label: 'A quien dio' },
+  { id: 'NombreDelAntojo', align: false, disablePadding: true, label: <IntlMessages id="sidebar.components.nombreAntojo" /> },
+  { id: 'TipoDeAntojo', align: true, disablePadding: false, label: <IntlMessages id="sidebar.components.tipoAntojo" /> },
+  { id: 'FechaDelAntojo', align: true, disablePadding: false, label: <IntlMessages id="sidebar.components.fechaAntojo" /> },
+  { id: 'VecesDadasDelAntojo', align: true, disablePadding: false, label: <IntlMessages id="sidebar.components.vecesAntojo" /> },
+  { id: 'AQuienLeDio', align: true, disablePadding: false, label: <IntlMessages id="sidebar.components.dioAntojo" /> },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -102,7 +104,7 @@ let EnhancedTableToolbar = props => {
         {numSelected > 0 ? (
           <Typography variant="subheading">{numSelected} selected</Typography>
         ) : (
-            <Typography variant="title">Nutrition</Typography>
+            <Typography variant="title">Cravings</Typography>
           )}
       </div>
       <div className="spacer" />

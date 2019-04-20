@@ -121,43 +121,6 @@ class Header extends React.Component {
 
 
             </li>
-            <li className="list-inline-item app-tour">
-              <Dropdown
-                className="quick-menu"
-                isOpen={this.state.appNotification}
-                toggle={this.onAppNotificationSelect.bind(this)}>
-
-                <DropdownToggle
-                  className="d-inline-block"
-                  tag="span"
-                  data-toggle="dropdown">
-                  <IconButton className="icon-btn">
-                    <i className="zmdi zmdi-notifications-none icon-alert animated infinite wobble" />
-                  </IconButton>
-                </DropdownToggle>
-
-
-              </Dropdown>
-            </li>
-            <li className="list-inline-item mail-tour">
-              <Dropdown
-                className="quick-menu"
-                isOpen={this.state.mailNotification}
-                toggle={this.onMailNotificationSelect.bind(this)}
-              >
-                <DropdownToggle
-                  className="d-inline-block"
-                  tag="span"
-                  data-toggle="dropdown">
-
-                  <IconButton className="icon-btn">
-                    <i className="zmdi zmdi-comment-alt-text zmdi-hc-fw" />
-                  </IconButton>
-                </DropdownToggle>
-              </Dropdown>
-            </li>
-
-
           </ul>
 
           <div className="ellipse-shape"></div>

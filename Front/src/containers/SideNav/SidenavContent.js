@@ -90,7 +90,12 @@ class SidenavContent extends Component {
         <ul className="nav-menu">
 
           <li className="nav-header">
-            <IntlMessages id="sidebar.main" />
+            <NavLink className="prepend-icon"
+              to="/app/home">
+              <i className="zmdi zmdi-home" />
+              <span className="nav-text"><IntlMessages
+                id="sidebar.components.principal" /></span>
+            </NavLink>
           </li>
 
           {/* MIO */}

@@ -40,7 +40,7 @@ class FormSignUp extends React.Component {
   }
 
   getSteps() {
-    return ['NameofCravings', 'TypeofCraving', 'DateofCraving', 'TimesofCraving', 'WhoGavetheWhim'];
+    return ['Name of Cravings', 'Type of Craving', 'Date of Craving', 'Times of Craving', 'Who Gave the Whim'];
   }
 
 
@@ -52,7 +52,7 @@ class FormSignUp extends React.Component {
             <TextField
               onChange={this.handleChange}
               name='NombreAntojo'
-              id="NameofCravings"
+              id="Name of Cravings"
               label="Name of Cravings"
               margin="normal"
               fullWidth
@@ -71,7 +71,7 @@ class FormSignUp extends React.Component {
             <TextField
               onChange={this.handleChange}
               name='TipoDeAntojo'
-              id="TypeofCraving"
+              id="Type of Craving"
               label="Type of Cravings"
               margin="normal"
               fullWidth
@@ -106,7 +106,7 @@ class FormSignUp extends React.Component {
             <TextField
               onChange={this.handleChange}
               name='VecesAntojo'
-              id="TimesofCraving"
+              id="Times of Craving"
               label="Times of Craving"
               margin="normal"
               fullWidth
@@ -125,7 +125,7 @@ class FormSignUp extends React.Component {
             <TextField
               onChange={this.handleChange}
               name='aQuienDio'
-              id="WhoGavetheWhim"
+              id="Who Gave the Whim"
               label="Who Gave the Whim"
               margin="normal"
               fullWidth

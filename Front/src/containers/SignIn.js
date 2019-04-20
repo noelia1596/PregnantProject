@@ -57,7 +57,7 @@ class SignIn extends React.Component {
   render() {
     if (this.state.userLogged) {
       console.log('token', this.state.userLogged)
-      return <Redirect to={{ pathname: '/app/sample-page', userLogged: this.state.userLogged }} />
+      return <Redirect to={{ pathname: '/app/home', userLogged: this.state.userLogged }} />
 
     }
     const {

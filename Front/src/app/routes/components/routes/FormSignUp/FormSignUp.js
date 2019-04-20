@@ -14,12 +14,12 @@ import {
   showAuthLoader,
   userSignUp,
 } from 'actions/Auth';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 class FormSignUp extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       activeStep: 0,
@@ -28,16 +28,16 @@ class FormSignUp extends React.Component {
 
     };
     this.handleChange = this.handleChange.bind(this)
-  
+
   }
 
   getSteps() {
     return ['Account Information', 'Mom Information', 'Dad Information', 'Confirm and Finish'];
   }
-  
-  
+
+
   getAccountInformation() {
-  
+
     return <div>
       <div className="row">
         <div className="col-md-6">
@@ -58,7 +58,7 @@ class FormSignUp extends React.Component {
               onChange={this.handleChange}
               id="password"
               name='password'
-              label={<IntlMessages id="appModule.password"/>}
+              label={<IntlMessages id="appModule.password" />}
               type="password"
               autoComplete="current-password"
               margin="normal"
@@ -85,7 +85,7 @@ class FormSignUp extends React.Component {
       </div>
     </div>
   }
-  
+
   getMomInformation() {
     return <div>
       <div className="row">
@@ -118,27 +118,27 @@ class FormSignUp extends React.Component {
         <div className="col-md-6">
           <div className="form-group">
             <span>Fecha Nacimiento</span>
-              <DatePickers
-                  onBlur={this.handleChange}
-                  name='FechaNacimientoMama'
-              />
+            <DatePickers
+              onBlur={this.handleChange}
+              name='FechaNacimientoMama'
+            />
           </div>
         </div>
         <div className="col-md-6">
           <div className="form-group">
             <span>Fecha Embarazo</span>
-             <DatePickers
-                name='FechaEmbarazo'
-                onBlur={this.handleChange}
-               
-             />
+            <DatePickers
+              name='FechaEmbarazo'
+              onBlur={this.handleChange}
+
+            />
           </div>
         </div>
       </div>
     </div>
-  
+
   }
-  
+
   getDadInformation() {
     return <div>
       <div className="row">
@@ -171,16 +171,16 @@ class FormSignUp extends React.Component {
         <div className="col-md-6">
           <div className="form-group">
             <span>Fecha Nacimiento</span>
-              <DatePickers
-                onBlur={this.handleChange}
-                name="FechaNacimientoPadre"
-              />
-        </div>
+            <DatePickers
+              onBlur={this.handleChange}
+              name="FechaNacimientoPadre"
+            />
+          </div>
         </div>
       </div>
     </div>
   }
-  
+
   getConfirmation() {
     return <div className="tab-pane" id="tab2-4">
       <h3 className="title text-primary">Terms and Conditions</h3>
@@ -189,7 +189,7 @@ class FormSignUp extends React.Component {
         and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
         into electronic typesetting, remaining essentially unchanged.</p>
       <div className="d-flex align-items-center">
-        <Checkbox color="primary"/> <span>I agree with the Terms and Conditions.</span>
+        <Checkbox color="primary" /> <span>I agree with the Terms and Conditions.</span>
       </div>
     </div>
   }
@@ -203,7 +203,7 @@ class FormSignUp extends React.Component {
         return this.getDadInformation();
       case 3:
         return this.getConfirmation();
-  
+
       default:
         return 'Uknown stepIndex';
     }
@@ -211,7 +211,7 @@ class FormSignUp extends React.Component {
 
 
   handleNext = () => {
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
     const nextStep = activeStep + 1;
     if (nextStep === this.getSteps().length) {
       this.handleSubmit();
@@ -221,7 +221,7 @@ class FormSignUp extends React.Component {
     });
   };
 
-  handleChange (e) {
+  handleChange(e) {
     const n = e.target.name; //en n me guardas el contenido que tiene name
     const valor = e.target.value;
     this.setState({
@@ -229,37 +229,37 @@ class FormSignUp extends React.Component {
     })
   };
 
-  
-    handleSubmit = e => {
-      const url = "http://localhost:3000/apiRegistrarse";
-      const self = this;
-      const body = this.getSteps()
-      request.post(url,{form:self.state},
-        function optionalCallback(err, httpResponse, body) {
+
+  handleSubmit = e => {
+    const url = "http://localhost:3000/apiRegistrarse";
+    const self = this;
+    const body = this.getSteps()
+    request.post(url, { form: self.state },
+      function optionalCallback(err, httpResponse, body) {
         if (err) {
           return console.error('upload failed:', err);
         }
-        console.log('Upload successful!  Server responded with:',httpResponse);
+        console.log('Upload successful!  Server responded with:', httpResponse);
         self.props.showAuthLoader();
         //self.props.userSignUp(httpResponse.body);
         //self.props.authUser=httpResponse.body;
         let usr = JSON.parse(httpResponse.body);
         //console.log('usr',usr);
         //self.props.userSignUp(usr.username+'@'+'preg'+'.com', usr.password);
-        console.log('usr',usr);
-        
-        self.setState({
-          userLogged:usr
-        });
-      }); 
-      
-      console.log('acabo el submit');
+        console.log('usr', usr);
 
-      
-    };
-  
+        self.setState({
+          userLogged: usr
+        });
+      });
+
+    console.log('acabo el submit');
+
+
+  };
+
   handleBack = () => {
-    const {activeStep} = this.state;
+    const { activeStep } = this.state;
     this.setState({
       activeStep: activeStep - 1,
     });
@@ -273,13 +273,13 @@ class FormSignUp extends React.Component {
 
   render() {
     const steps = this.getSteps();
-    const {activeStep} = this.state;
-    if (this.state.heAcabado){
+    const { activeStep } = this.state;
+    if (this.state.heAcabado) {
       return <div> Holaa</div>
-    } 
+    }
     if (this.state.userLogged != null) {
-        console.log('Mandamos token ',this.state.userLogged)
-        return  <Redirect to={{pathname:'/app/sample-page', userLogged:this.state.userLogged}}/> ;
+      console.log('Mandamos token ', this.state.userLogged)
+      return <Redirect to={{ pathname: '/app/home', userLogged: this.state.userLogged }} />;
     }
     return (
       <div className="w-100">
@@ -301,22 +301,22 @@ class FormSignUp extends React.Component {
               <Button onClick={this.handleReset}>Reset</Button>
             </div>
           ) : (
-            <div>
-              {this.getStepContent(activeStep)}
               <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={this.handleBack}
-                  className="mr-2"
-                >
-                  Back
+                {this.getStepContent(activeStep)}
+                <div>
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={this.handleBack}
+                    className="mr-2"
+                  >
+                    Back
                 </Button>
-                <Button variant="contained" color="primary" onClick={this.handleNext}>
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
+                  <Button variant="contained" color="primary" onClick={this.handleNext}>
+                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                  </Button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       </div>
     );
@@ -326,9 +326,9 @@ class FormSignUp extends React.Component {
 
 
 
-const mapStateToProps = ({auth}) => {
-  const {loader, alertMessage, showMessage, authUser} = auth;
-  return {loader, alertMessage, showMessage, authUser}
+const mapStateToProps = ({ auth }) => {
+  const { loader, alertMessage, showMessage, authUser } = auth;
+  return { loader, alertMessage, showMessage, authUser }
 };
 
 
