@@ -19,7 +19,6 @@ const Blog = ({ match }) => {
                             <p className="card-text">
                                 <IntlMessages id="sidebar.components.razonAcidoFolico" />
                             </p>
-
                         </div>
                     </div>
 
@@ -27,20 +26,21 @@ const Blog = ({ match }) => {
                         <img className="card-img-top" src="http://localhost:5000/images/fotosBlog/medicamentos.jpg" alt="post" />
 
                         <div className="card-body">
-                            <h3>Fármacos que no se deben tomar durante el embarazo</h3>
+                            <h3><IntlMessages id="sidebar.components.farmacos" /></h3>
                             <div className="meta-wrapper">
                                 <span className="meta-date"><i className="zmdi zmdi-calendar-note zmdi-hc-lg" />25 Ene, 2019</span>
                             </div>
                             <p className="card-text">
-                                <strong>Antiinflamatorios no esteroideos:</strong>Alteran el flujo sanguíneo del feto. <br />
-                                <strong> Parches de nicotina:</strong>Tienen un efecto nocivo sobre el fetO. <br />
-                                <strong>Antihipertensivos: </strong>Relacionados con defectos de nacimiento en el feto. <br />
-                                <strong>Antidiabéticos secretagogos:</strong> Pueden provocar hipoglucemias sostenidas en el tiempo. <br />
-                                <strong>Estatinas:</strong>Se asocian a malformaciones de la tráquea, esófago, corazón y ano en el feto. <br />
-                                <strong>Cortisona:</strong>Puede provocar una malformación fetal característica, el paladar hendido. <br />
-                                <strong>Anticonceptivos orales:</strong>Aumentan el riesgo de que el feto sufra síndrome de Down. <br />
-                                <strong>Omeprazol:</strong>No es recomendable tomarlo. <br />
-                                <strong>Bicarbonato:</strong>Produce un aumento del pH natural de la sangre.<br />
+                                <strong><IntlMessages id="sidebar.components.listaFarmacosn0" /></strong>
+                                <IntlMessages id="sidebar.components.listaFarmacos0" /> <br />
+                                <strong><IntlMessages id="sidebar.components.listaFarmacosn1" /></strong>
+                                <IntlMessages id="sidebar.components.listaFarmacos1" /> <br />
+                                <strong><IntlMessages id="sidebar.components.listaFarmacosn2" /></strong>
+                                <IntlMessages id="sidebar.components.listaFarmacos2" /> <br />
+                                <strong><IntlMessages id="sidebar.components.listaFarmacosn3" /></strong>
+                                <IntlMessages id="sidebar.components.listaFarmacos3" /> <br />
+                                <strong><IntlMessages id="sidebar.components.listaFarmacosn4" /></strong>
+                                <IntlMessages id="sidebar.components.listaFarmacos4" />
                             </p>
                         </div>
                     </div>
@@ -56,9 +56,9 @@ const Blog = ({ match }) => {
                             <p className="card-text">
                                 Habitualmente aparecen en el primer trimestre, disminuyen en el segundo y reaparecen en el tercer trimestre del embarazo.
                                  Puede incluir tanto síntomas <strong>físicos</strong> como <strong>psicológicos</strong>. <br /><br />Entre los <strong>físicos</strong> estarían las náuseas,
-                       la sensación de hinchazón, los cambios en el apetito, los «antojos»,el aumento de peso,el dolor de cabeza,los calambres en las piernas,
+            la sensación de hinchazón, los cambios en el apetito, los «antojos»,el aumento de peso,el dolor de cabeza,los calambres en las piernas,
                                    los dolores de espalda y las molestias urinarias o genitales. <br />Entre los <strong>psicológicos</strong>se incluyen cambios en el patrón de sueño,
-  síntomas de ansiedad, irritabilidad, disminución de la líbido e inquietud.
+síntomas de ansiedad, irritabilidad, disminución de la líbido e inquietud.
               </p>
                         </div>
                     </div>
