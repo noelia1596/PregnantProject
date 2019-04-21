@@ -8,7 +8,7 @@ import {
 
 } from 'constants/ActionTypes'
 
-import { setDrawerType, setHorizontalMenuPosition } from 'actions/index';
+import { setDrawerType } from 'actions/index';
 
 import { Button, ButtonGroup } from 'reactstrap';
 

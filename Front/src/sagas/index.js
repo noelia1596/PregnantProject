@@ -1,10 +1,8 @@
-import {all} from 'redux-saga/effects';
-import chatSagas from './Chat';
+import { all } from 'redux-saga/effects';
 import authSagas from './Auth';
 
 export default function* rootSaga(getState) {
   yield all([
-    chatSagas(),
     authSagas()
   ]);
 }

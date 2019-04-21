@@ -10,12 +10,10 @@ import {
   BELOW_THE_HEADER,
   COLLAPSED_DRAWER,
   FIXED_DRAWER,
-  HORIZONTAL_NAVIGATION,
 } from 'constants/ActionTypes';
 
 
 import { switchLanguage, toggleCollapsedNav } from 'actions/Setting';
-import IntlMessages from 'util/IntlMessages';
 import LanguageSwitcher from 'components/LanguageSwitcher/index';
 
 
