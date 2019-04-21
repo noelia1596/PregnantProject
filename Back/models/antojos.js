@@ -1,8 +1,4 @@
 const db = require('../util/database');
-const crypt = require('../util/crypt-util');
-const usuarioController = require('../controllers/usuarioController');
-const usuarioM = require('../models/usuarios');
-
 
 module.exports = class Antojo {
     constructor(usuario, tipoDeAntojo, nombreDelAntojo, fechaDelAntojo, vecesDadasDelAntojo, aQuienLeDio) {

@@ -24,28 +24,8 @@ const clase = class Usuario {
         return db.execute(
             'INSERT INTO pregnant.usuarios (usuario,password,Nombre,Apellidos,FechaNacimientoMama,FechaEmbarazo,NombrePadre,FechaNacimientoPadre,ApellidosPadre)VALUE(?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [this.usuario, this.password, this.Nombre, this.Apellidos, this.FechaNacimientoMama, this.FechaEmbarazo, this.NombrePadre, this.FechaNacimientoPadre, this.ApellidosPadre]
-
         );
     }
-
-    static modificarUsuario(password, nombre, apellidos, fechaNacimientoMama, fechaEmbarazo, nombrePadre, fechaNacimientoPadre, apellidosPadre, usuario) {
-        const cryptPasswd = crypt.encrypt(password);
-        return db.execute(
-            "UPDATE pregnant.usuarios SET password = ?, nombre = ?, apellidos= ?, fechaNacimientoMama = ? , fechaEmbarazo = ?, nombrePadre = ?, fechaNacimientoPadre = ?, apellidosPadre = ? WHERE usuario = ?",
-            [cryptPasswd, nombre, apellidos, fechaNacimientoMama, fechaEmbarazo, nombrePadre, fechaNacimientoPadre, apellidosPadre, usuario]
-        )
-    }
-
-
-    static borrarUsuarioId(id) {
-        return db.execute('DELETE FROM pregnant.usuarios WHERE usuario = ?', [id]);
-    }
-    /*
-        static selectById(id) {
-            return db.execute('SELECT * FROM pregnant.usuarios WHERE usuario= ?', [userId]);
-          }
-    
-          */
 }
 
 const TABLE = "pregnant.usuarios"
