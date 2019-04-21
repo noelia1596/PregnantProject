@@ -277,7 +277,7 @@ class FormSignUp extends React.Component {
     if (this.state.heAcabado) {
       return <div> Holaa</div>
     }
-    if (this.state.userLogged != null) {
+    if (this.state.userLogged) {
       console.log('Mandamos token ', this.state.userLogged)
       return <Redirect to={{ pathname: '/app/home', userLogged: this.state.userLogged }} />;
     }

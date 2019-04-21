@@ -6,7 +6,7 @@ import { Carousel, CarouselCaption, CarouselControl, CarouselIndicators, Carouse
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
 const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 const FechaActual = moment();
-const fechaEmbarazo = moment(userLogged.FechaEmbarazo);
+const fechaEmbarazo = userLogged ? moment(userLogged.FechaEmbarazo) : moment();
 const monthDifference = FechaActual.diff(fechaEmbarazo, 'months');
 
 
