@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {ThemeProvider} from 'react-native-elements';
-import {AsyncStorage, StyleSheet} from 'react-native';
-import {Provider} from 'react-redux';
+import React, { Component } from 'react';
+import { ThemeProvider } from 'react-native-elements';
+import { AsyncStorage, StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
-import {MenuProvider} from "react-native-popup-menu";
+import { MenuProvider } from "react-native-popup-menu";
 
-import axios, {httpClient} from './appUtility/Api';
+import axios, { httpClient } from './appUtility/Api';
 import Router from './Router'
 import store from './stores';
 import firebase from 'react-native-firebase';
@@ -32,7 +32,7 @@ class App extends Component<{}> {
     httpClient.defaults.headers.common['Device-Meta'] = deviceId;
 
     // setTimeout(() => this.setState({splashLoading: false}), 1000)
-    setTimeout(() => this.setState({splashLoading: false}), 5000)
+    setTimeout(() => this.setState({ splashLoading: false }), 5000)
   }
 
   async componentDidMount() {
@@ -48,7 +48,7 @@ class App extends Component<{}> {
 
 
   componentWillMount() {
-//testing
+    //testing
     // httpClient.defaults.headers.common['Access-Token'] = '7892897423849273jkshkjksdf';
 
     AsyncStorage.getItem('access_token').then((token) => {
@@ -84,7 +84,7 @@ class App extends Component<{}> {
     * Triggered when a particular notification has been received in foreground
     * */
     this.notificationListener = firebase.notifications().onNotification((notification) => {
-      const {title, body} = notification;
+      const { title, body } = notification;
       console.log('onNotification:', notification);
       // this.showAlert(title, body);
       // alert('message');
@@ -118,7 +118,7 @@ class App extends Component<{}> {
     * If your app is in background, you can listen for when a notification is clicked / tapped / opened as follows:
     * */
     this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
-      const {title, body} = notificationOpen.notification;
+      const { title, body } = notificationOpen.notification;
       console.log('onNotificationOpened:');
       // this.showAlert(title, body);
     });
@@ -128,7 +128,7 @@ class App extends Component<{}> {
     * */
     const notificationOpen = await firebase.notifications().getInitialNotification();
     if (notificationOpen) {
-      const {title, body} = notificationOpen.notification;
+      const { title, body } = notificationOpen.notification;
       console.log('getInitialNotification:');
       // this.showAlert(title, body);
     }
@@ -150,7 +150,7 @@ class App extends Component<{}> {
         // user has a device token
         console.log('after fcmToken: ', fcmToken);
         //httpClient.defaults.headers.common['Device-ID'] = fcmToken;
-        this.setState({fcmToken});
+        this.setState({ fcmToken });
         // Constant.setDeviceToken(fcmToken);
         await AsyncStorage.setItem('fcmToken', fcmToken);
       } else {
@@ -161,7 +161,7 @@ class App extends Component<{}> {
       // Clipboard.setString(fcmToken);
       // Constant.setDeviceToken(fcmToken);
       //httpClient.defaults.headers.common['Device-ID'] = fcmToken;
-      this.setState({fcmToken});
+      this.setState({ fcmToken });
     }
   }
 
@@ -180,19 +180,19 @@ class App extends Component<{}> {
   //----------------end--------------
   isShowingSplash = () => {
     // return (this.state.splashLoading || this.state.loading)
-    return (this.state.splashLoading || this.state.loading || this.state.fcmToken === '' )
+    return (this.state.splashLoading || this.state.loading || this.state.fcmToken === '')
   };
 
   render() {
     if (this.isShowingSplash()) {
-      return <SplashPage/>
+      return <SplashPage />
     }
 
     return (
       <ThemeProvider>
         <MenuProvider>
           <Provider store={store}>
-            <Router style={styles.container} token={this.state.token} fcmToken={this.state.fcmToken}/>
+            <Router style={styles.container} token={this.state.token} fcmToken={this.state.fcmToken} />
           </Provider>
         </MenuProvider>
       </ThemeProvider>
