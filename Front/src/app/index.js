@@ -5,13 +5,6 @@ import Header from 'components/Header/index';
 import Sidebar from 'containers/SideNav/index';
 import Footer from 'components/Footer';
 import Components from './routes/components';
-import Pickers from './routes/pickers';
-import Extensions from './routes/extensions';
-import Map from './routes/map';
-import Calendar from './routes/calendar';
-import TimeLine from './routes/timeLine';
-import AppModule from './routes/appModule';
-import ExtraPages from './routes/extraPages';
 //import Tour from '../components/Tour/index';  es el circulito que va diciendo lo que hace cada apartado que tenemos
 import {
   ABOVE_THE_HEADER,
@@ -69,12 +62,6 @@ class App extends React.Component {
               <Switch>
 
                 <Route path={`${match.url}/components`} component={Components} />
-                <Route path={`${match.url}/pickers`} component={Pickers} />
-                <Route path={`${match.url}/extensions`} component={Extensions} />
-                <Route path={`${match.url}/map`} component={Map} />
-                <Route path={`${match.url}/calendar`} component={Calendar} />
-                <Route path={`${match.url}/time-line`} component={TimeLine} />
-
                 <Route path={`${match.url}/funcionalidadesAntojos`} component={Antojos} />
                 <Route path={`${match.url}/imagenes`} component={Imagenes} />
                 <Route path={`${match.url}/ejercicios`} component={Ejercicios} />
@@ -84,13 +71,6 @@ class App extends React.Component {
                 <Route path={`${match.url}/geolocalizacion`} component={Geolocalización} />
                 <Route path={`${match.url}/nombresBebes`} component={NombresBebes} />
 
-
-                <Route path={`${match.url}/app-module`} component={AppModule} />
-                <Route path={`${match.url}/chat`}
-                  component={asyncComponent(() => import('./routes/chatPanel/basic/index'))} />
-                <Route path={`${match.url}/chat-redux`}
-                  component={asyncComponent(() => import('./routes/chatPanel/redux/index'))} />
-                <Route path={`${match.url}/extra-pages`} component={ExtraPages} />
                 <Route component={asyncComponent(() => import('app/routes/paginaPrincipal/index'))} />
               </Switch>
             </div>

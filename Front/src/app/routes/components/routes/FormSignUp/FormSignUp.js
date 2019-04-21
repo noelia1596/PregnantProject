@@ -58,7 +58,7 @@ class FormSignUp extends React.Component {
               onChange={this.handleChange}
               id="password"
               name='password'
-              label={<IntlMessages id="appModule.password" />}
+              label="Password"
               type="password"
               autoComplete="current-password"
               margin="normal"

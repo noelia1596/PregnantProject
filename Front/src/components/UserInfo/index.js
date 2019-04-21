@@ -70,7 +70,7 @@ class UserInfo extends React.Component {
           }}>
             <i className="zmdi zmdi-sign-in zmdi-hc-fw mr-2" />
 
-            <IntlMessages id="popup.logout" />
+            <IntlMessages id="sidebar.components.salir" />
           </MenuItem>
         </Menu>
       </div>

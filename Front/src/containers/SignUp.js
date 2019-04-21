@@ -1,12 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { connect } from 'react-redux';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {Link} from 'react-router-dom';
-import IntlMessages from 'util/IntlMessages';
+import { Link } from 'react-router-dom';
 import {
   hideMessage,
   showAuthLoader,
@@ -41,14 +37,14 @@ class SignUp extends React.Component {
       email,
       password
     } = this.state;
-    const {showMessage, loader, alertMessage} = this.props;
+    const { showMessage, loader, alertMessage } = this.props;
     return (
       <div
         className="app-login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
         <div className="app-login-main-content">
           <div className="app-logo-content d-flex align-items-center justify-content-center">
             <Link className="logo-lg" to="/">
-              <img src={require("assets/images/logo.png")} alt="logo" height="240rem"/>
+              <img src={require("assets/images/logo.png")} alt="logo" height="240rem" />
             </Link>
           </div>
 
@@ -56,26 +52,26 @@ class SignUp extends React.Component {
             <div className="app-login-header  mb-4">
               <h1>Sign Up</h1>
             </div>
-            <FormSignUp/>
+            <FormSignUp />
           </div>
         </div>
 
         {
           loader &&
           <div className="loader-view">
-            <CircularProgress/>
+            <CircularProgress />
           </div>
         }
         {showMessage && NotificationManager.error(alertMessage)}
-        <NotificationContainer/>
+        <NotificationContainer />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({auth}) => {
-  const {loader, alertMessage, showMessage, authUser} = auth;
-  return {loader, alertMessage, showMessage, authUser}
+const mapStateToProps = ({ auth }) => {
+  const { loader, alertMessage, showMessage, authUser } = auth;
+  return { loader, alertMessage, showMessage, authUser }
 };
 
 export default connect(mapStateToProps, {

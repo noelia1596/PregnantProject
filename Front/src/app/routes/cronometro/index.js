@@ -7,7 +7,6 @@ import './css.css'
 import request from 'request';
 import Table from './tabla/index';
 import CardBox from 'components/CardBox/index';
-import IntlMessages from 'util/IntlMessages';
 
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
 const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));

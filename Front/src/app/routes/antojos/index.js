@@ -6,17 +6,8 @@ import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import IntlMessages from 'util/IntlMessages';
 import DatePickers from '../components/routes/date/DatePickers';
 import request from 'request';
-import { Redirect } from 'react-router-dom';
-import {
-  showAuthLoader,
-  userSignUp,
-} from 'actions/Auth';
-import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
-import { Route } from 'react-router-dom';
 import Table from './tabla';
 import CardBox from 'components/CardBox/index';
 

@@ -78,14 +78,14 @@ class SignIn extends React.Component {
 
           <div className="app-login-content">
             <div className="app-login-header mb-4">
-              <h1><IntlMessages id="appModule.email" /></h1>
+              <h1><IntlMessages id="sidebar.components.usuario" /></h1>
             </div>
 
             <div className="app-login-form">
               <form>
                 <fieldset>
                   <TextField
-                    label={<IntlMessages id="appModule.email" />}
+                    label={<IntlMessages id="sidebar.components.usuario" />}
                     fullWidth
                     onChange={(event) => this.setState({ email: event.target.value })}
                     defaultValue={email}
@@ -94,7 +94,7 @@ class SignIn extends React.Component {
                   />
                   <TextField
                     type="password"
-                    label={<IntlMessages id="appModule.password" />}
+                    label={<IntlMessages id="sidebar.components.contraseña" />}
                     fullWidth
                     onChange={(event) => this.setState({ password: event.target.value })}
                     defaultValue={password}
@@ -106,11 +106,11 @@ class SignIn extends React.Component {
                     <Button onClick={() => {
                       this.signInDB(email, password);
                     }} variant="contained" color="primary">
-                      <IntlMessages id="appModule.signIn" />
+                      <IntlMessages id="sidebar.components.entrar" />
                     </Button>
 
                     <Link to="/signup">
-                      <IntlMessages id="signIn.signUp" />
+                      <IntlMessages id="sidebar.components.registrarse" />
                     </Link>
                   </div>
                 </fieldset>
