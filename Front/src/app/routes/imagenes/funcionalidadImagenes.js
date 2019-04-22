@@ -53,8 +53,6 @@ class App extends Component {
 
 
 
-
-
   imagenesImpresas = () => {
     const url = "http://localhost:3000/imprimirImagenes/";
     fetch(url, {

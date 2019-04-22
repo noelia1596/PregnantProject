@@ -17,7 +17,6 @@ import ColorOption from 'containers/Customizer/ColorOption';
 import { isIOS, isMobile } from 'react-device-detect';
 import asyncComponent from '../util/asyncComponent';
 
-
 import Antojos from './routes/antojos';
 import Imagenes from './routes/imagenes/funcionalidadImagenes';
 import Ejercicios from './routes/ejercicios';
