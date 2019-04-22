@@ -3,10 +3,8 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import IntlMessages from 'util/IntlMessages';
 import DatePickers from '../date/DatePickers';
 import request from 'request';
 import { Redirect } from 'react-router-dom';
@@ -15,8 +13,7 @@ import {
   userSignUp,
 } from 'actions/Auth';
 import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
-import { Route } from 'react-router-dom';
+
 
 class FormSignUp extends React.Component {
   constructor() {
@@ -183,14 +180,7 @@ class FormSignUp extends React.Component {
 
   getConfirmation() {
     return <div className="tab-pane" id="tab2-4">
-      <h3 className="title text-primary">Terms and Conditions</h3>
-      <p><strong>Lorem</strong> Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-        and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-        into electronic typesetting, remaining essentially unchanged.</p>
-      <div className="d-flex align-items-center">
-        <Checkbox color="primary" /> <span>I agree with the Terms and Conditions.</span>
-      </div>
+      <h3 className="title text-primary">Form completed successfully</h3>
     </div>
   }
   getStepContent(stepIndex) {
@@ -239,23 +229,12 @@ class FormSignUp extends React.Component {
         if (err) {
           return console.error('upload failed:', err);
         }
-        console.log('Upload successful!  Server responded with:', httpResponse);
         self.props.showAuthLoader();
-        //self.props.userSignUp(httpResponse.body);
-        //self.props.authUser=httpResponse.body;
         let usr = JSON.parse(httpResponse.body);
-        //console.log('usr',usr);
-        //self.props.userSignUp(usr.username+'@'+'preg'+'.com', usr.password);
-        console.log('usr', usr);
-
         self.setState({
           userLogged: usr
         });
       });
-
-    console.log('acabo el submit');
-
-
   };
 
   handleBack = () => {
@@ -278,7 +257,6 @@ class FormSignUp extends React.Component {
       return <div> Holaa</div>
     }
     if (this.state.userLogged) {
-      console.log('Mandamos token ', this.state.userLogged)
       return <Redirect to={{ pathname: '/app/home', userLogged: this.state.userLogged }} />;
     }
     return (
@@ -296,7 +274,7 @@ class FormSignUp extends React.Component {
           {this.state.activeStep === steps.length ? (
             <div>
               <Typography className="my-2">
-                All steps completed - you&quot;re finished
+                All steps completed
               </Typography>
               <Button onClick={this.handleReset}>Reset</Button>
             </div>
@@ -323,16 +301,11 @@ class FormSignUp extends React.Component {
   }
 }
 
-
-
-
 const mapStateToProps = ({ auth }) => {
   const { loader, alertMessage, showMessage, authUser } = auth;
   return { loader, alertMessage, showMessage, authUser }
 };
 
-
-//export default FormSignUp;
 export default connect(mapStateToProps, {
   userSignUp,
   showAuthLoader,
