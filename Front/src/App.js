@@ -18,7 +18,6 @@ class App extends Component<{}> {
     loading: true,
     splashLoading: true,
     user: null,
-    // fcmToken: 'TkQ0cW9BRzNnaWtvU3F0QkJtWEN5UT09',
     fcmToken: ''
   };
 
@@ -31,7 +30,6 @@ class App extends Component<{}> {
     axios.defaults.headers.common['Device-ID'] = "Android";
     httpClient.defaults.headers.common['Device-Meta'] = deviceId;
 
-    // setTimeout(() => this.setState({splashLoading: false}), 1000)
     setTimeout(() => this.setState({ splashLoading: false }), 5000)
   }
 
@@ -48,9 +46,6 @@ class App extends Component<{}> {
 
 
   componentWillMount() {
-    //testing
-    // httpClient.defaults.headers.common['Access-Token'] = '7892897423849273jkshkjksdf';
-
     AsyncStorage.getItem('access_token').then((token) => {
       httpClient.defaults.headers.common['Access-Token'] = token;
       this.setState({
@@ -80,27 +75,17 @@ class App extends Component<{}> {
   }
 
   async createNotificationListeners() {
-    /*
-    * Triggered when a particular notification has been received in foreground
-    * */
     this.notificationListener = firebase.notifications().onNotification((notification) => {
       const { title, body } = notification;
       console.log('onNotification:', notification);
-      // this.showAlert(title, body);
-      // alert('message');
 
       const localNotification = new firebase.notifications.Notification({
-        // sound: 'mellobullpartnersound',
         show_in_foreground: true,
       })
         .setNotificationId(notification.notificationId)
         .setTitle(notification.title)
-        // .setSubtitle(notification.subtitle)
         .setBody(notification.body)
-        // .setData(notification.data)
-        .android.setChannelId('com_medifellows_fcm_default_channel') // e.g. the id you chose above
-        // .android.setSmallIcon('@drawable/ic_launcher') // create this icon in Android Studio
-        // .android.setColor('#ff7e00') // you can set a color here
+        .android.setChannelId('com_medifellows_fcm_default_channel')
         .android.setPriority(firebase.notifications.Android.Priority.High);
 
 
@@ -114,29 +99,16 @@ class App extends Component<{}> {
       .setDescription('Medifellows');
     firebase.notifications().android.createChannel(channel);
 
-    /*
-    * If your app is in background, you can listen for when a notification is clicked / tapped / opened as follows:
-    * */
     this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
       const { title, body } = notificationOpen.notification;
       console.log('onNotificationOpened:');
-      // this.showAlert(title, body);
     });
-
-    /*
-    * If your app is closed, you can check if it was opened by a notification being clicked / tapped / opened as follows:
-    * */
     const notificationOpen = await firebase.notifications().getInitialNotification();
     if (notificationOpen) {
       const { title, body } = notificationOpen.notification;
       console.log('getInitialNotification:');
-      // this.showAlert(title, body);
     }
-    /*
-    * Triggered for data only payload in foreground
-    * */
     this.messageListener = firebase.messaging().onMessage((message) => {
-      //process data message
       console.log(JSON.stringify(message));
     });
   }
@@ -147,25 +119,17 @@ class App extends Component<{}> {
     if (!fcmToken) {
       fcmToken = await firebase.messaging().getToken();
       if (fcmToken) {
-        // user has a device token
         console.log('after fcmToken: ', fcmToken);
-        //httpClient.defaults.headers.common['Device-ID'] = fcmToken;
         this.setState({ fcmToken });
-        // Constant.setDeviceToken(fcmToken);
         await AsyncStorage.setItem('fcmToken', fcmToken);
       } else {
         console.log('fcmToken not found');
       }
     } else {
       console.log('already fcmToken: ', fcmToken);
-      // Clipboard.setString(fcmToken);
-      // Constant.setDeviceToken(fcmToken);
-      //httpClient.defaults.headers.common['Device-ID'] = fcmToken;
       this.setState({ fcmToken });
     }
   }
-
-  //2
   async requestPermission() {
     firebase.messaging().requestPermission()
       .then(() => {

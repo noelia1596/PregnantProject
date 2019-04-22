@@ -42,9 +42,6 @@ class Customizer extends React.Component {
             className={`jr-btn ${drawerType === MINI_DRAWER && 'active'} `}
             onClick={this.setMiniDrawer.bind(this)}>Mini</Button>
         </ButtonGroup>
-
-
-
       </div>);
   }
 }

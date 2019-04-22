@@ -2,9 +2,7 @@ import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import SideNavOption from './SideNavOption';
-/*
-'actions/index';
-*/
+
 class ColorOption extends React.Component {
 
   toggleCustomizer = () => {
