@@ -7,12 +7,14 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 const BASE_URL = 'http://localhost:3000/';
 const BACK_URL = 'http://localhost:5000/';
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
-const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
+var userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 
 
 class App extends Component {
   constructor(props) {
     super(props);
+
+    userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
     this.state = {
       images: [],
       imageUrls: [],

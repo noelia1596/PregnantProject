@@ -13,13 +13,13 @@ import CardBox from 'components/CardBox/index';
 
 
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
-const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
-console.log(userLogged, 'userloged');
+var userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 
 class FormSignUp extends React.Component {
   constructor() {
-
     super();
+
+    userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
     this.state = {
       activeStep: 0,
       usuario: userLogged.usuario,

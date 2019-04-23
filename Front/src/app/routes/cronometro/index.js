@@ -9,12 +9,13 @@ import Table from './tabla/index';
 import CardBox from 'components/CardBox/index';
 
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
-const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
+var userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 
 class App extends Component {
 	constructor(...props) {
 		super(...props)
 
+		userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 		this.state = {
 			estaCorriendo: false,
 			inicio: 0,

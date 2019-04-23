@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Carousel, CarouselCaption, CarouselControl, CarouselIndicators, CarouselItem } from 'reactstrap';
 
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
-const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
+var userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
 const FechaActual = moment();
 const fechaEmbarazo = userLogged ? moment(userLogged.FechaEmbarazo) : moment();
 const monthDifference = FechaActual.diff(fechaEmbarazo, 'months');
@@ -46,6 +46,8 @@ const items = [
 class videos extends React.Component {
   constructor(props) {
     super(props);
+
+    userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
     this.state = { activeIndex: 0 };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);

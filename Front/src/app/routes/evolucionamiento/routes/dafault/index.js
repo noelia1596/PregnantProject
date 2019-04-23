@@ -6,12 +6,16 @@ import IntlMessages from 'util/IntlMessages';
 import moment from 'moment'
 
 const USER_LOGGED_LOCAL_STORAGE = 'userLoggedLS';
-const userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
-const FechaActual = moment();
-const fechaEmbarazo = moment(userLogged.FechaEmbarazo);
+var userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
+
+
 
 
 const Default = ({ match }) => {
+
+  userLogged = JSON.parse(localStorage.getItem(USER_LOGGED_LOCAL_STORAGE));
+  const FechaActual = moment();
+  const fechaEmbarazo = moment(userLogged.FechaEmbarazo);
   return (
     <div>
       <ContainerHeader title={<IntlMessages id="sidebar.components.Evolucionbebe" />} match={match} />
