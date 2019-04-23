@@ -1,4 +1,4 @@
-import {all, call, fork, put, takeEvery} from "redux-saga/effects";
+import { all, call, fork, put, takeEvery } from "redux-saga/effects";
 import {
   auth
 } from "../firebase/firebase";
@@ -7,29 +7,29 @@ import {
   SIGNOUT_USER,
   SIGNUP_USER
 } from "constants/ActionTypes";
-import {showAuthMessage, userSignInSuccess, userSignOutSuccess, userSignUpSuccess} from "actions/Auth";
+import { showAuthMessage, userSignInSuccess, userSignOutSuccess, userSignUpSuccess } from "actions/Auth";
 
 
 const createUserWithEmailPasswordRequest = async (email, password) =>
-  await  auth.createUserWithEmailAndPassword(email, password)
+  await auth.createUserWithEmailAndPassword(email, password)
     .then(authUser => authUser)
     .catch(error => error);
 
 const signInUserWithEmailPasswordRequest = async (email, password) =>
-  await  auth.signInWithEmailAndPassword(email, password)
+  await auth.signInWithEmailAndPassword(email, password)
     .then(authUser => authUser)
     .catch(error => error);
 
 const signOutRequest = async () =>
-  await  auth.signOut()
+  await auth.signOut()
     .then(authUser => authUser)
     .catch(error => error);
 
 
 //creamos wl usuario utilizando usuario y password
 
-function* createUserWithEmailPassword({payload}) {
-  const {email, password} = payload;
+function* createUserWithEmailPassword({ payload }) {
+  const { email, password } = payload;
   try {
     const signUpUser = yield call(createUserWithEmailPasswordRequest, email, password);
     if (signUpUser.message) {
@@ -47,8 +47,8 @@ function* createUserWithEmailPassword({payload}) {
 
 //cargamos con usuario y password
 
-function* signInUserWithEmailPassword({payload}) {
-  const {email, password} = payload;
+function* signInUserWithEmailPassword({ payload }) {
+  const { email, password } = payload;
   try {
     const signInUser = yield call(signInUserWithEmailPasswordRequest, email, password);
     if (signInUser.message) {
@@ -92,6 +92,6 @@ export function* signOutUser() {
 
 export default function* rootSaga() {
   yield all([fork(signInUser),
-    fork(createUserAccount),
-    fork(signOutUser)]);
+  fork(createUserAccount),
+  fork(signOutUser)]);
 }
