@@ -29,7 +29,7 @@ function apiLogin(req, res) {
                         res.send(
                             {
                                 customer: customer,
-                                token: Token.buildToken(customer.usuario)
+
                             }
                         );
                     }

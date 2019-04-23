@@ -7,8 +7,8 @@ Página web para padres que esperan un hijo.
 
 **Importar base de datos**
 **Npm install**
-**Npm start en Front**
-**Cambiar puerto del back con :set PORT=5000, y a continuación arrancarlo con npm start**
+
+
 
 
 # Documentación
