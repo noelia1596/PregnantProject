@@ -14,7 +14,7 @@ Página web para padres que esperan un hijo.
 # Documentación
 
 
-| Información requerida            | Description   |
+| Información requerida            | Descripción   |
 | -------------------------------- | ------------- |
 | `base de datos`                  | La encontraremos en la carpeta MySql, donde se deberá de importar toda la base de datos que es requerida |
 
