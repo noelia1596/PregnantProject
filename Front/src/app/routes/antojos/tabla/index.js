@@ -209,7 +209,7 @@ class EnhancedTable extends React.Component {
       console.log('No tenemos antojos', list)
       return <div>no hay datos</div>
     } else {
-      console.log(list, "list!!!");
+
       antojos = list
     }
     return (

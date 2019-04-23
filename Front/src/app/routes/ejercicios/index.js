@@ -54,6 +54,7 @@ class videos extends React.Component {
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
+    this.slides = [];
   }
 
   onExiting() {
@@ -66,13 +67,13 @@ class videos extends React.Component {
 
   next() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
+    const nextIndex = this.state.activeIndex === this.slides.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
+    const nextIndex = this.state.activeIndex === 0 ? this.slides.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
 
@@ -83,9 +84,8 @@ class videos extends React.Component {
 
   render() {
     const { activeIndex } = this.state;
-    var slides;
     if (monthDifference < 4) {
-      slides = items.filter((ele) => { return ele.mes == 1 }).map((item) => {
+      this.slides = items.filter((ele) => { return ele.mes == 1 }).map((item) => {
         return (
           <CarouselItem className='estilos'
             key={item.id}
@@ -97,7 +97,7 @@ class videos extends React.Component {
         );
       });
     } else if (monthDifference >= 4 && monthDifference < 7) {
-      slides = items.filter((ele) => { return ele.mes == 2 }).map((item) => {
+      this.slides = items.filter((ele) => { return ele.mes == 2 }).map((item) => {
         return (
           <CarouselItem className='estilos'
             key={item.id}
@@ -109,7 +109,7 @@ class videos extends React.Component {
         );
       });
     } else if (monthDifference >= 7 && monthDifference <= 9) {
-      slides = items.filter((ele) => { return ele.mes == 3 }).map((item) => {
+      this.slides = items.filter((ele) => { return ele.mes == 3 }).map((item) => {
         return (
           <CarouselItem className='estilos'
             key={item.id}
@@ -130,8 +130,8 @@ class videos extends React.Component {
         next={this.next}
         previous={this.previous}
         align='center'>
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-        {slides}
+        <CarouselIndicators items={this.slides} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        {this.slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
       </Carousel>

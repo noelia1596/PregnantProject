@@ -155,8 +155,6 @@ class FormSignUp extends React.Component {
   handleSubmit = () => {
     const url = "http://localhost:3000/apiInsertarAntojo";
     const self = this;
-    //const body = this.getSteps()
-    console.log(self.state);
     request.post(url, { form: self.state },
       function optionalCallback(err, httpResponse, body) {
         if (err) {
@@ -180,10 +178,7 @@ class FormSignUp extends React.Component {
     )
       .then(response => response.json())
       .then((repos) => {
-        console.log(repos);
-        console.log(repos.length);
         var obSubmitEditing = this.onAddTodo
-        //const {repos} =this.state;
         if (!repos) return;
         obSubmitEditing(repos);
         this.setState({ repos: "" });
@@ -233,7 +228,6 @@ class FormSignUp extends React.Component {
       [n]: valor //en n me pones el valor
     })
   };
-
 
 
   handleBack = () => {
